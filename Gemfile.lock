@@ -232,7 +232,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
-  omniauth-mapmyfitness-oauth2
+  omniauth-mapmyfitness-oauth2 (~> 0.3.0)
   pg
   pry
   quiet_assets
