@@ -4,7 +4,7 @@ class MmfProfilePhotoService
 
     response = @connection.get do |request|
       request.headers["Authorization"] = "Bearer #{token}"
-      request.headers["Api-Key"] = ENV['MMF_API_KEY']
+      request.headers["Api-Key"] = ENV["MMF_API_KEY"]
     end
 
     extract_photo_url(JSON.parse(response.body, symbolize_names: true))

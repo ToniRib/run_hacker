@@ -17,8 +17,12 @@ class User < ActiveRecord::Base
 
   def check_for_profile_photo
     unless image
-      image_url = MmfProfilePhotoService.get_profile_photo(uid, token)
-      update_attribute(:image, image_url)
+      update_attribute(:image,
+                       MmfProfilePhotoService.get_profile_photo(uid, token))
     end
+  end
+
+  def check_for_new_workouts
+    MmfWorkoutAggregateService.new_workouts(uid, token)
   end
 end

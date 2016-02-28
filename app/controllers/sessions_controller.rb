@@ -2,7 +2,10 @@ class SessionsController < ApplicationController
   def create
     user = User.find_or_create_by_auth(auth_hash)
     session[:user_id] = user.id
+
     user.check_for_profile_photo
+    user.check_for_new_workouts
+
     redirect_to dashboard_path
   end
 
