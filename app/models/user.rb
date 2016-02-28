@@ -14,4 +14,11 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  def check_for_profile_photo
+    unless image
+      image_url = MmfProfilePhotoService.get_profile_photo(uid, token)
+      update_attribute(:image, image_url)
+    end
+  end
 end
