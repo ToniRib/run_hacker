@@ -1,5 +1,5 @@
 class MmfWorkoutAggregateService
-  def self.new_workouts(uid, token)
+  def self.new_workouts(uid, token, id)
     set_up_connection(uid)
 
     response = @connection.get do |request|
@@ -7,7 +7,7 @@ class MmfWorkoutAggregateService
       request.headers["Api-Key"] = ENV["MMF_API_KEY"]
     end
 
-    save_new_workouts(JSON.parse(response.body, symbolize_names: true))
+    save_new_workouts(JSON.parse(response.body, symbolize_names: true), id)
   end
 
   private
@@ -18,7 +18,9 @@ class MmfWorkoutAggregateService
     end
   end
 
-  def self.save_new_workouts(response)
-    number_of_new_workouts = user.workouts.count - response[:total_count]
+  def self.save_new_workouts(response, id)
+    user = User.find(id)
+    number_of_new_workouts = response[:total_count] - user.workouts.count
+    # somehow use background worker to load new workouts?
   end
 end

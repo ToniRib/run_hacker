@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :workouts
+
   validates :uid,   uniqueness: { scope: :provider }
   validates :token, presence: true
 
@@ -23,6 +25,6 @@ class User < ActiveRecord::Base
   end
 
   def check_for_new_workouts
-    MmfWorkoutAggregateService.new_workouts(uid, token)
+    MmfWorkoutAggregateService.new_workouts(uid, token, id)
   end
 end
