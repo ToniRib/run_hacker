@@ -27,4 +27,12 @@ class User < ActiveRecord::Base
   def check_for_new_workouts
     MmfWorkoutAggregateService.new_workouts(uid, token, id)
   end
+
+  def number_of_workouts
+    workouts.count
+  end
+
+  def no_workouts_loaded
+    number_of_workouts == 0
+  end
 end

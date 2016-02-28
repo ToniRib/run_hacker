@@ -1,13 +1,16 @@
 class MmfWorkoutAggregateService
   def self.new_workouts(uid, token, id)
+    @user = User.find(id)
     set_up_connection(uid)
 
-    response = @connection.get do |request|
+    raw_response = @connection.get do |request|
       request.headers["Authorization"] = "Bearer #{token}"
       request.headers["Api-Key"] = ENV["MMF_API_KEY"]
     end
 
-    save_new_workouts(JSON.parse(response.body, symbolize_names: true), id)
+    @response = JSON.parse(raw_response.body, symbolize_names: true)
+
+    request_workouts
   end
 
   private
@@ -18,9 +21,22 @@ class MmfWorkoutAggregateService
     end
   end
 
-  def self.save_new_workouts(response, id)
-    user = User.find(id)
-    number_of_new_workouts = response[:total_count] - user.workouts.count
+  def self.request_workouts
+    @user.no_workouts_loaded ? load_all_workouts : save_new_workouts
+  end
+
+  def self.save_new_workouts
+    number_of_new_workouts = @response[:total_count] - @user.number_of_workouts
     # somehow use background worker to load new workouts?
+    # cycle through requests to load all new workouts using offset & limit
+    # hit specific workout endpoint to load starting position, lat, and long (maybe also end?)
+    # hit weather API to get temperature at start of run (maybe also middle & end?)
+  end
+
+  def self.load_all_workouts
+    # save the current list of workouts from the response then,
+    # need stuff here to be able to load ALL workouts by changing offset & limit
+    # until there are no more workouts left to grab
+    # probably will want this in a background worker
   end
 end
