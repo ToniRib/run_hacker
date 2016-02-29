@@ -12,7 +12,7 @@ gem 'figaro'
 gem 'pg'
 gem 'omniauth-mapmyfitness-oauth2', '~> 0.3.0'
 gem 'will_paginate'
-gem 'unicorn'
+gem 'thin'
 gem 'sidekiq'
 
 group :development, :test do
