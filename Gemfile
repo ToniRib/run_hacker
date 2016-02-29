@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+
 gem 'rails', '4.2.5.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
@@ -12,6 +13,7 @@ gem 'pg'
 gem 'omniauth-mapmyfitness-oauth2', '~> 0.3.0'
 gem 'will_paginate'
 gem 'thin'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'pry'
