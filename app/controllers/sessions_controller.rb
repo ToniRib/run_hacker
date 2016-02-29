@@ -4,7 +4,9 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
 
     user.check_for_profile_photo
-    user.check_for_new_workouts
+    # user.check_for_new_workouts
+    # binding.pry
+    WorkoutAggregateDataWorker.perform_async(user.id)
 
     redirect_to dashboard_path
   end
