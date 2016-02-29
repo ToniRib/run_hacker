@@ -1,10 +1,10 @@
 class MmfWorkoutAggregateService
-  def self.new_workouts(uid, token, id)
+  def self.new_workouts(id)
     @user = User.find(id)
-    set_up_connection(uid)
+    set_up_connection
 
     raw_response = @connection.get do |request|
-      request.headers["Authorization"] = "Bearer #{token}"
+      request.headers["Authorization"] = "Bearer #{@user.token}"
       request.headers["Api-Key"] = ENV["MMF_API_KEY"]
     end
 
@@ -15,8 +15,8 @@ class MmfWorkoutAggregateService
 
   private
 
-  def self.set_up_connection(uid)
-    @connection = Faraday.new(:url => "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{uid}") do |faraday|
+  def self.set_up_connection
+    @connection = Faraday.new(:url => "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{@user.uid}") do |faraday|
       faraday.adapter  Faraday.default_adapter
     end
   end

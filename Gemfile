@@ -11,6 +11,7 @@ gem 'figaro'
 gem 'pg'
 gem 'omniauth-mapmyfitness-oauth2', '~> 0.3.0'
 gem 'will_paginate'
+gem 'thin'
 
 group :development, :test do
   gem 'pry'
@@ -30,4 +31,8 @@ end
 
 group :test do
   gem 'simplecov', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
 end
