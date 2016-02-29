@@ -1,1 +1,1 @@
-worker_processes 3
+worker_processes Integer(3)
