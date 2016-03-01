@@ -1,5 +1,13 @@
+// ----- COMMON STYLES -----
+
 .orange-border {
-  border: solid 3px orange;
+  border: solid 3px $base-orange;
   border-radius: 10px;
   margin: 15px 0;
+}
+
+.navbar {
+  background: $base-orange;
+  border-color: $base-orange;
+  margin: 0;
 }

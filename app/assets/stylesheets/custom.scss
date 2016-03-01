@@ -74,10 +74,10 @@ body {
 
   li {
     list-style: none;
-    padding: 5px 0;
+    padding: 3px 0;
 
     h4 {
-      font-size: 28px;
+      font-size: 26px;
     }
 
   }
@@ -90,9 +90,25 @@ body {
 
 .user-profile-photo {
   margin: 0 auto;
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .dashboard-stat-listing {
-  margin: 30px 0;
+  margin: 52px 0;
+}
+
+.summary-title {
+  color: $base-red;
+  font-size: 60px;
+  letter-spacing: 0.2em;
+}
+
+.stat-title {
+  font-size: 30px;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+}
+
+.stat-data {
+  font-size: 42px;
 }
