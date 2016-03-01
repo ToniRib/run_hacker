@@ -10,4 +10,30 @@
   background: $base-orange;
   border-color: $base-orange;
   margin: 0;
+
+  .navbar-brand {
+    color: $base-yellow;
+    font-size: 26px;
+
+    &:hover {
+      color: $base-yellow-lighten;
+    }
+
+  }
+
+}
+
+.navbar-right {
+  font-size: 20px;
+  margin-right: 30px;
+
+  li a {
+    color: $base-yellow-lighten;
+
+    &:hover {
+      color: $base-yellow;
+    }
+
+  }
+
 }

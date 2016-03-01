@@ -5,3 +5,5 @@ $base-orange: #f87941;
 $base-red: #cf3826;
 $base-yellow: #f8d351;
 $base-green: #669f37;
+
+$base-yellow-lighten: lighten($base-yellow, 15%);
