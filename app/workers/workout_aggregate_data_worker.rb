@@ -5,5 +5,6 @@ class WorkoutAggregateDataWorker
   def perform(id)
     MmfWorkoutAggregateService.load_workouts(id)
     MmfRouteService.load_routes(id)
+    GoogleElevationService.update_workouts_with_elevation(id)
   end
 end
