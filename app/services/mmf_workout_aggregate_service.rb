@@ -27,7 +27,7 @@ class MmfWorkoutAggregateService
 
   def set_up_connection
     @connection = Faraday.new(:url => "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{@user.uid}") do |faraday|
-      faraday.adapter  Faraday.default_adapter
+      faraday.adapter Faraday.default_adapter
     end
   end
 
@@ -37,12 +37,18 @@ class MmfWorkoutAggregateService
 
   def save_new_workouts
     @offset = @user.number_of_workouts
-    load_all_workouts_from_offset
+
+    load_all_workouts_from_offset unless no_new_workouts
+  end
+
+  def no_new_workouts
+    @response[:total_count] - @user.number_of_workouts = 0
   end
 
   def load_all_workouts_from_offset
     @response = get_api_response(@offset, limit = 40)
     create_workouts_from_current_response
+
     load_all_workouts_from_offset unless @response[:_links][:next].nil?
   end
 
