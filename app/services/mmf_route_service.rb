@@ -66,12 +66,16 @@ class MmfRouteService
     routes.each do |data|
       route = Route.create_from_api_response(data)
 
-      workouts_with_corresponding_route_id(data).each do |workout|
-        workout.update_attribute(:route_id, route.id)
-      end
+      associate_workouts_with_new_route(data, route)
     end
 
     update_offset
+  end
+
+  def associate_workouts_with_new_route(data, route)
+    workouts_with_corresponding_route_id(data).each do |workout|
+      workout.update_attribute(:route_id, route.id)
+    end
   end
 
   def workouts_with_corresponding_route_id(data)
