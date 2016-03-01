@@ -1,4 +1,4 @@
-class MmfWorkoutAggregateService
+class MmfRouteService
   attr_reader :user, :offset, :response, :connection
 
   def initialize(id)
@@ -10,7 +10,7 @@ class MmfWorkoutAggregateService
     request_workouts
   end
 
-  def self.load_workouts(id)
+  def self.update_workouts_with_route_info(id)
     new(id)
   end
 

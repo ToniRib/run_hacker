@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228202743) do
+ActiveRecord::Schema.define(version: 20160301012029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "routes", force: :cascade do |t|
+    t.integer  "workout_id"
+    t.string   "city"
+    t.string   "state"
+    t.float    "starting_latitude"
+    t.float    "starting_longitude"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "routes", ["workout_id"], name: "index_routes_on_workout_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "token"
@@ -29,19 +41,21 @@ ActiveRecord::Schema.define(version: 20160228202743) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer  "workout_id"
+    t.integer  "map_my_fitness_id"
     t.boolean  "has_time_series"
     t.float    "distance"
     t.float    "average_speed"
     t.float    "active_time"
     t.float    "elapsed_time"
     t.float    "metabolic_energy"
+    t.integer  "map_my_fitness_route_id"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "workouts", ["user_id"], name: "index_workouts_on_user_id", using: :btree
 
+  add_foreign_key "routes", "workouts"
   add_foreign_key "workouts", "users"
 end

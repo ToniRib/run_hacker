@@ -3,6 +3,7 @@ class WorkoutAggregateDataWorker
   sidekiq_options :retry => false
 
   def perform(id)
-    MmfWorkoutAggregateService.new_workouts(id)
+    MmfWorkoutAggregateService.load_workouts(id)
+    # MmfRouteService.update_workouts_with_route_info(id)
   end
 end
