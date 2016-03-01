@@ -18,7 +18,7 @@ class GoogleElevationService
     routes.each do |route|
       @response = get_api_response(route.starting_latitude,
                                    route.starting_longitude)
-      route.update_attribute(:elevation, elevation)
+      route.update_attribute(:elevation, elevation) unless response[:results].empty?
     end
   end
 
