@@ -18,3 +18,5 @@
 /coverage
 
 .env
+
+dump.rdb
