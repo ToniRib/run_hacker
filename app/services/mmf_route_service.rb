@@ -64,12 +64,18 @@ class MmfRouteService
 
   def create_routes_from_current_response
     routes.each do |data|
-      workout = user.workouts.find_by_map_my_fitness_route_id(route_id(data))
-      binding.pry unless workout
-      Route.create_from_api_response(data, workout.id) if workout
+      route = Route.create_from_api_response(data)
+
+      workouts_with_corresponding_route_id(data).each do |workout|
+        workout.update_attribute(:route_id, route.id)
+      end
     end
 
     update_offset
+  end
+
+  def workouts_with_corresponding_route_id(data)
+    user.workouts.where(map_my_fitness_route_id: route_id(data))
   end
 
   def route_id(data)

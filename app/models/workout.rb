@@ -1,6 +1,6 @@
 class Workout < ActiveRecord::Base
   belongs_to :user
-  has_one :route
+  belongs_to :route
 
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
