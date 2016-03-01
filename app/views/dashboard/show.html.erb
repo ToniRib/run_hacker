@@ -5,8 +5,8 @@
         <div class="col-sm-12">
           <h1><%= @user.display_name %></h1>
           <%= image_tag @user.image, class: "img-responsive img-circle user-profile-photo", alt: "User Profile Photo"%>
-          <h5><%= @user.username %></h5>
-          <h5><%= @user.email %></h5>
+          <h5 class="user-data"><%= @user.username %></h5>
+          <h5 class="user-data"><%= @user.email %></h5>
         </div>
       </div>
       <div class="row orange-border">

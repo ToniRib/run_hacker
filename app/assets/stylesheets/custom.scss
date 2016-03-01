@@ -74,9 +74,18 @@ body {
 
   li {
     list-style: none;
-    padding: 10px 0;
+    padding: 5px 0;
+
+    h4 {
+      font-size: 28px;
+    }
+
   }
 
+}
+
+.user-data {
+  font-size: 16px;
 }
 
 .user-profile-photo {
