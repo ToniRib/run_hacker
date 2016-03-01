@@ -14,6 +14,10 @@ class MmfWorkoutAggregateService
 
   private
 
+  def workout_aggregate_url
+    "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{@user.uid}"
+  end
+
   def get_api_response(offset = 0, limit = 1)
     response = @connection.get do |request|
       request.headers["Authorization"] = "Bearer #{@user.token}"
@@ -26,7 +30,7 @@ class MmfWorkoutAggregateService
   end
 
   def set_up_connection
-    @connection = Faraday.new(:url => "https://oauth2-api.mapmyapi.com/v7.1/workout/?user=#{@user.uid}") do |faraday|
+    @connection = Faraday.new(:url => workout_aggregate_url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
