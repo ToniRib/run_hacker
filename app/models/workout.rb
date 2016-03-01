@@ -2,6 +2,8 @@ class Workout < ActiveRecord::Base
   belongs_to :user
   belongs_to :route
 
+  scope :no_temperature, -> { where(temperature: nil) }
+
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
 

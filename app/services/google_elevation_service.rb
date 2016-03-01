@@ -8,7 +8,7 @@ class GoogleElevationService
     request_elevations
   end
 
-  def self.update_workouts_with_elevation(id)
+  def self.update_routes_with_elevation(id)
     new(id)
   end
 
