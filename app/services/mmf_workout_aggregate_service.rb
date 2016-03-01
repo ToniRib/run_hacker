@@ -32,7 +32,7 @@ class MmfWorkoutAggregateService
   end
 
   def set_up_connection
-    connection = Faraday.new(:url => workout_aggregate_url) do |faraday|
+    @connection = Faraday.new(:url => workout_aggregate_url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
@@ -48,7 +48,7 @@ class MmfWorkoutAggregateService
   end
 
   def no_new_workouts
-    response[:total_count] - user.number_of_workouts = 0
+    response[:total_count] - user.number_of_workouts == 0
   end
 
   def load_all_workouts_from_offset
@@ -69,7 +69,7 @@ class MmfWorkoutAggregateService
   end
 
   def update_offset
-    offset += 40
+    @offset += 40
   end
 
   def workouts

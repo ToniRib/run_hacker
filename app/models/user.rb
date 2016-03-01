@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
                        MmfProfilePhotoService.get_profile_photo(uid, token))
     end
   end
-  #
-  # def check_for_new_workouts
-  #   MmfWorkoutAggregateService.new_workouts(uid, token, id)
-  # end
 
   def number_of_workouts
     workouts.count
