@@ -1,6 +1,8 @@
 class Route < ActiveRecord::Base
   has_many :workouts
 
+  scope :no_elevation, -> { where(elevation: nil) }
+
   def self.create_from_api_response(data)
     Route.create(city: data[:city],
                  state: data[:state],
