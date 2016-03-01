@@ -8,6 +8,9 @@ body {
 // ----- COLORS -----
 @import "colors";
 
+// ----- COMMON STYLES -----
+@import "common";
+
 // ----- WELCOME PAGE -----
 
 .main-image {
@@ -62,4 +65,25 @@ body {
 .welcome-sub-title {
   font-size: 24px;
   font-weight: 100;
+}
+
+// ----- DASHBOARD -----
+
+.dashboard-options-list {
+  padding: 0;
+
+  li {
+    list-style: none;
+    padding: 10px 0;
+  }
+
+}
+
+.user-profile-photo {
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+.dashboard-stat-listing {
+  margin: 30px 0;
 }

@@ -1,4 +1,68 @@
 <div class="container">
-  <h1>Welcome, <%= @user.display_name %></h1>
-  <%= image_tag @user.image %>
+  <div class="row">
+    <aside class="col-sm-12 col-md-4 text-center">
+      <div class="row orange-border">
+        <div class="col-sm-12">
+          <h1><%= @user.display_name %></h1>
+          <%= image_tag @user.image, class: "img-responsive img-circle user-profile-photo", alt: "User Profile Photo"%>
+          <h5><%= @user.username %></h5>
+          <h5><%= @user.email %></h5>
+        </div>
+      </div>
+      <div class="row orange-border">
+        <div class="col-sm-12">
+          <ul class="dashboard-options-list">
+            <li><h4>Workouts</h4></li>
+            <li><h4>Elevation</h4></li>
+            <li><h4>Location</h4></li>
+            <li><h4>Season</h4></li>
+            <li><h4>Time of Day</h4></li>
+            <li><h4>Distance</h4></li>
+            <li><h4>Temperature</h4></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <section class="col-sm-12 col-md-8">
+      <div class="row orange-border text-center">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1>Summary Stats</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="row dashboard-stat-listing">
+                <h3>Total Workouts</h3>
+                <h2>190</h2>
+              </div>
+              <div class="row dashboard-stat-listing">
+                <h3>Total Steps</h3>
+                <h2>782k</h2>
+              </div>
+              <div class="row dashboard-stat-listing">
+                <h3>Total Calories</h3>
+                <h2>108k</h2>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="row dashboard-stat-listing">
+                <h3>Total Distance</h3>
+                <h2>917 miles</h2>
+              </div>
+              <div class="row dashboard-stat-listing">
+                <h3>Total Time</h3>
+                <h2>6d 2hrs</h2>
+              </div>
+              <div class="row dashboard-stat-listing">
+                <h3>Active Since</h3>
+                <h2>September 20, 2011</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
