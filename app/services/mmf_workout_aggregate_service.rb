@@ -9,16 +9,16 @@ class MmfWorkoutAggregateService
   end
 
   def self.new_workouts(id)
-    new(id).new_workouts
+    new(id)
   end
 
   private
 
-  def get_api_response(offset = 0)
+  def get_api_response(offset = 0, limit = 1)
     response = @connection.get do |request|
       request.headers["Authorization"] = "Bearer #{@user.token}"
       request.headers["Api-Key"] = ENV["MMF_API_KEY"]
-      request.params["limit"] = 40
+      request.params["limit"] = limit
       request.params["offset"] = @offset
     end
 
@@ -32,30 +32,18 @@ class MmfWorkoutAggregateService
   end
 
   def request_workouts
-    @user.no_workouts_loaded ? load_all_workouts : save_new_workouts
+    @user.no_workouts_loaded ? load_all_workouts_from_offset : save_new_workouts
   end
 
   def save_new_workouts
-    number_of_new_workouts = @response[:total_count] - @user.number_of_workouts
-    # somehow use background worker to load new workouts?
-    # cycle through requests to load all new workouts using offset & limit
-    # hit specific workout endpoint to load starting position, lat, and long (maybe also end?)
-    # hit weather API to get temperature at start of run (maybe also middle & end?)
+    @offset = @user.number_of_workouts
+    load_all_workouts_from_offset
   end
 
-  def load_all_workouts
-    # make this recursive and pass in next_flag
+  def load_all_workouts_from_offset
+    @response = get_api_response(@offset, limit = 40)
     create_workouts_from_current_response
-
-    next_flag = false
-
-    until next_flag do
-      @response = get_api_response(@offset)
-
-      create_workouts_from_current_response
-
-      next_flag = true if @response[:_links][:next].nil?
-    end
+    load_all_workouts_from_offset unless @response[:_links][:next].nil?
   end
 
   def create_workouts_from_current_response

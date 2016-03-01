@@ -4,6 +4,5 @@ class WorkoutAggregateDataWorker
 
   def perform(id)
     MmfWorkoutAggregateService.new_workouts(id)
-    
   end
 end
