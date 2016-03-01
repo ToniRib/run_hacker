@@ -4,6 +4,6 @@ class WorkoutAggregateDataWorker
 
   def perform(id)
     MmfWorkoutAggregateService.load_workouts(id)
-    MmfRouteService.load_corresponding_route_info(id)
+    MmfRouteService.load_routes(id)
   end
 end

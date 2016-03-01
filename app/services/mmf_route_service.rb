@@ -1,44 +1,86 @@
 class MmfRouteService
-  attr_reader :user, :response, :connection
+  attr_reader :user, :offset, :response, :connection
 
   def initialize(id)
     @user = User.find(id)
+    @offset = 0
 
+    set_up_connection
+    @response = get_api_response
     request_routes
   end
 
-  def self.load_corresponding_route_info(id)
+  def self.load_routes(id)
     new(id)
   end
 
   private
 
-  def request_routes
-    user.workouts.each do |workout|
-      url = route_url(workout.map_my_fitness_route_id)
-      set_up_connection(url)
-      response = get_api_response
-
-      Route.create_from_api_response(response, workout.id)
-    end
+  def workout_aggregate_url
+    "https://oauth2-api.mapmyapi.com/v7.1/route/?user=#{@user.uid}"
   end
 
-  def set_up_connection(url)
-    @connection = Faraday.new(:url => url) do |faraday|
+  def get_api_response(offset = 0, limit = 1)
+    response = connection.get do |request|
+      request.headers["Authorization"] = "Bearer #{@user.token}"
+      request.headers["Api-Key"] = ENV["MMF_API_KEY"]
+      request.params["limit"] = limit
+      request.params["offset"] = offset
+    end
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def set_up_connection
+    @connection = Faraday.new(:url => workout_aggregate_url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
 
-  def route_url(route_id)
-    "https://oauth2-api.mapmyapi.com/v7.1/route/#{route_id}/?format=json"
+  def request_routes
+    user.no_routes_loaded ? load_all_routes_from_offset : save_new_routes
   end
 
-  def get_api_response
-    response = connection.get do |request|
-      request.headers["Authorization"] = "Bearer #{@user.token}"
-      request.headers["Api-Key"] = ENV["MMF_API_KEY"]
+  def save_new_routes
+    @offset = user.number_of_routes
+
+    load_all_routes_from_offset unless no_new_routes
+  end
+
+  def no_new_routes
+    response[:total_count] - user.number_of_routes == 0
+  end
+
+  def load_all_routes_from_offset
+    @response = get_api_response(offset, limit = 40)
+    create_routes_from_current_response
+
+    load_all_routes_from_offset unless no_additional_routes_available
+  end
+
+  def no_additional_routes_available
+    response[:_links][:next].nil?
+  end
+
+  def create_routes_from_current_response
+    routes.each do |data|
+      workout = user.workouts.find_by_map_my_fitness_route_id(route_id(data))
+      binding.pry unless workout
+      Route.create_from_api_response(data, workout.id) if workout
     end
 
-    JSON.parse(response.body, symbolize_names: true)
+    update_offset
+  end
+
+  def route_id(data)
+    data[:_links][:self][0][:id]
+  end
+
+  def update_offset
+    @offset += 40
+  end
+
+  def routes
+    response[:_embedded][:routes]
   end
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :workouts
+  has_many :routes, through: :workouts
 
   validates :uid,   uniqueness: { scope: :provider }
   validates :token, presence: true
@@ -28,7 +29,15 @@ class User < ActiveRecord::Base
     workouts.count
   end
 
+  def number_of_routes
+    routes.count
+  end
+
   def no_workouts_loaded
     number_of_workouts == 0
+  end
+
+  def no_routes_loaded
+    number_of_routes == 0
   end
 end
