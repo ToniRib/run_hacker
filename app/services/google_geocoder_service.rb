@@ -20,8 +20,7 @@ class GoogleGeocoderService
       @response = get_api_response(route.starting_latitude,
                                    route.starting_longitude)
 
-
-      update_with_zipcode(route) unless @response[:results].empty?
+      update_with_zipcode(route) unless response[:results].empty?
     end
   end
 
