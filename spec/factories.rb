@@ -15,7 +15,7 @@ FactoryGirl.define do
   factory :user do
     token "3ea179759b2da90f16388381b90d4ce71e9e7648e"
     provider "mapmyfitness"
-    uid 9483291
+    uid
     display_name "User"
     username "username"
     email "example@example.com"
@@ -46,5 +46,9 @@ FactoryGirl.define do
     route
     temperature 43.2
     starting_datetime Date.today - 7
+  end
+
+  sequence :uid do |i|
+    9483291 + i
   end
 end

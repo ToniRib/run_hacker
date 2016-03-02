@@ -32,7 +32,7 @@ class WeathersourceTemperatureService
       @response = get_api_response(workout.starting_datetime.to_json,
                                    workout.location.zipcode)
 
-      workout.update_attribute(:temperature, temp) unless response_invalid
+      workout.update_temperature(temp) unless response_invalid
     end
   end
 

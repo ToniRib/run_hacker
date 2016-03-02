@@ -19,4 +19,8 @@ class Workout < ActiveRecord::Base
                    map_my_fitness_route_id: data[:_links][:route][0][:id]
     )
   end
+
+  def update_temperature(temp)
+    update_attribute(:temperature, temp)
+  end
 end
