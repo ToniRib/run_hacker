@@ -94,12 +94,16 @@ body {
 }
 
 .dashboard-stat-listing {
-  margin: 52px 0;
+  margin: 55px 0;
+}
+
+.summary-stat-column {
+  height: 700px;
 }
 
 .summary-title {
   color: $base-red;
-  font-size: 60px;
+  font-size: 48px;
   letter-spacing: 0.2em;
 }
 

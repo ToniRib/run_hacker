@@ -23,17 +23,16 @@
 
 }
 
+.navbar-default .navbar-nav > li > a {
+  color: $base-yellow-lighten;
+
+  &:hover {
+    color: $base-yellow;
+  }
+
+}
+
 .navbar-right {
   font-size: 20px;
   margin-right: 30px;
-
-  li a {
-    color: $base-yellow-lighten;
-
-    &:hover {
-      color: $base-yellow;
-    }
-
-  }
-
 }
