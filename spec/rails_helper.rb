@@ -93,3 +93,14 @@ end
 
 OmniAuth.config.test_mode = true
 Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:mapmyfitness]
+
+def user_params
+  {
+    provider:     "mapmyfitness",
+    token:        ENV["TONI_MMF_TOKEN"],
+    display_name: "Toni Rib",
+    username:     "LeelaelTigre",
+    email:        "toni.marie.a@gmail.com",
+    uid:          ENV["TONI_MMF_UID"]
+  }
+end

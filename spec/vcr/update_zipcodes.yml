@@ -1,0 +1,1802 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=34.068215,-118.360562&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:15 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:15 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "90036",
+                       "short_name" : "90036",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Central LA",
+                       "short_name" : "Central LA",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Los Angeles",
+                       "short_name" : "Los Angeles",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Los Angeles County",
+                       "short_name" : "Los Angeles County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "California",
+                       "short_name" : "CA",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Los Angeles, CA 90036, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 34.083811,
+                          "lng" : -118.336545
+                       },
+                       "southwest" : {
+                          "lat" : 34.05448,
+                          "lng" : -118.3648231
+                       }
+                    },
+                    "location" : {
+                       "lat" : 34.0664817,
+                       "lng" : -118.3520389
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 34.083811,
+                          "lng" : -118.336545
+                       },
+                       "southwest" : {
+                          "lat" : 34.05448,
+                          "lng" : -118.3648231
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ5X33UCa5woARj5ojy6Bxoas",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:15 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=33.932837,-118.437168&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:16 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:16 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "90293",
+                       "short_name" : "90293",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Playa del Rey",
+                       "short_name" : "Playa Del Rey",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Los Angeles County",
+                       "short_name" : "Los Angeles County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "California",
+                       "short_name" : "CA",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Playa Del Rey, CA 90293, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 33.974274,
+                          "lng" : -118.41719
+                       },
+                       "southwest" : {
+                          "lat" : 33.9163209,
+                          "lng" : -118.4640851
+                       }
+                    },
+                    "location" : {
+                       "lat" : 33.9508728,
+                       "lng" : -118.4455164
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 33.974274,
+                          "lng" : -118.41719
+                       },
+                       "southwest" : {
+                          "lat" : 33.9163209,
+                          "lng" : -118.4640851
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJSbFuy1ewwoAReHMt-1m308g",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:15 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=34.029064,-118.510948&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:16 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:16 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "4th NB & San Vicente NS",
+                       "short_name" : "4th NB & San Vicente NS",
+                       "types" : [ "point_of_interest", "establishment" ]
+                    },
+                    {
+                       "long_name" : "North of Montana",
+                       "short_name" : "North of Montana",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Santa Monica",
+                       "short_name" : "Santa Monica",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Los Angeles County",
+                       "short_name" : "Los Angeles County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "California",
+                       "short_name" : "CA",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "90402",
+                       "short_name" : "90402",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "4th NB & San Vicente NS, Santa Monica, CA 90402, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 34.029151,
+                       "lng" : -118.51061
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 34.03049998029149,
+                          "lng" : -118.5092610197085
+                       },
+                       "southwest" : {
+                          "lat" : 34.0278020197085,
+                          "lng" : -118.5119589802915
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJwW_DMpakwoARTtC7-Q3vO68",
+                 "types" : [
+                    "bus_station",
+                    "transit_station",
+                    "point_of_interest",
+                    "establishment"
+                 ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "90402",
+                       "short_name" : "90402",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Santa Monica",
+                       "short_name" : "Santa Monica",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Los Angeles County",
+                       "short_name" : "Los Angeles County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "California",
+                       "short_name" : "CA",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Santa Monica, CA 90402, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 34.05056,
+                          "lng" : -118.4837659
+                       },
+                       "southwest" : {
+                          "lat" : 34.018217,
+                          "lng" : -118.521865
+                       }
+                    },
+                    "location" : {
+                       "lat" : 34.0352816,
+                       "lng" : -118.5068325
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 34.05056,
+                          "lng" : -118.4837659
+                       },
+                       "southwest" : {
+                          "lat" : 34.018217,
+                          "lng" : -118.521865
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ97uch6SkwoARrdlUDyM3IIo",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:15 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=33.65774874,-117.7550582&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:16 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:16 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "92618",
+                       "short_name" : "92618",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Irvine",
+                       "short_name" : "Irvine",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Orange County",
+                       "short_name" : "Orange County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "California",
+                       "short_name" : "CA",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Irvine, CA 92618, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 33.717746,
+                          "lng" : -117.69236
+                       },
+                       "southwest" : {
+                          "lat" : 33.6283339,
+                          "lng" : -117.794755
+                       }
+                    },
+                    "location" : {
+                       "lat" : 33.665242,
+                       "lng" : -117.7490656
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 33.717746,
+                          "lng" : -117.69236
+                       },
+                       "southwest" : {
+                          "lat" : 33.6283339,
+                          "lng" : -117.794755
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ1QVFKavC3IARtFPRQcOqMsY",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:15 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.69548989,-104.98887574&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:16 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:16 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80210",
+                       "short_name" : "80210",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Denver",
+                       "short_name" : "Denver",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Denver, CO 80210, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.73525900000001,
+                          "lng" : -104.9405649
+                       },
+                       "southwest" : {
+                          "lat" : 39.652972,
+                          "lng" : -104.989713
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.6751269,
+                       "lng" : -104.9680914
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.7002448,
+                          "lng" : -104.9405649
+                       },
+                       "southwest" : {
+                          "lat" : 39.652972,
+                          "lng" : -104.989713
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJpxZiLD5-bIcRoSPq1lJSuKQ",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:16 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=64.86125662,-147.7160063&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:16 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:16 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "99701",
+                       "short_name" : "99701",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Fairbanks",
+                       "short_name" : "Fairbanks",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Alaska",
+                       "short_name" : "AK",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Fairbanks, AK 99701, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 68.0041279,
+                          "lng" : -146.477097
+                       },
+                       "southwest" : {
+                          "lat" : 64.1820889,
+                          "lng" : -152.0822593
+                       }
+                    },
+                    "location" : {
+                       "lat" : 64.8388243,
+                       "lng" : -147.7489363
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 64.863669,
+                          "lng" : -147.51997
+                       },
+                       "southwest" : {
+                          "lat" : 64.728971,
+                          "lng" : -147.867548
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJtw7U_a1aMlERZm4uEZiBvG4",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:16 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.69631304,-104.98882598&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:17 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80210",
+                       "short_name" : "80210",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Denver",
+                       "short_name" : "Denver",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Denver, CO 80210, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.73525900000001,
+                          "lng" : -104.9405649
+                       },
+                       "southwest" : {
+                          "lat" : 39.652972,
+                          "lng" : -104.989713
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.6751269,
+                       "lng" : -104.9680914
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.7002448,
+                          "lng" : -104.9405649
+                       },
+                       "southwest" : {
+                          "lat" : 39.652972,
+                          "lng" : -104.989713
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJpxZiLD5-bIcRoSPq1lJSuKQ",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:16 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.71172439,-104.93989169&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:17 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80246",
+                       "short_name" : "80246",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Denver",
+                       "short_name" : "Denver",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Denver, CO 80246, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.71779900000001,
+                          "lng" : -104.9166878
+                       },
+                       "southwest" : {
+                          "lat" : 39.69234,
+                          "lng" : -104.94492
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.6999073,
+                       "lng" : -104.9330448
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.71779900000001,
+                          "lng" : -104.9166878
+                       },
+                       "southwest" : {
+                          "lat" : 39.69234,
+                          "lng" : -104.94492
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJDQ5ON9N9bIcRwXH2UAJsbDs",
+                 "postcode_localities" : [ "Denver", "Glendale" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:16 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.71545864,-104.95609536&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:17 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80209",
+                       "short_name" : "80209",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Denver",
+                       "short_name" : "Denver",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Denver, CO 80209, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.718195,
+                          "lng" : -104.9406119
+                       },
+                       "southwest" : {
+                          "lat" : 39.693252,
+                          "lng" : -104.9921531
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.7069307,
+                       "lng" : -104.9564084
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.718195,
+                          "lng" : -104.9406119
+                       },
+                       "southwest" : {
+                          "lat" : 39.693252,
+                          "lng" : -104.9921531
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJTYjycPN-bIcR1R6ekYj9gQc",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:16 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.63089433,-106.05721922&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:17 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80435",
+                       "short_name" : "80435",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Dillon",
+                       "short_name" : "Dillon",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Dillon, CO 80435, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.753561,
+                          "lng" : -105.66191
+                       },
+                       "southwest" : {
+                          "lat" : 39.45667299999999,
+                          "lng" : -106.07539
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.6007426,
+                       "lng" : -105.8525154
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.753561,
+                          "lng" : -105.66191
+                       },
+                       "southwest" : {
+                          "lat" : 39.45667299999999,
+                          "lng" : -106.07539
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJuQOa_tdWaocR3ZTN70xesRg",
+                 "postcode_localities" : [ "Dillon", "Keystone", "Montezuma" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:17 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.72708789,-105.69344803&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:17 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:17 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80444",
+                       "short_name" : "80444",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Georgetown",
+                       "short_name" : "Georgetown",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Clear Creek County",
+                       "short_name" : "Clear Creek County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Georgetown, CO 80444, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.744416,
+                          "lng" : -105.685804
+                       },
+                       "southwest" : {
+                          "lat" : 39.68283,
+                          "lng" : -105.722306
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.7104468,
+                       "lng" : -105.6969788
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.744416,
+                          "lng" : -105.685804
+                       },
+                       "southwest" : {
+                          "lat" : 39.68283,
+                          "lng" : -105.722306
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJy9ZI-9Ssa4cRVkC1sHJ_pgc",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:17 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=44.90329403,-93.54091913&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:18 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:18 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "55331",
+                       "short_name" : "55331",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Excelsior",
+                       "short_name" : "Excelsior",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Minnesota",
+                       "short_name" : "MN",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Excelsior, MN 55331, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 44.9451929,
+                          "lng" : -93.518227
+                       },
+                       "southwest" : {
+                          "lat" : 44.850392,
+                          "lng" : -93.7226259
+                       }
+                    },
+                    "location" : {
+                       "lat" : 44.8963961,
+                       "lng" : -93.61164939999999
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 44.9451929,
+                          "lng" : -93.518227
+                       },
+                       "southwest" : {
+                          "lat" : 44.850392,
+                          "lng" : -93.7226259
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ9-I8ABcD9ocRfvvtoYBCDXc",
+                 "postcode_localities" : [ "Excelsior", "Greenwood", "Minnetrista" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:17 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.74481762,-105.02295149&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:18 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:18 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80204",
+                       "short_name" : "80204",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Denver",
+                       "short_name" : "Denver",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Denver, CO 80204, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.7547911,
+                          "lng" : -104.987393
+                       },
+                       "southwest" : {
+                          "lat" : 39.720254,
+                          "lng" : -105.054159
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.7380371,
+                       "lng" : -105.0265195
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.7547911,
+                          "lng" : -104.987393
+                       },
+                       "southwest" : {
+                          "lat" : 39.720254,
+                          "lng" : -105.054159
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJzUOdba14bIcRlxYXEjY33WM",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:17 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=38.78214621,-77.01499606&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:18 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:18 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "20745",
+                       "short_name" : "20745",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Oxon Hill",
+                       "short_name" : "Oxon Hill",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Maryland",
+                       "short_name" : "MD",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Oxon Hill, MD 20745, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 38.844883,
+                          "lng" : -76.96269989999999
+                       },
+                       "southwest" : {
+                          "lat" : 38.7780457,
+                          "lng" : -77.03705189999999
+                       }
+                    },
+                    "location" : {
+                       "lat" : 38.80378049999999,
+                       "lng" : -76.99310740000001
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 38.844883,
+                          "lng" : -76.96269989999999
+                       },
+                       "southwest" : {
+                          "lat" : 38.7780457,
+                          "lng" : -77.03705189999999
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJczzvpma6t4kRd6mtfk30xaE",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:17 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.71389267,-104.79651469&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:18 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:18 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80017",
+                       "short_name" : "80017",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Aurora",
+                       "short_name" : "Aurora",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Arapahoe County",
+                       "short_name" : "Arapahoe County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Aurora, CO 80017, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.72208699999999,
+                          "lng" : -104.736412
+                       },
+                       "southwest" : {
+                          "lat" : 39.6803339,
+                          "lng" : -104.810002
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.69370869999999,
+                       "lng" : -104.7871004
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.72208699999999,
+                          "lng" : -104.736412
+                       },
+                       "southwest" : {
+                          "lat" : 39.6803339,
+                          "lng" : -104.810002
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJfV60_BJibIcR4uvNK-shMSU",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:18 GMT
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBx6wIqlMSjvaQD1tojxiErXHAptK3gwvk&latlng=39.47180818,-80.11868779&result_type=postal_code
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 02 Mar 2016 20:46:18 GMT
+      Expires:
+      - Thu, 03 Mar 2016 20:46:18 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic,p=1
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "26554",
+                       "short_name" : "26554",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Fairmont",
+                       "short_name" : "Fairmont",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "West Virginia",
+                       "short_name" : "WV",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Fairmont, WV 26554, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.570347,
+                          "lng" : -79.9559319
+                       },
+                       "southwest" : {
+                          "lat" : 39.3545741,
+                          "lng" : -80.275767
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.4392651,
+                       "lng" : -80.14285839999999
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.570347,
+                          "lng" : -79.9559319
+                       },
+                       "southwest" : {
+                          "lat" : 39.3545741,
+                          "lng" : -80.275767
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJsf6FtPV7SogRNwHsH7edXeE",
+                 "postcode_localities" : [ "Fairmont", "Jordan", "Monongah", "Pleasant Valley", "White Hall" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 20:46:18 GMT
+recorded_with: VCR 3.0.1

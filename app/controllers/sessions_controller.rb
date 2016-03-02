@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     user.check_for_profile_photo
 
-    WorkoutAggregateDataWorker.perform_async(user.id)
+    WorkoutDataCollectorWorker.perform_async(user.id)
 
     redirect_to dashboard_path
   end

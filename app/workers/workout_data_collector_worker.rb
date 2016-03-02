@@ -1,4 +1,4 @@
-class WorkoutAggregateDataWorker
+class WorkoutDataCollectorWorker
   include Sidekiq::Worker
   sidekiq_options :retry => false
 
