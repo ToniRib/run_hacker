@@ -60,6 +60,54 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#number_of_workouts" do
+    it "returns the number of workouts a user has" do
+      user = create(:user)
+      workouts = create_list(:workout, 2, user_id: user.id)
+
+      expect(user.number_of_workouts).to eq(2)
+    end
+  end
+
+  describe "#number_of_routes" do
+    it "returns the number of routes a user has" do
+      workout = create(:workout)
+      user = workout.user
+
+      expect(user.number_of_routes).to eq(1)
+    end
+  end
+
+  describe "#no_workouts_loaded" do
+    it "returns true if the user has no workouts" do
+      user = create(:user)
+
+      expect(user.no_workouts_loaded).to be true
+    end
+
+    it "returns false if the user has at least one workout" do
+      workout = create(:workout)
+      user = workout.user
+
+      expect(user.no_workouts_loaded).to be false
+    end
+  end
+
+  describe "#no_routes_loaded" do
+    it "returns true if the user has no routes" do
+      user = create(:user)
+
+      expect(user.no_routes_loaded).to be true
+    end
+
+    it "returns false if the user has at least one route" do
+      workout = create(:workout)
+      user = workout.user
+
+      expect(user.no_routes_loaded).to be false
+    end
+  end
+
   def auth_hash
     {
       provider:    "mapmyfitness",
