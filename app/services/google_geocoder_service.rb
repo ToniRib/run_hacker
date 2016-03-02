@@ -31,14 +31,14 @@ class GoogleGeocoderService
   end
 
   def address_components
-    @response[:results][0][:address_components]
+    response[:results][0][:address_components]
+  end
+
+  def zipcode_row
+    address_components.select { |r| r[:types].include?("postal_code") }
   end
 
   def zipcode
-    zipcode_row = address_components.select do |r|
-      r[:types].include?("postal_code")
-    end
-
     zipcode_row[0][:long_name]
   end
 
