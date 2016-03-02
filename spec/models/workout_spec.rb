@@ -46,6 +46,15 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe "#starting_date_in_iso_format" do
+    it "returns the starting time in the local timezone and formatted" do
+      time = DateTime.new(2015, 3, 11, 8, 10, 20, '+0')
+      workout = create(:workout, starting_datetime: time)
+
+      expect(workout.starting_date_in_iso_format).to eq("2015-03-11T02:10")
+    end
+  end
+
   def api_data_with_distance
     {
       created_datetime: "2015-03-11 22:15:31",

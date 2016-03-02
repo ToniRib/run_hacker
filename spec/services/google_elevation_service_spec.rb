@@ -26,7 +26,7 @@ RSpec.describe GoogleElevationService do
       end
 
       expect(Route.pluck(:elevation).count).to eq(5)
-      expect(Route.find(95).elevation).to eq(1602.82006835938)
+      expect(Route.find(95).elevation).to eq(1602.93139648438)
     end
   end
 end
