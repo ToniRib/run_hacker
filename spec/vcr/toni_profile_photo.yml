@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oauth2-api.mapmyapi.com/v7.1/user_profile_photo/9676266/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer 2da174759b1da00f1639381b90d4ce71e9d9638e
+      Api-Key:
+      - kts2fpx89npnp2nk9kg58v3jeccj3394
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 02 Mar 2016 18:05:01 GMT
+      Server:
+      - nginx
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1e-123.mashery.com
+      X-Plan-Qps-Allotted:
+      - '25'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '100000'
+      X-Plan-Quota-Current:
+      - '319'
+      X-Plan-Quota-Reset:
+      - Thursday, March 3, 2016 12:00:00 AM GMT
+      Content-Length:
+      - '448'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"small":[{"href":"https:\/\/graph.facebook.com\/1277220131\/picture?type=normal"}],"large":[{"href":"https:\/\/graph.facebook.com\/1277220131\/picture?height=300&width=300"}],"self":[{"href":"\/v7.1\/user_profile_photo\/9676266\/","id":"9676266"}],"medium":[{"href":"https:\/\/graph.facebook.com\/1277220131\/picture?height=100&width=100"}],"documentation":[{"href":"https:\/\/developer.underarmour.com\/docs\/v71_User_Profile_Photo"}]}}'
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 18:05:01 GMT
+recorded_with: VCR 3.0.1

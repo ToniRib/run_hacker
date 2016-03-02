@@ -47,8 +47,16 @@ RSpec.describe User, type: :model do
       expect(user.image).to eq(grace_hopper_image)
     end
 
-    it "gets image if user does not have one" do
-      
+    it "gets image from MapMyFitness if user does not have one" do
+      user = create(:user, token: ENV['TONI_MMF_TOKEN'],
+                           uid:   ENV['TONI_MMF_UID'],
+                           image: nil)
+
+      VCR.use_cassette("toni_profile_photo") do
+        user.check_for_profile_photo
+      end
+
+      expect(user.image).to eq(toni_profile_photo)
     end
   end
 
@@ -70,5 +78,9 @@ RSpec.describe User, type: :model do
   def grace_hopper_image
     "http://a3.files.biography.com/image/upload/c_fit,cs_srgb," \
     "dpr_1.0,h_1200,q_80,w_1200/MTE5NTU2MzE2NjYxNTE1Nzg3.jpg"
+  end
+
+  def toni_profile_photo
+    "https://graph.facebook.com/1277220131/picture?height=300&width=300"
   end
 end
