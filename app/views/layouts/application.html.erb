@@ -12,7 +12,11 @@
         <%= link_to "runHacker", root_path, class: "navbar-brand" %>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Log Out", root_path %></li>
+        <% if current_user %>
+          <li><%= link_to "Log Out", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Log In", "/auth/mapmyfitness" %></li>
+        <% end %>
       </ul>
     </nav>
     <%= yield %>

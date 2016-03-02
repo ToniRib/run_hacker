@@ -61,6 +61,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  config.include(OmniauthMacros)
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -88,3 +90,6 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+OmniAuth.config.test_mode = true
+Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:mapmyfitness]

@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
 
   def auth_hash
     {
-      provider:    "mapmyfitness",
+      provider: "mapmyfitness",
       credentials: {
         token: "2da174759b2da09f1638381b90d4cd71e9d9638e"
       },
