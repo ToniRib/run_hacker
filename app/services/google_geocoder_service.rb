@@ -1,14 +1,14 @@
 class GoogleGeocoderService
   attr_reader :routes, :connection, :response
 
-  def initialize
-    @routes = Route.no_location
+  def initialize(id)
+    @routes = User.find(id).routes
 
     request_zipcodes
   end
 
-  def self.update_routes_without_locations
-    new
+  def self.update_routes_with_zipcodes(id)
+    new(id)
   end
 
   private
@@ -21,13 +21,12 @@ class GoogleGeocoderService
                                    route.starting_longitude)
 
 
-      update_route_with_location(route) unless @response[:results].empty?
+      update_with_zipcode(route) unless @response[:results].empty?
     end
   end
 
-  def update_route_with_location(route)
-    location = Location.find_by(zipcode: zipcode)
-    route.update_attribute(:location_id, location.id)
+  def update_with_zipcode(route)
+    route.location.update_attribute(:zipcode, zipcode)
   end
 
   def address_components

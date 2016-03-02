@@ -64,7 +64,8 @@ class MmfRouteService
 
   def create_routes_from_current_response
     routes.each do |data|
-      route = Route.create_from_api_response(data)
+      location = Location.create_from_api_response(data)
+      route = Route.create_from_api_response(data, location.id)
 
       associate_workouts_with_new_route(data, route)
     end
