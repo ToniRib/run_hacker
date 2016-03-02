@@ -7,8 +7,7 @@ class Workout < ActiveRecord::Base
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
 
-    Workout.create(created_at: data[:created_datetime],
-                   updated_at: data[:updated_datetime],
+    Workout.create(starting_datetime: data[:created_datetime],
                    map_my_fitness_id: data[:_links][:self][0][:id],
                    has_time_series: data[:has_time_series],
                    distance: data[:aggregates][:distance_total],

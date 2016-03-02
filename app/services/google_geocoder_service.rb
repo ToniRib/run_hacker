@@ -17,6 +17,8 @@ class GoogleGeocoderService
     set_up_connection
 
     routes.each do |route|
+      next if route.location.zipcode
+
       @response = get_api_response(route.starting_latitude,
                                    route.starting_longitude)
 
