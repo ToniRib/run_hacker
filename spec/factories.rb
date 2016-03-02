@@ -1,14 +1,14 @@
 FactoryGirl.define do
   factory :location do
-    city "MyString"
-    state "MyString"
-    zipcode "MyString"
+    city "Denver"
+    state "CO"
+    zipcode "80210"
   end
+
   factory :route do
-    workout nil
-    city "MyString"
-    state "MyString"
-    starting_latitude 1.5
-    starting_longitude 1.5
+    starting_latitude 39.67759636
+    starting_longitude -104.90062083
+    location
+    elevation 1655.547
   end
 end

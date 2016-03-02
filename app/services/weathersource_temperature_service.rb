@@ -25,7 +25,7 @@ class WeathersourceTemperatureService
         requests = 0
       end
 
-      next if workout.location.nil? || workout.location.zipcode.nil?
+      next if location_or_zipcode_does_not_exist(workout)
 
       requests += 1
 
@@ -38,6 +38,10 @@ class WeathersourceTemperatureService
 
   def temp
     response[0][:temp]
+  end
+
+  def location_or_zipcode_does_not_exist(workout)
+    workout.location.nil? || workout.location.zipcode.nil?
   end
 
   def response_invalid

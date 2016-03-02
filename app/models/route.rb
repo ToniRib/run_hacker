@@ -9,4 +9,8 @@ class Route < ActiveRecord::Base
                  starting_latitude:  data[:starting_location][:coordinates][1],
                  location_id:        location_id)
   end
+
+  def update_elevation(elevation)
+    update_attribute(:elevation, elevation)
+  end
 end
