@@ -62,8 +62,7 @@ RSpec.describe User, type: :model do
 
   describe "#number_of_workouts" do
     it "returns the number of workouts a user has" do
-      user = create(:user)
-      workouts = create_list(:workout, 2, user_id: user.id)
+      user = create(:user_with_workouts_and_routes)
 
       expect(user.number_of_workouts).to eq(2)
     end
@@ -71,10 +70,9 @@ RSpec.describe User, type: :model do
 
   describe "#number_of_routes" do
     it "returns the number of routes a user has" do
-      workout = create(:workout)
-      user = workout.user
+      user = create(:user_with_workouts_and_routes)
 
-      expect(user.number_of_routes).to eq(1)
+      expect(user.number_of_routes).to eq(2)
     end
   end
 
@@ -86,8 +84,7 @@ RSpec.describe User, type: :model do
     end
 
     it "returns false if the user has at least one workout" do
-      workout = create(:workout)
-      user = workout.user
+      user = create(:user_with_workouts_and_routes)
 
       expect(user.no_workouts_loaded).to be false
     end
@@ -101,8 +98,7 @@ RSpec.describe User, type: :model do
     end
 
     it "returns false if the user has at least one route" do
-      workout = create(:workout)
-      user = workout.user
+      user = create(:user_with_workouts_and_routes)
 
       expect(user.no_routes_loaded).to be false
     end
