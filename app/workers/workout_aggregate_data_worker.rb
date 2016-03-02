@@ -5,7 +5,8 @@ class WorkoutAggregateDataWorker
   def perform(id)
     MmfWorkoutAggregateService.load_workouts(id)
     MmfRouteService.load_routes(id)
+    GoogleGeocoderService.update_routes_without_locations
     GoogleElevationService.update_routes_with_elevation(id)
-    WeathersourceTemperatureService.update_workouts_with_temperature(id)
+    # WeathersourceTemperatureService.update_workouts_with_temperature(id)
   end
 end
