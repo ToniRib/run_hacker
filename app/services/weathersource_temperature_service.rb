@@ -25,6 +25,8 @@ class WeathersourceTemperatureService
         requests = 0
       end
 
+      next if workout.location.nil? || workout.location.zipcode.nil?
+
       requests += 1
 
       @response = get_api_response(workout.starting_datetime.to_json,
