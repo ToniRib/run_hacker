@@ -22,7 +22,7 @@ class GoogleGeocoderService
 
       location = Location.find_by(zipcode: zipcode)
 
-      route.update_attribute(:location_id, location.id)
+      route.update_attribute(:location_id, location.id) unless @response[:results].empty?
     end
   end
 
