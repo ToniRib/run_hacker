@@ -14,6 +14,7 @@ gem 'omniauth-mapmyfitness-oauth2', '~> 0.3.0'
 gem 'will_paginate'
 gem 'thin'
 gem 'sidekiq'
+gem 'lazy_high_charts'
 
 group :development, :test do
   gem 'pry'

@@ -82,6 +82,7 @@ GEM
       thor (~> 0.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hash-deep-merge (0.1.1)
     hashdiff (0.3.0)
     hashie (3.4.3)
     i18n (0.7.0)
@@ -94,6 +95,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
+    lazy_high_charts (1.5.4)
+      bundler (>= 1.0)
+      hash-deep-merge
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -258,6 +262,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  lazy_high_charts
   omniauth-mapmyfitness-oauth2 (~> 0.3.0)
   pg
   pry
