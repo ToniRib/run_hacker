@@ -12,8 +12,8 @@ RSpec.describe "User logs out" do
     end
 
     within "nav" do
-      expect(page).not_to have_content "Log In"
-      expect(page).to have_content "Log Out"
+      expect(page).not_to have_link "Log In", "/auth/mapmyfitness"
+      expect(page).to have_link "Log Out", logout_path
 
       click_on "Log Out"
     end
@@ -21,8 +21,8 @@ RSpec.describe "User logs out" do
     expect(current_path).to eq(root_path)
 
     within "nav" do
-      expect(page).to have_content "Log In"
-      expect(page).not_to have_content "Log Out"
+      expect(page).to have_link "Log In", "/auth/mapmyfitness"
+      expect(page).not_to have_link "Log Out", logout_path
     end
   end
 end
