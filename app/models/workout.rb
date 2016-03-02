@@ -1,6 +1,7 @@
 class Workout < ActiveRecord::Base
   belongs_to :user
   belongs_to :route
+  has_one    :location, through: :route
 
   scope :no_temperature, -> { where(temperature: nil) }
 
