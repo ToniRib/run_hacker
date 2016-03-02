@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :location do
+    city "MyString"
+    state "MyString"
+    zipcode "MyString"
+  end
   factory :route do
     workout nil
     city "MyString"
