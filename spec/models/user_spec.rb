@@ -36,6 +36,22 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "check_for_profile_photo" do
+    it "does not update image if image exists" do
+      user = create(:user)
+
+      expect(user.image).to eq(grace_hopper_image)
+
+      user.check_for_profile_photo
+
+      expect(user.image).to eq(grace_hopper_image)
+    end
+
+    it "gets image if user does not have one" do
+      
+    end
+  end
+
   def auth_hash
     {
       provider:    "mapmyfitness",
@@ -49,5 +65,10 @@ RSpec.describe User, type: :model do
         username: "username"
       }
     }
+  end
+
+  def grace_hopper_image
+    "http://a3.files.biography.com/image/upload/c_fit,cs_srgb," \
+    "dpr_1.0,h_1200,q_80,w_1200/MTE5NTU2MzE2NjYxNTE1Nzg3.jpg"
   end
 end
