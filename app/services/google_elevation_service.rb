@@ -40,8 +40,7 @@ class GoogleElevationService
   end
 
   def set_up_connection
-    @connection = Faraday.new(:url => google_elevation_url,
-                              :ssl => { verify: false }) do |faraday|
+    @connection = Faraday.new(:url => google_elevation_url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end

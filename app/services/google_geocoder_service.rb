@@ -55,8 +55,7 @@ class GoogleGeocoderService
   end
 
   def set_up_connection
-    @connection = Faraday.new(:url => google_geocode_url,
-                              :ssl => { verify: false }) do |faraday|
+    @connection = Faraday.new(:url => google_geocode_url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
