@@ -78,8 +78,19 @@ body {
 
     h4 {
       font-size: 26px;
+
     }
 
+  }
+
+}
+
+.link-to-chart-page {
+  color: $base-green;
+
+  &:hover {
+    color: $base-green-lighten;
+    text-decoration: none;
   }
 
 }
