@@ -19,8 +19,8 @@ class WeathersourceTemperatureService
     start_time = Time.now
 
     workouts.no_temperature.each do |workout|
-      if Time.now - start_time < 60 && requests > 9
-        sleep 60
+      if request_limit_has_been_reached(start_time, requests)
+        sleep 62
         start_time = Time.now
         requests = 0
       end
@@ -30,12 +30,20 @@ class WeathersourceTemperatureService
       @response = get_api_response(workout.starting_datetime.to_json,
                                    workout.location.zipcode)
 
-      workout.update_attribute(:temperature, temperature) unless response.nil?
+      workout.update_attribute(:temperature, temp) unless response_invalid
     end
   end
 
-  def temperature
+  def temp
     response[0][:temp]
+  end
+
+  def response_invalid
+    response.nil? || response.empty?
+  end
+
+  def request_limit_has_been_reached(time, requests)
+    Time.now - time < 60 && requests > 8
   end
 
   def weathersource_url
