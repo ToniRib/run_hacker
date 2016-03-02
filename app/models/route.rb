@@ -1,5 +1,5 @@
 class Route < ActiveRecord::Base
-  has_many   :workouts
+  has_many   :workouts, dependent: :destroy
   belongs_to :location
 
   scope :no_elevation, -> { where(elevation: nil) }

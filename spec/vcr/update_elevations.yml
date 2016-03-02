@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 02 Mar 2016 21:12:20 GMT
+      - Wed, 02 Mar 2016 21:28:12 GMT
       Expires:
-      - Thu, 03 Mar 2016 21:12:20 GMT
+      - Thu, 03 Mar 2016 21:28:12 GMT
       Cache-Control:
       - public, max-age=86400
       Server:
@@ -55,7 +55,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:19 GMT
+  recorded_at: Wed, 02 Mar 2016 21:28:11 GMT
 - request:
     method: get
     uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=39.69613387,-104.98908136
@@ -77,9 +77,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 02 Mar 2016 21:12:20 GMT
+      - Wed, 02 Mar 2016 21:28:12 GMT
       Expires:
-      - Thu, 03 Mar 2016 21:12:20 GMT
+      - Thu, 03 Mar 2016 21:28:12 GMT
       Cache-Control:
       - public, max-age=86400
       Server:
@@ -111,7 +111,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:20 GMT
+  recorded_at: Wed, 02 Mar 2016 21:28:12 GMT
 - request:
     method: get
     uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=39.69635577,-104.98895477
@@ -133,9 +133,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 02 Mar 2016 21:12:20 GMT
+      - Wed, 02 Mar 2016 21:28:12 GMT
       Expires:
-      - Thu, 03 Mar 2016 21:12:20 GMT
+      - Thu, 03 Mar 2016 21:28:12 GMT
       Cache-Control:
       - public, max-age=86400
       Server:
@@ -167,7 +167,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:20 GMT
+  recorded_at: Wed, 02 Mar 2016 21:28:12 GMT
 - request:
     method: get
     uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.068215,-118.360562
@@ -189,9 +189,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 02 Mar 2016 21:12:21 GMT
+      - Wed, 02 Mar 2016 21:28:13 GMT
       Expires:
-      - Thu, 03 Mar 2016 21:12:21 GMT
+      - Thu, 03 Mar 2016 21:28:13 GMT
       Cache-Control:
       - public, max-age=86400
       Server:
@@ -223,7 +223,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:20 GMT
+  recorded_at: Wed, 02 Mar 2016 21:28:12 GMT
 - request:
     method: get
     uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.068359,-118.361851
@@ -245,9 +245,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 02 Mar 2016 21:12:21 GMT
+      - Wed, 02 Mar 2016 21:28:13 GMT
       Expires:
-      - Thu, 03 Mar 2016 21:12:21 GMT
+      - Thu, 03 Mar 2016 21:28:13 GMT
       Cache-Control:
       - public, max-age=86400
       Server:
@@ -279,285 +279,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:20 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.068323,-118.360344
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 02 Mar 2016 21:12:21 GMT
-      Expires:
-      - Thu, 03 Mar 2016 21:12:21 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Server:
-      - mafe
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Alternate-Protocol:
-      - 443:quic,p=1
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 53.99220275878906,
-                 "location" : {
-                    "lat" : 34.068323,
-                    "lng" : -118.360344
-                 },
-                 "resolution" : 4.771975994110107
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:20 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.0681,-118.361349
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 02 Mar 2016 21:12:21 GMT
-      Expires:
-      - Thu, 03 Mar 2016 21:12:21 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Server:
-      - mafe
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Alternate-Protocol:
-      - 443:quic,p=1
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 53.30644607543945,
-                 "location" : {
-                    "lat" : 34.0681,
-                    "lng" : -118.361349
-                 },
-                 "resolution" : 4.771975994110107
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:21 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.068239,-118.360948
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 02 Mar 2016 21:12:21 GMT
-      Expires:
-      - Thu, 03 Mar 2016 21:12:21 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Server:
-      - mafe
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Alternate-Protocol:
-      - 443:quic,p=1
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 53.44035339355469,
-                 "location" : {
-                    "lat" : 34.068239,
-                    "lng" : -118.360948
-                 },
-                 "resolution" : 4.771975994110107
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:21 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.068116,-118.36044
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 02 Mar 2016 21:12:22 GMT
-      Expires:
-      - Thu, 03 Mar 2016 21:12:22 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Server:
-      - mafe
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Alternate-Protocol:
-      - 443:quic,p=1
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 53.72399520874023,
-                 "location" : {
-                    "lat" : 34.068116,
-                    "lng" : -118.36044
-                 },
-                 "resolution" : 4.771975994110107
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:21 GMT
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDJv9yiqe2NX2mk-6N8nMapc5StT4fIx9Y&locations=34.068223,-118.361096
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Date:
-      - Wed, 02 Mar 2016 21:12:22 GMT
-      Expires:
-      - Thu, 03 Mar 2016 21:12:22 GMT
-      Cache-Control:
-      - public, max-age=86400
-      Server:
-      - mafe
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - SAMEORIGIN
-      Alternate-Protocol:
-      - 443:quic,p=1
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 53.29692840576172,
-                 "location" : {
-                    "lat" : 34.068223,
-                    "lng" : -118.361096
-                 },
-                 "resolution" : 4.771975994110107
-              }
-           ],
-           "status" : "OK"
-        }
-    http_version: 
-  recorded_at: Wed, 02 Mar 2016 21:12:21 GMT
+  recorded_at: Wed, 02 Mar 2016 21:28:12 GMT
 recorded_with: VCR 3.0.1

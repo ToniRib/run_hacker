@@ -15,7 +15,7 @@ class GoogleElevationService
   private
 
   def request_elevations
-    routes.no_elevation[0..9].each do |route|
+    routes.no_elevation.each do |route|
       @response = get_api_response(route.starting_latitude,
                                    route.starting_longitude)
       route.update_elevation(elevation) unless response[:results].empty?

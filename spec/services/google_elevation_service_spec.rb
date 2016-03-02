@@ -16,12 +16,16 @@ RSpec.describe GoogleElevationService do
       expect(Route.count).to eq(190)
       expect(Route.pluck(:elevation)).to eq(Array.new(190, nil))
 
-      # This cassette specifically only mimics making 10 API calls
+      route_ids = Route.pluck(:id)[5..-1]
+      Route.destroy(route_ids)
+
+      expect(Route.count).to eq(5)
+
       VCR.use_cassette("update_elevations") do
         GoogleElevationService.update_routes_with_elevation(user.id)
       end
 
-      expect(Route.pluck(:elevation).compact.count).to eq(10)
+      expect(Route.pluck(:elevation).count).to eq(5)
       expect(Route.find(95).elevation).to eq(1602.82006835938)
     end
   end
