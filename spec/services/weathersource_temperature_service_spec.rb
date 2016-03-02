@@ -27,7 +27,7 @@ RSpec.describe WeathersourceTemperatureService do
         WeathersourceTemperatureService.update_workouts_with_temperature(user.id)
       end
 
-      expect(Workout.pluck(:temperature)).to eq([56.9, 56.9])
+      expect(Workout.pluck(:temperature)).to eq([56.9, 71.7])
     end
   end
 end

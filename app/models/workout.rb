@@ -23,4 +23,8 @@ class Workout < ActiveRecord::Base
   def update_temperature(temp)
     update_attribute(:temperature, temp)
   end
+
+  def starting_date_in_iso_format
+    starting_datetime.localtime.strftime("%Y-%m-%-dT%H:%M")
+  end
 end

@@ -29,7 +29,7 @@ class WeathersourceTemperatureService
 
       requests += 1
 
-      @response = get_api_response(workout.starting_datetime.to_json,
+      @response = get_api_response(workout.starting_date_in_iso_format,
                                    workout.location.zipcode)
 
       workout.update_temperature(temp) unless response_invalid
