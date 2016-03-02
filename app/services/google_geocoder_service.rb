@@ -20,10 +20,14 @@ class GoogleGeocoderService
       @response = get_api_response(route.starting_latitude,
                                    route.starting_longitude)
 
-      location = Location.find_by(zipcode: zipcode)
 
-      route.update_attribute(:location_id, location.id) unless @response[:results].empty?
+      update_route_with_location(route) unless @response[:results].empty?
     end
+  end
+
+  def update_route_with_location(route)
+    location = Location.find_by(zipcode: zipcode)
+    route.update_attribute(:location_id, location.id)
   end
 
   def address_components
@@ -46,7 +50,6 @@ class GoogleGeocoderService
     response = connection.get do |request|
       request.params["key"] = ENV["GOOGLE_GEOCODE_KEY"]
       request.params["latlng"] = "#{lat},#{lng}"
-      request.params["sensor"] = "true"
       request.params["result_type"] = "postal_code"
     end
 
