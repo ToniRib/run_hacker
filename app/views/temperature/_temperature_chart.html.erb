@@ -72,7 +72,7 @@
         text: yAxisSelection
     });
 
-    var workouts = <%= @workouts %>;
+    var workouts = <%= @workouts.distance_temperature_and_total_time %>;
     var filtered = [];
 
     workouts.forEach(function(set){
