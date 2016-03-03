@@ -27,4 +27,8 @@ class Workout < ActiveRecord::Base
   def starting_date_in_iso_format
     starting_datetime.localtime.strftime("%Y-%m-%-dT%H:%M")
   end
+
+  def self.temperature_v_distance_data(min, max)
+    where("distance BETWEEN ? AND ?", min, max).pluck(:temperature, :distance)
+  end
 end
