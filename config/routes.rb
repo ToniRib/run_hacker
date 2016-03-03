@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
   get "/logout",                  to: "sessions#destroy"
 
-  get "/dashboard",               to: "users/dashboard#show"
-  get "/temperature",             to: "users/temperature#index"
+  get "/dashboard",               to: "user/dashboard#show"
+  get "/temperature",             to: "user/temperature#index"
+  get "/workouts",                to: "user/workouts#index"
 end

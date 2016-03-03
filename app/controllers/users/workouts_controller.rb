@@ -1,4 +1,4 @@
-class User::TemperatureController < User::BaseController
+class User::WorkoutsController < User::BaseController
   def index
     @workouts = current_user.workouts
   end

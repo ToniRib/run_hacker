@@ -29,6 +29,10 @@ class Workout < ActiveRecord::Base
     starting_datetime.localtime.strftime("%Y-%m-%-dT%H:%M")
   end
 
+  def starting_date_no_time
+    starting_datetime.localtime.strftime("%Y-%m-%d")
+  end
+
   def self.distance_temperature_and_total_time
     has_temperature.pluck(:distance, :temperature, :elapsed_time)
   end
