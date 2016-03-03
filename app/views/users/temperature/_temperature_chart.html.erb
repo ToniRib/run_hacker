@@ -4,7 +4,8 @@
       chart: {
         type: 'scatter',
         zoomType: 'xy',
-        height: 570
+        height: 570,
+        animation: true
       },
       xAxis: {
         title: {
@@ -112,6 +113,11 @@
       }
     })
 
-    $chart.series[0].setData(filtered)
+    $chart.series[0].setData(filtered);
+    $chart.series[0].update({
+      animation: {
+        duration: 250
+      }
+    });
   }
 <% end %>
