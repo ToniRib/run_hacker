@@ -4,33 +4,39 @@
       <div class="row text-center">
         <h2>Workout Listing</h2>
       </div>
-      <div class="row table-section table-responsive">
+      <div class="row table-section">
+
         <table class="table table-striped workouts-table">
-          <tr>
-            <th>Date</th>
-            <th>Distance (mi)</th>
-            <th>Average Speed (mph)</th>
-            <th>Elapsed Time (min)</th>
-            <th>Calories Burned (kcal)</th>
-            <th>Location</th>
-            <th>Elevation (feet)</th>
-          </tr>
-          <% @workouts.by_ascending_start_date.each do |workout| %>
+          <thead>
             <tr>
-              <td><%= workout.starting_date_no_time %></td>
-              <td><%= workout.distance_in_miles %></td>
-              <td><%= workout.average_speed_in_mph %></td>
-              <td><%= workout.elapsed_time_in_minutes %></td>
-              <td><%= workout.calories_burned_in_kcal %></td>
-              <% if workout.location %>
-                <td><%= workout.location.city_and_state %></td>
-              <% else %>
-                <td></td>
-              <% end %>
-              <td><%= workout.route.elevation_in_feet if workout.route %></td>
+              <th>Date</th>
+              <th>Distance (mi)</th>
+              <th>Average Speed (mph)</th>
+              <th>Elapsed Time (min)</th>
+              <th>Calories Burned (kcal)</th>
+              <th>Location</th>
+              <th>Elevation (feet)</th>
             </tr>
-          <% end %>
+          </thead>
+          <tbody>
+            <% @workouts.by_ascending_start_date.each do |workout| %>
+              <tr>
+                <td><%= workout.starting_date_no_time %></td>
+                <td><%= workout.distance_in_miles %></td>
+                <td><%= workout.average_speed_in_mph %></td>
+                <td><%= workout.elapsed_time_in_minutes %></td>
+                <td><%= workout.calories_burned_in_kcal %></td>
+                <% if workout.location %>
+                  <td><%= workout.location.city_and_state %></td>
+                <% else %>
+                  <td></td>
+                <% end %>
+                <td><%= workout.route.elevation_in_feet if workout.route %></td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
+
       </div>
     </div>
   </div>

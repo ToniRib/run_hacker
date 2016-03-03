@@ -170,11 +170,26 @@ body {
 // ----- WORKOUT LISTING -----
 
 .table-section {
-  max-height: 600px;
-  overflow-y: scroll;
+  height: 600px;
 }
 
 .workouts-table {
   margin: 0 20px;
-  max-width: 1095px;
+}
+
+.table {
+  width: 98%;
+}
+
+tr {
+  width: 96%;
+  display: inline-table;
+  table-layout: fixed;
+}
+
+tbody{
+  overflow-y: scroll;
+  height: 550px;
+  width: 98%;
+  position: absolute;
 }
