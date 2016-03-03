@@ -88,6 +88,11 @@
       $chart.yAxis[0].setTitle({
           text: yAxisSelection + ' (mph)'
       });
+    } else if (yAxisSelection == "Time Spent Resting") {
+      workouts = <%= @workouts.distance_temperature_and_time_spent_resting %>;
+      $chart.yAxis[0].setTitle({
+          text: yAxisSelection + ' (sec)'
+      });
     }
 
     var filtered = [];
@@ -99,6 +104,8 @@
           y = parseInt((set[2] / 60).toFixed(2));
         } else if (yAxisSelection == "Average Speed") {
           y = set[2] * (3600 / 1609.344);
+        } else if (yAxisSelection == "Time Spent Resting") {
+          y = set[2];
         }
         x = set[1];
         filtered.push([x, y]);

@@ -38,10 +38,10 @@ class Workout < ActiveRecord::Base
   end
 
   def self.distance_temperature_and_time_spent_resting
-    where("elapsed_time - active_time > 0")
+    has_temperature
+      .where("elapsed_time - active_time > 0")
+      .pluck("distance",
+             "temperature",
+             "elapsed_time - active_time AS time_spent_resting")
   end
-
-  # def self.temperature_v_distance_data(min, max)
-  #   where("distance BETWEEN ? AND ?", min, max).pluck(:temperature, :distance)
-  # end
 end
