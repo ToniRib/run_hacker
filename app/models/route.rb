@@ -13,4 +13,8 @@ class Route < ActiveRecord::Base
   def update_elevation(elevation)
     update_attribute(:elevation, elevation)
   end
+
+  def elevation_in_feet
+    (elevation * 3.28084).round(2)
+  end
 end

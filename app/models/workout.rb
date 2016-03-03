@@ -5,6 +5,7 @@ class Workout < ActiveRecord::Base
 
   scope :no_temperature, -> { where(temperature: nil) }
   scope :has_temperature, -> { where("temperature IS NOT NULL") }
+  scope :by_ascending_start_date, -> { order(starting_datetime: :asc) }
 
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
@@ -31,6 +32,22 @@ class Workout < ActiveRecord::Base
 
   def starting_date_no_time
     starting_datetime.localtime.strftime("%Y-%m-%d")
+  end
+
+  def distance_in_miles
+    (distance / 1609.344).round(2)
+  end
+
+  def average_speed_in_mph
+    (average_speed * (3600 / 1609.344)).round(2)
+  end
+
+  def calories_burned_in_kcal
+    (metabolic_energy / 4184).round(2)
+  end
+
+  def elapsed_time_in_minutes
+    min = (elapsed_time / 60).round(2)
   end
 
   def self.distance_temperature_and_total_time

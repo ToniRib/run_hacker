@@ -166,3 +166,15 @@ body {
   }
 
 }
+
+// ----- WORKOUT LISTING -----
+
+.table-section {
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+.workouts-table {
+  margin: 0 20px;
+  max-width: 1095px;
+}

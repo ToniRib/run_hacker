@@ -55,6 +55,26 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe "#average_speed_in_mph" do
+    it "converts the speed to miles per hour" do
+      workout = create(:workout)
+
+      average_speed_in_mph = workout.average_speed_in_mph
+
+      expect(average_speed_in_mph).to eq(5.97)
+    end
+  end
+
+  describe "#distance_in_miles" do
+    it "converts the distance from meters to miles" do
+      workout = create(:workout)
+
+      distance_in_miles = workout.distance_in_miles
+
+      expect(distance_in_miles).to eq(5.05)
+    end
+  end
+
   def api_data_with_distance
     {
       created_datetime: "2015-03-11 22:15:31",
