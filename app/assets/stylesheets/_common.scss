@@ -9,6 +9,7 @@
 .navbar {
   background: $base-orange;
   border-color: $base-orange;
+  border-radius: 0;
   margin: 0;
 
   .navbar-brand {
@@ -50,10 +51,16 @@ label {
 }
 
 select {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .alert {
+  border-radius: 0;
   margin: 0;
   padding: 0;
+}
+
+.alert-error {
+  background: $base-red;
+  color: $white;
 }
