@@ -6,14 +6,14 @@
       </div>
       <div class="row">
         <div class="filter">
-          <div class="col-sm-5">
+          <div class="col-sm-5 offset-top">
             <label>Distance Range</label>
             <%= text_field :minimum, :distance %>
             <span>to</span>
             <%= text_field :maximum, :distance %>
             <span>miles</span>
           </div>
-          <div class="col-sm-4 text-center select-column">
+          <div class="col-sm-4 text-center offset-top">
             <label>Y-axis</label>
             <%= select_tag "y-axis", options_for_select(["Total Time", "Average Speed", "Time Spent Resting"], "Total Time") %>
           </div>

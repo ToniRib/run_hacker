@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe WelcomeController, type: :controller do
+RSpec.describe Users::WelcomeController, type: :controller do
   describe "GET #show" do
     it "responds with successful 200 HTTP status code" do
       get :show
