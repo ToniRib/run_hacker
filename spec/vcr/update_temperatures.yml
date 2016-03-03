@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.weathersource.com/v1/98b0a9291f56c273aa12/history_by_postal_code.json?country_eq=US&fields=temp&period=hour&postal_code_eq=90036&timestamp_eq=2012-06-6T17:37
+    uri: https://api.weathersource.com/v1/98b0a9291f56c273aa12/history_by_postal_code.json?country_eq=US&fields=temp&period=hour&postal_code_eq=80210&timestamp_eq=2016-02-11T05:00
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 02 Mar 2016 22:04:49 GMT
+      - Thu, 03 Mar 2016 22:49:09 GMT
       Server:
       - Apache
       Content-Length:
@@ -30,12 +30,12 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '[{"temp":56.9}]'
+      string: '[{"temp":35.6}]'
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 22:04:48 GMT
+  recorded_at: Thu, 03 Mar 2016 22:49:09 GMT
 - request:
     method: get
-    uri: https://api.weathersource.com/v1/98b0a9291f56c273aa12/history_by_postal_code.json?country_eq=US&fields=temp&period=hour&postal_code_eq=90036&timestamp_eq=2012-09-26T17:40
+    uri: https://api.weathersource.com/v1/98b0a9291f56c273aa12/history_by_postal_code.json?country_eq=US&fields=temp&period=hour&postal_code_eq=80210&timestamp_eq=2016-02-11T05:00
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 02 Mar 2016 22:04:49 GMT
+      - Thu, 03 Mar 2016 22:49:09 GMT
       Server:
       - Apache
       Content-Length:
@@ -63,7 +63,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '[{"temp":71.7}]'
+      string: '[{"temp":35.6}]'
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 22:04:49 GMT
+  recorded_at: Thu, 03 Mar 2016 22:49:10 GMT
 recorded_with: VCR 3.0.1
