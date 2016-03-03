@@ -21,6 +21,16 @@ RSpec.describe Location, type: :model do
     end
   end
 
+  describe "#city_and_state" do
+    it "returns a string of the city and state separated by a comma" do
+      location = create(:location)
+
+      city_state_string = location.city_and_state
+
+      expect(city_state_string).to eq("Denver, CO")
+    end
+  end
+
   def api_data
     { city: "Denver", state: "CO" }
   end

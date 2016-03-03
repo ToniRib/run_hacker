@@ -40,6 +40,16 @@ RSpec.describe Route, type: :model do
     end
   end
 
+  describe "#elevation_in_feet" do
+    it "converts elevation from meters to feet" do
+      route = create(:route, elevation: 10000)
+
+      elevation_in_feet = route.elevation_in_feet
+
+      expect(elevation_in_feet).to eq(32808.4)
+    end
+  end
+
   def api_data
     {
       starting_location: {
