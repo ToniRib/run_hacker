@@ -4,6 +4,7 @@ class Workout < ActiveRecord::Base
   has_one    :location, through: :route
 
   scope :no_temperature, -> { where(temperature: nil) }
+  scope :has_temperature, -> { where("temperature IS NOT NULL") }
 
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
@@ -29,7 +30,15 @@ class Workout < ActiveRecord::Base
   end
 
   def self.distance_temperature_and_total_time
-    pluck(:distance, :temperature, :elapsed_time).delete_if { |set| set.any?(&:nil?) }
+    has_temperature.pluck(:distance, :temperature, :elapsed_time)
+  end
+
+  def self.distance_temperature_and_average_speed
+    has_temperature.pluck(:distance, :temperature, :average_speed)
+  end
+
+  def self.distance_temperature_and_time_spent_resting
+    where("elapsed_time - active_time > 0")
   end
 
   # def self.temperature_v_distance_data(min, max)

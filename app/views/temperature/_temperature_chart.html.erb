@@ -1,62 +1,70 @@
 <%= javascript_tag do %>
   $(function () {
     $('#temperature-chart').highcharts({
-        chart: {
-            type: 'scatter',
-            zoomType: 'xy',
-            height: 570
+      chart: {
+        type: 'scatter',
+        zoomType: 'xy',
+        height: 570
+      },
+      xAxis: {
+        title: {
+          enabled: true,
+          text: 'Temperature (°F)'
         },
-        xAxis: {
-            title: {
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true
+      },
+      title: { text: null },
+      yAxis: {
+        title: {
+          text: null
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        scatter: {
+          marker: {
+            radius: 5,
+            states: {
+              hover: {
                 enabled: true,
-                text: 'Temperature (°F)'
-            },
-            startOnTick: true,
-            endOnTick: true,
-            showLastLabel: true
-        },
-        title: { text: null },
-        yAxis: {
-            title: {
-                text: null
+                lineColor: 'rgb(100,100,100)'
+              }
             }
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            scatter: {
-                marker: {
-                    radius: 5,
-                    states: {
-                        hover: {
-                            enabled: true,
-                            lineColor: 'rgb(100,100,100)'
-                        }
-                    }
-                },
-                states: {
-                    hover: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x} °F, {point.y} min'
-                }
+          },
+          states: {
+            hover: {
+              marker: {
+                enabled: false
+              }
             }
-        },
-        series: [{
-            color: 'rgba(223, 83, 83, .5)',
-            data: null
-        }]
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x}°F, {point.y}'
+          }
+        }
+      },
+      series: [{
+        color: 'rgba(223, 83, 83, .5)',
+        data: null
+      }]
     });
   });
 
   <!-- DYNAMIC CHART -->
   $('#create-temperature-chart').on('click', function() {
+    updateChart();
+  })
+
+  $('#y-axis').on('change', function() {
+    updateChart();
+  })
+
+  function updateChart(){
     var $chart = $('#temperature-chart').highcharts()
     var minDistance = parseInt($('#minimum_distance').val());
     var maxDistance = parseInt($('#maximum_distance').val());
@@ -68,21 +76,35 @@
     var yAxisSelection = $('#y-axis').val();
 
     $chart.setTitle({ text: 'Temperature vs. ' + yAxisSelection + ' for ' + range + 'runs' })
-    $chart.yAxis[0].setTitle({
-        text: yAxisSelection
-    });
 
-    var workouts = <%= @workouts.distance_temperature_and_total_time %>;
+    var workouts;
+    if (yAxisSelection == "Total Time") {
+      workouts = <%= @workouts.distance_temperature_and_total_time %>;
+      $chart.yAxis[0].setTitle({
+          text: yAxisSelection + ' (min)'
+      });
+    } else if (yAxisSelection == "Average Speed") {
+      workouts = <%= @workouts.distance_temperature_and_average_speed %>;
+      $chart.yAxis[0].setTitle({
+          text: yAxisSelection + ' (mph)'
+      });
+    }
+
     var filtered = [];
+    var x, y;
 
     workouts.forEach(function(set){
       if (set[0] >= minDistanceInMiles && set[0] <= maxDistanceInMiles) {
-        timeInMinutes = parseInt((set[2] / 60).toFixed(2));
-        temp = set[1];
-        filtered.push([temp, timeInMinutes]);
+        if (yAxisSelection == "Total Time") {
+          y = parseInt((set[2] / 60).toFixed(2));
+        } else if (yAxisSelection == "Average Speed") {
+          y = set[2] * (3600 / 1609.344);
+        }
+        x = set[1];
+        filtered.push([x, y]);
       }
     })
 
     $chart.series[0].setData(filtered)
-  })
+  }
 <% end %>

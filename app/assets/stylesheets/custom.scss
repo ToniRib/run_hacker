@@ -137,3 +137,12 @@ body {
 .select-column {
   padding-top: 5px;
 }
+
+.create-graph {
+  background: $base-green-lighten;
+
+  &:hover {
+    background: $base-yellow-lighten;
+  }
+
+}

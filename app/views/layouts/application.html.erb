@@ -12,6 +12,7 @@
         <%= link_to "runHacker", root_path, class: "navbar-brand" %>
       </div>
       <ul class="nav navbar-nav navbar-right">
+
         <% if current_user %>
           <li><%= link_to "Log Out", logout_path %></li>
         <% else %>
@@ -19,6 +20,10 @@
         <% end %>
       </ul>
     </nav>
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %>"><%= msg %></div>
+    <% end %>
 
     <%= javascript_include_tag 'application' %>
     <%= yield %>
