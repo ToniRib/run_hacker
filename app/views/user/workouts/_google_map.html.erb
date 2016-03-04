@@ -11,7 +11,6 @@
 
     var map = new google.maps.Map(document.getElementById('google-map'), {
       center: centerLatLng,
-      zoom: 12
     });
 
     var startMarker = new google.maps.Marker({
@@ -38,6 +37,13 @@
         map: map
       });
     }
+
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < routeCoordinates.length; i++) {
+      bounds.extend(new google.maps.LatLng(routeCoordinates[i]));
+    }
+
+    map.fitBounds(bounds);
   }
 <% end %>
 

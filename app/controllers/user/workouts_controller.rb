@@ -7,8 +7,10 @@ class User::WorkoutsController < User::BaseController
     @workout = Workout.find(params[:id])
 
     if @workout.has_time_series
-      service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id, current_user)
-      @time_series = service.get_timeseries
+      @time_series = Rails.cache.fetch("workout-#{@workout.map_my_fitness_id}") do
+        service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id, current_user)
+        service.get_timeseries
+      end
     end
   end
 end
