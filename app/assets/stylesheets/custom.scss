@@ -182,14 +182,16 @@ body {
 }
 
 tr {
-  width: 96%;
   display: inline-table;
   table-layout: fixed;
+  width: 96%;
+  cursor: pointer;
+  cursor: hand;
 }
 
 tbody{
-  overflow-y: scroll;
   height: 550px;
-  width: 98%;
+  overflow-y: scroll;
   position: absolute;
+  width: 98%;
 }
