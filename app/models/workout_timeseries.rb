@@ -28,6 +28,10 @@ class WorkoutTimeseries
     convert_to_feet(points.min_by { |p| p.elevation }.elevation)
   end
 
+  def route_coordinates
+    points.map { |point| point.coordinates }
+  end
+
   private
 
   def add_points

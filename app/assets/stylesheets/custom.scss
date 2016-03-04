@@ -195,3 +195,20 @@ tbody{
   position: absolute;
   width: 98%;
 }
+
+// ----- INDIVIDUAL WORKOUT -----
+
+.workout-map {
+  height: 500px;
+  margin: 25px 10px;
+}
+
+.individual-workout-stats {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding: 3px 0;
+  }
+
+}

@@ -15,4 +15,8 @@ class Point
   def add_speed(speed)
     @speed = speed
   end
+
+  def coordinates
+    { lat: lat, lng: lng }
+  end
 end
