@@ -1,5 +1,5 @@
 class User::WorkoutsController < User::BaseController
   def index
-    @workouts = current_user.workouts
+    @user = current_user
   end
 end

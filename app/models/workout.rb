@@ -5,7 +5,7 @@ class Workout < ActiveRecord::Base
 
   scope :no_temperature, -> { where(temperature: nil) }
   scope :has_temperature, -> { where("temperature IS NOT NULL") }
-  scope :by_ascending_start_date, -> { order(starting_datetime: :asc) }
+  scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
 
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0

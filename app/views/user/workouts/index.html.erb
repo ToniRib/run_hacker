@@ -19,8 +19,8 @@
             </tr>
           </thead>
           <tbody>
-            <% @workouts.by_ascending_start_date.each do |workout| %>
-              <tr>
+            <% @user.workouts.by_descending_start_date.each do |workout| %>
+              <tr class="clickable-row" id="workout-<%= workout.map_my_fitness_id %>" data-href="workouts">
                 <td><%= workout.starting_date_no_time %></td>
                 <td><%= workout.distance_in_miles %></td>
                 <td><%= workout.average_speed_in_mph %></td>
@@ -36,8 +36,31 @@
             <% end %>
           </tbody>
         </table>
-
       </div>
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+    $(".clickable-row").click(function() {
+        var workoutId = this.id.split("-")[1];
+
+        var workoutUrl = "https://oauth2-api.mapmyapi.com/v7.1/workout/" + workoutId;
+        $.ajax({
+          type: "GET",
+          url: workoutUrl,
+          data: {
+            "field_set": "time_series"
+          },
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer <%= @user.token %>"),
+            xhr.setRequestHeader("Api-Key", "<%= ENV['MMF_API_KEY'] %>")
+          },
+          success: function(workout) {
+            console.log(workout);
+          }
+        })
+    });
+  });
+<% end %>
