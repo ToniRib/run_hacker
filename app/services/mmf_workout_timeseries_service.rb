@@ -6,13 +6,10 @@ class MmfWorkoutTimeseriesService
     @user = user
 
     set_up_connection
-
-    response = get_api_response
-    WorkoutDetails.new(reponse)
   end
 
-  def self.get_timeseries(map_my_fitness_id, user)
-    new(map_my_fitness_id, user)
+  def get_timeseries
+    WorkoutTimeseries.new(get_api_response)
   end
 
   private
@@ -25,6 +22,7 @@ class MmfWorkoutTimeseriesService
     response = connection.get do |request|
       request.headers["Authorization"] = "Bearer #{@user.token}"
       request.headers["Api-Key"] = ENV["MMF_API_KEY"]
+      request.params["field_set"] = "time_series"
     end
 
     JSON.parse(response.body, symbolize_names: true)
