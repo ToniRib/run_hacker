@@ -69,7 +69,7 @@ class WeathersourceTemperatureService
   end
 
   def set_up_connection
-    @connection = Faraday.new(:url => weathersource_url) do |faraday|
+    @connection = Faraday.new(url: weathersource_url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end

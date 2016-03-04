@@ -17,7 +17,7 @@ class MmfProfilePhotoService
   end
 
   def self.set_up_connection(uid)
-    @connection = Faraday.new(:url => "https://oauth2-api.mapmyapi.com/v7.1/user_profile_photo/#{uid}/") do |faraday|
+    @connection = Faraday.new(url: "https://oauth2-api.mapmyapi.com/v7.1/user_profile_photo/#{uid}/") do |faraday|
       faraday.adapter  Faraday.default_adapter
     end
   end

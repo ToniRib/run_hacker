@@ -34,6 +34,14 @@ class Workout < ActiveRecord::Base
     starting_datetime.localtime.strftime("%Y-%m-%d")
   end
 
+  def display_temperature
+    temperature ? "#{temperature} °F" : "Not Available"
+  end
+
+  def starting_time_only
+    starting_datetime.localtime.strftime("%l:%M %P")
+  end
+
   def distance_in_miles
     (distance / 1609.344).round(2)
   end
