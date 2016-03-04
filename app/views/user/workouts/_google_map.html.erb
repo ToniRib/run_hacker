@@ -1,0 +1,45 @@
+<%= javascript_tag do %>
+  function initMap() {
+    var startLatLng = {lat: <%= time_series.points.first.lat %>,
+                       lng: <%= time_series.points.first.lng %>};
+
+    var endLatLng = {lat: <%= time_series.points.last.lat %>,
+                     lng: <%= time_series.points.last.lng %>};
+
+    var centerLatLng = {lat: ((endLatLng.lat + startLatLng.lat) / 2),
+                        lng: ((endLatLng.lng + startLatLng.lng) / 2)};
+
+    var map = new google.maps.Map(document.getElementById('google-map'), {
+      center: centerLatLng,
+      zoom: 12
+    });
+
+    var startMarker = new google.maps.Marker({
+      position: startLatLng,
+      map: map,
+      label: "S"
+    });
+
+    var endMarker = new google.maps.Marker({
+      position: endLatLng,
+      map: map,
+      label: "E"
+    });
+
+    var routeCoordinates = <%= time_series.route_coordinates.to_json.html_safe %>;
+
+    for (var i = 0; i < routeCoordinates.length-1; i++) {
+      var routePath = new google.maps.Polyline({
+        path: [routeCoordinates[i],routeCoordinates[i+1]],
+        geodesic: true,
+        strokeColor: "#64eb06",
+        strokeOpacity: 0.5,
+        strokeWeight: 4,
+        map: map
+      });
+    }
+  }
+<% end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm1nN_vOXj6XM6U8rRNaBDAcprgDB1pkM&callback=initMap"
+async defer></script>

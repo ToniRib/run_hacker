@@ -212,3 +212,24 @@ tbody{
   }
 
 }
+
+.date-title {
+  font-size: 42px;
+  font-weight: 100;
+}
+
+.back-link-row {
+  margin-top: 15px;
+}
+
+.back-link {
+  color: $base-green;
+  font-size: 20px;
+  margin-top: 15px;
+
+  &:hover {
+    color: $base-green-lighten;
+    text-decoration: none;
+  }
+
+}
