@@ -1,6 +1,6 @@
 class User::WorkoutsController < User::BaseController
   def index
-    @user = current_user
+    @workouts = current_user.workouts.includes(:route, :location)
   end
 
   def show
