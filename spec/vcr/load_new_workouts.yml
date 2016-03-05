@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oauth2-api.mapmyapi.com/v7.1/workout/?limit=1&offset=0&user=9676266
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer 2da174759b1da00f1639381b90d4ce71e9d9638e
+      Api-Key:
+      - kts2fpx89npnp2nk9kg58v3jeccj3394
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Mar 2016 17:58:22 GMT
+      Server:
+      - nginx
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1d-119.mashery.com
+      X-Plan-Qps-Allotted:
+      - '25'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '100000'
+      X-Plan-Quota-Current:
+      - '282'
+      X-Plan-Quota-Reset:
+      - Sunday, March 6, 2016 12:00:00 AM GMT
+      X-Trace:
+      - 1BA1DC1637B8C788E6467D4CC1BC6D1FBF0E45A91B75C7DC12004F76BB
+      Content-Length:
+      - '1099'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"self":[{"href":"\/v7.1\/workout\/?limit=1&user=9676266&offset=0"}],"documentation":[{"href":"https:\/\/developer.underarmour.com\/docs\/v71_Workout"}],"next":[{"href":"\/v7.1\/workout\/?limit=1&user=9676266&offset=1"}]},"_embedded":{"workouts":[{"start_datetime":"1969-12-31T22:00:00+00:00","name":"Ran
+        4.01 mi on 2\/13\/2013","updated_datetime":"2013-02-15T00:24:03+00:00","created_datetime":"2013-02-15T00:24:03+00:00","notes":"","reference_key":null,"start_locale_timezone":"America\/Denver","source":"MapMyRun
+        Android App","source_manufacturer":"mapmyfitness","_links":{"self":[{"href":"\/v7.1\/workout\/232872714\/","id":"232872714"}],"route":[{"href":"\/v7.1\/route\/173450082\/","id":"173450082"}],"activity_type":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"privacy":[{"href":"\/v7.1\/privacy_option\/0\/","id":"0"}]},"has_time_series":true,"is_verified":true,"aggregates":{"active_time_total":0.0,"elapsed_time_total":0.0,"distance_total":0.0,"metabolic_energy_total":0.0,"steps_total":0.0}}]},"total_count":192}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 17:58:22 GMT
+- request:
+    method: get
+    uri: https://oauth2-api.mapmyapi.com/v7.1/workout/?limit=40&offset=188&user=9676266
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer 2da174759b1da00f1639381b90d4ce71e9d9638e
+      Api-Key:
+      - kts2fpx89npnp2nk9kg58v3jeccj3394
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Mar 2016 17:58:23 GMT
+      Server:
+      - nginx
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1d-104.mashery.com
+      X-Plan-Qps-Allotted:
+      - '25'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '100000'
+      X-Plan-Quota-Current:
+      - '283'
+      X-Plan-Quota-Reset:
+      - Sunday, March 6, 2016 12:00:00 AM GMT
+      X-Trace:
+      - 1B66478CC6E6099EF6C08B5D063A36AB84B60EDD8AB543E765EE5AFF55
+      Content-Length:
+      - '4181'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"prev":[{"href":"\/v7.1\/workout\/?limit=40&user=9676266&offset=148"}],"self":[{"href":"\/v7.1\/workout\/?limit=40&user=9676266&offset=188"}],"documentation":[{"href":"https:\/\/developer.underarmour.com\/docs\/v71_Workout"}]},"_embedded":{"workouts":[{"start_datetime":"2015-09-18T00:04:24+00:00","name":"Ran
+        6.01 mi on 09\/17\/2015","updated_datetime":"2015-09-18T01:05:44+00:00","created_datetime":"2015-09-18T01:05:44+00:00","notes":"","reference_key":"ac59accf-0d10-422d-9771-4e669b8acf37","start_locale_timezone":"America\/Denver","source":"MapMyRun
+        Android 3.x","source_manufacturer":"mapmyfitness","_links":{"self":[{"href":"\/v7.1\/workout\/1173458815\/","id":"1173458815"}],"route":[{"href":"\/v7.1\/route\/861616465\/","id":"861616465"}],"activity_type":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"privacy":[{"href":"\/v7.1\/privacy_option\/1\/","id":"1"}]},"has_time_series":true,"is_verified":true,"aggregates":{"active_time_total":3644.0,"distance_total":9672.75289728,"speed_max":4.80724464,"speed_min":1.0205789088,"speed_avg":2.6544296416,"willpower":0.0,"steps_total":13172.0,"elapsed_time_total":3672.0,"metabolic_energy_total":3271888.0}},{"start_datetime":"2016-01-25T22:40:51+00:00","name":"Ran
+        3.00 mi on 01\/25\/2016","updated_datetime":"2016-01-25T23:10:41+00:00","created_datetime":"2016-01-25T23:10:41+00:00","notes":"","reference_key":"d1debc47-6ad3-4876-a7e1-d7e781032505","start_locale_timezone":"America\/Denver","source":"MapMyRun
+        Android 3.x","source_manufacturer":"mapmyfitness","_links":{"self":[{"href":"\/v7.1\/workout\/1322637635\/","id":"1322637635"}],"route":[{"href":"\/v7.1\/route\/971279673\/","id":"971279673"}],"activity_type":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"privacy":[{"href":"\/v7.1\/privacy_option\/0\/","id":"0"}]},"has_time_series":true,"is_verified":true,"aggregates":{"active_time_total":1722.0,"distance_total":4831.04147328,"speed_max":4.4246052224,"speed_min":1.1293392704,"speed_avg":2.805488928,"willpower":0.0,"steps_total":6579.0,"elapsed_time_total":1775.0,"metabolic_energy_total":1694520.0}},{"start_datetime":"2016-01-26T21:09:41+00:00","name":"Ran
+        3.00 mi on 01\/26\/2016","updated_datetime":"2016-01-26T21:40:37+00:00","created_datetime":"2016-01-26T21:40:37+00:00","notes":"","reference_key":"ed70357f-5c66-4278-b876-40448e61bda7","start_locale_timezone":"America\/Denver","source":"MapMyRun
+        Android 3.x","source_manufacturer":"mapmyfitness","_links":{"self":[{"href":"\/v7.1\/workout\/1323791751\/","id":"1323791751"}],"route":[{"href":"\/v7.1\/route\/971979029\/","id":"971979029"}],"activity_type":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"privacy":[{"href":"\/v7.1\/privacy_option\/1\/","id":"1"}]},"has_time_series":true,"is_verified":true,"aggregates":{"active_time_total":1781.0,"distance_total":4826.06860032,"speed_max":4.0129707904,"speed_min":1.1363488576,"speed_avg":2.709755312,"willpower":0.0,"steps_total":6572.0,"elapsed_time_total":1849.0,"metabolic_energy_total":1698704.0}},{"start_datetime":"2016-03-05T00:32:57+00:00","name":"Ran
+        3.02 mi on 03\/04\/2016","updated_datetime":"2016-03-05T01:03:27+00:00","created_datetime":"2016-03-05T01:03:13+00:00","notes":"","reference_key":"de3aeb6a-8626-42d3-a8f3-214b50f5e753","start_locale_timezone":"America\/Denver","source":"MapMyRun
+        Android 3.x","source_manufacturer":"mapmyfitness","_links":{"self":[{"href":"\/v7.1\/workout\/1370694477\/","id":"1370694477"}],"route":[{"href":"\/v7.1\/route\/1002859345\/","id":"1002859345"}],"activity_type":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"privacy":[{"href":"\/v7.1\/privacy_option\/0\/","id":"0"}]},"has_time_series":true,"is_verified":true,"aggregates":{"active_time_total":1771.0,"distance_total":4865.22393984,"speed_max":4.880961536,"speed_min":1.1985857664,"speed_avg":2.7471680896,"willpower":0.0,"steps_total":6626.0,"elapsed_time_total":1802.0,"metabolic_energy_total":1648496.0}}]},"total_count":192}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 17:58:23 GMT
+recorded_with: VCR 3.0.1
