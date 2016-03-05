@@ -12,7 +12,6 @@ class Workout < ActiveRecord::Base
     return if data[:aggregates][:distance_total] == 0
 
     Workout.create(starting_datetime:       data[:start_datetime],
-                   local_timezone:          data[:start_locale_timezone],
                    map_my_fitness_id:       data[:_links][:self][0][:id],
                    has_time_series:         data[:has_time_series],
                    distance:                data[:aggregates][:distance_total],

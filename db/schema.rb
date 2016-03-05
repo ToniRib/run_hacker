@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20160305154907) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "local_timezone"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -62,7 +63,6 @@ ActiveRecord::Schema.define(version: 20160305154907) do
     t.integer  "route_id"
     t.float    "temperature"
     t.datetime "starting_datetime"
-    t.string   "local_timezone"
   end
 
   add_index "workouts", ["route_id"], name: "index_workouts_on_route_id", using: :btree

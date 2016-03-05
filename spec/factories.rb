@@ -3,6 +3,7 @@ FactoryGirl.define do
     city "Denver"
     state "CO"
     zipcode "80210"
+    local_timezone "America/Denver"
   end
 
   factory :route do
@@ -46,7 +47,6 @@ FactoryGirl.define do
     route
     temperature 43.2
     starting_datetime Date.today - 7
-    local_timezone "America/Denver"
   end
 
   sequence :uid do |i|
