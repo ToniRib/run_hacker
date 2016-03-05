@@ -28,6 +28,7 @@ RSpec.describe Api::V1::User::AggregatesController, type: :controller do
       expect(json_response[:total_distance]).to eq(10.11)
       expect(json_response[:total_time]).to eq(101.53)
       expect(json_response[:total_calories]).to eq(1300.0)
+      expect(json_response[:date_joined]).to eq("Sep 20, 2011")
     end
   end
 end

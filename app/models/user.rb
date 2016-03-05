@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
     user.display_name = auth[:info][:display_name]
     user.email        = auth[:info][:email]
     user.username     = auth[:info][:username]
+    user.date_joined  = auth[:info][:date_joined]
 
     user.save
 
@@ -39,5 +40,9 @@ class User < ActiveRecord::Base
 
   def no_routes_loaded
     number_of_routes == 0
+  end
+
+  def date_joined_formatted
+    date_joined.strftime("%b %-d, %Y")
   end
 end

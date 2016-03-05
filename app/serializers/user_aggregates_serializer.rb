@@ -1,6 +1,6 @@
 class UserAggregatesSerializer < ActiveModel::Serializer
   attributes :total_workouts, :total_distance, :total_time,
-             :total_calories
+             :total_calories, :date_joined
 
   def total_workouts
     object.workouts.count
@@ -16,5 +16,9 @@ class UserAggregatesSerializer < ActiveModel::Serializer
 
   def total_calories
     object.workouts.total_calories_in_kcal
+  end
+
+  def date_joined
+    object.date_joined_formatted
   end
 end

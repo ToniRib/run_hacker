@@ -22,6 +22,7 @@ FactoryGirl.define do
     email "example@example.com"
     image "http://a3.files.biography.com/image/upload/c_fit,cs_srgb," \
           "dpr_1.0,h_1200,q_80,w_1200/MTE5NTU2MzE2NjYxNTE1Nzg3.jpg"
+    date_joined DateTime.parse("2011-09-20 19:16:52 UTC")
 
     factory :user_with_workouts_and_routes do
       transient do
