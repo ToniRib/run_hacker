@@ -196,6 +196,10 @@ tbody{
   width: 98%;
 }
 
+.table-hover tbody tr:hover td {
+    background: $base-yellow-lighten;
+}
+
 // ----- INDIVIDUAL WORKOUT -----
 
 .workout-map {
@@ -213,7 +217,7 @@ tbody{
     strong {
       color: $base-red
     }
-    
+
   }
 
 }

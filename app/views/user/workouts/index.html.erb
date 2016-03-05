@@ -31,7 +31,11 @@
                   <% else %>
                     <td></td>
                   <% end %>
-                  <td><%= workout.route.elevation_in_feet if workout.route %></td>
+                  <% if workout.route.elevation %>
+                    <td><%= workout.route.elevation_in_feet if workout.route %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
