@@ -69,7 +69,7 @@
 
 <%= javascript_tag do %>
   $(document).ready(function(){
-    setInterval( pollForAggregates, 500 );
+    setInterval( pollForAggregates, 1000 );
   })
 
   function pollForAggregates() {
@@ -87,7 +87,7 @@
     $("#total-calories").text(data.total_calories + " kcal");
     $("#total-distance").text(data.total_distance + " miles");
     $("#average-distance").text(data.average_run_distance + " miles");
-    $("#total-time").text(data.total_time + " minutes");
+    $("#total-time").text(data.total_time + " hours");
     $("#date-joined").text(data.date_joined);
   }
 <% end %>

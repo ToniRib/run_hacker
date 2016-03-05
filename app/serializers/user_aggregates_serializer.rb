@@ -11,7 +11,7 @@ class UserAggregatesSerializer < ActiveModel::Serializer
   end
 
   def total_time
-    object.workouts.total_time_in_minutes
+    object.workouts.total_time_in_hours
   end
 
   def total_calories
