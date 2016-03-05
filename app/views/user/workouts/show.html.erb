@@ -9,6 +9,7 @@
       <h2 class="date-title"><%= @workout.starting_date_no_time %></h2>
       <ul class="individual-workout-stats">
         <li><h4><strong>Started At:</strong> <%= @workout.starting_time_only %></h4></li>
+        <li><h4><strong>Location:</strong> <%= @workout.location.city_and_state %></h4></li>
         <li><h4><strong>Distance:</strong> <%= @workout.distance_in_miles %> miles</h4></li>
         <li><h4><strong>Elapsed Time:</strong> <%= @workout.elapsed_time_in_minutes %> minutes</h4></li>
         <li><h4><strong>Temperature:</strong> <%= @workout.display_temperature %></h4></li>
