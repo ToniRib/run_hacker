@@ -27,7 +27,8 @@ class User::WorkoutsController < User::BaseController
 
   def load_time_series
     Rails.cache.fetch("workout-#{@workout.map_my_fitness_id}") do
-      service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id, current_user)
+      service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id,
+                                                current_user)
       service.get_timeseries
     end
   end
