@@ -218,7 +218,7 @@ RSpec.describe Workout, type: :model do
 
   def api_data_with_distance
     {
-      created_datetime: "2015-03-11 22:15:31",
+      start_datetime: "2015-03-11 22:15:31",
       _links: {
         self: [{ id: 900975701 }],
         route: [{ id: 649215864 }]
@@ -236,7 +236,7 @@ RSpec.describe Workout, type: :model do
 
   def api_data_without_distance
     {
-      created_datetime: "2015-03-11 22:15:31",
+      start_datetime: "2015-03-11 22:15:31",
       _links: {
         self: [{ id: 900975701 }],
         route: [{ id: 649215864 }]
