@@ -87,7 +87,17 @@ RSpec.describe Workout, type: :model do
   end
 
   describe "#starting_time_only" do
-    it "returns the time the run was recorded in the given timezone" do
+    it "returns the time the run was recorded in the given timezone (Los Angeles)" do
+      workout = create(:workout,
+                       starting_datetime: DateTime.new(2015, 05, 10, 12, 0, 0),
+                       local_timezone: "America/Los_Angeles")
+
+      date = workout.starting_time_only
+
+      expect(date).to eq(" 5:00 am")
+    end
+
+    it "returns the time the run was recorded in the given timezone (Denver)" do
       workout = create(:workout,
                        starting_datetime: DateTime.new(2015, 05, 10, 12, 0, 0),
                        local_timezone: "America/Denver")
