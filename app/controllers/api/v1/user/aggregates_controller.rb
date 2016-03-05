@@ -1,6 +1,6 @@
 class Api::V1::User::AggregatesController < ApplicationController
   def index
-    render json: User.find(current_user.id),
+    render json: current_user.workouts,
            serializer: ::UserAggregatesSerializer
   end
 end
