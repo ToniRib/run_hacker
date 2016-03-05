@@ -50,7 +50,6 @@ RSpec.feature "User views temperature graph" do
     fill_in "minimum_distance", with: "2"
     fill_in "maximum_distance", with: "5"
     select "Average Speed", from: "y-axis"
-    click_on "Create Graph"
 
     expect(page).to have_content("Temperature vs. Average Speed for 2 - 5 mile runs")
     expect(page).to have_content("Average Speed (mph)")
@@ -71,7 +70,6 @@ RSpec.feature "User views temperature graph" do
     fill_in "minimum_distance", with: "2"
     fill_in "maximum_distance", with: "6"
     select "Time Spent Resting", from: "y-axis"
-    click_on "Create Graph"
 
     expect(page).to have_content("Temperature vs. Time Spent Resting for 2 - 6 mile runs")
     expect(page).to have_content("Time Spent Resting (min)")
