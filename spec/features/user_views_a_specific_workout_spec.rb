@@ -32,6 +32,18 @@ RSpec.feature "User views a specific workout" do
   end
 
   scenario "workout does not have a timeseries available" do
+    user = User.create(user_params)
+    workout = create(:workout, user: user, has_time_series: false)
 
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
+
+    VCR.use_cassette("workout_with_no_time_series") do
+      visit workout_path(workout)
+    end
+
+    expect(current_path).to eq(workouts_path)
+    expect(page).to have_content("Workout does not have a time series to display")
   end
 end
