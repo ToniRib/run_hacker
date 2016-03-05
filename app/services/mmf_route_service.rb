@@ -50,11 +50,23 @@ class MmfRouteService
       set_up_connection(workout_specific_url(workout.map_my_fitness_route_id))
       @response = get_api_response
 
-      location = Location.create_from_api_response(response)
-      route = Route.create_from_api_response(response, location.id)
-
-      associate_workouts_with_new_route(response, route)
+      put_new_data_in_database(response)
     end
+  end
+
+  def create_routes_from_current_response
+    routes.each do |data|
+      put_new_data_in_database(data)
+    end
+
+    update_offset
+  end
+
+  def put_new_data_in_database(data)
+    location = Location.create_from_api_response(data)
+    route = Route.create_from_api_response(data, location.id)
+
+    associate_workouts_with_new_route(data, route)
   end
 
   def no_new_routes
@@ -70,17 +82,6 @@ class MmfRouteService
 
   def no_additional_routes_available
     response[:_links][:next].nil?
-  end
-
-  def create_routes_from_current_response
-    routes.each do |data|
-      location = Location.create_from_api_response(data)
-      route = Route.create_from_api_response(data, location.id)
-
-      associate_workouts_with_new_route(data, route)
-    end
-
-    update_offset
   end
 
   def associate_workouts_with_new_route(data, route)
