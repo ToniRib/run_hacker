@@ -35,29 +35,29 @@
             <div class="col-sm-12 col-md-6">
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Workouts</h3>
-                <h2 class="stat-data">190</h2>
+                <h2 class="stat-data" id="total-workouts">0</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Calories</h3>
-                <h2 class="stat-data">108k</h2>
+                <h2 class="stat-data" id="total-calories">0</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Average Distance</h3>
-                <h2 class="stat-data">4.82 miles</h2>
+                <h2 class="stat-data" id="average-distance">0</h2>
               </div>
             </div>
             <div class="col-sm-12 col-md-6">
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Distance</h3>
-                <h2 class="stat-data">917 miles</h2>
+                <h2 class="stat-data" id="total-distance">0</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Time</h3>
-                <h2 class="stat-data">6d 2hrs</h2>
+                <h2 class="stat-data" id="total-time">0</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Active Since</h3>
-                <h2 class="stat-data">Sept 20, 2011</h2>
+                <h2 class="stat-data" id="date-joined">0</h2>
               </div>
             </div>
           </div>
@@ -66,3 +66,28 @@
     </section>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    setInterval( pollForAggregates, 500 );
+  })
+
+  function pollForAggregates() {
+    $.ajax({
+      type: "GET",
+      url: "/api/v1/user/aggregates",
+      success: function(data) {
+        updateAggregates(data);
+      }
+    })
+  }
+
+  function updateAggregates(data) {
+    $("#total-workouts").text(data.total_workouts);
+    $("#total-calories").text(data.total_calories + " kcal");
+    $("#total-distance").text(data.total_distance + " miles");
+    $("#average-distance").text(data.average_run_distance + " miles");
+    $("#total-time").text(data.total_time + " minutes");
+    $("#date-joined").text(data.date_joined);
+  }
+<% end %>
