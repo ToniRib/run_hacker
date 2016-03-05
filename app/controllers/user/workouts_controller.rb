@@ -7,7 +7,7 @@ class User::WorkoutsController < User::BaseController
   end
 
   def show
-    @workout = Rails.cache.fetch("workout-and-location-#{params[:id]}") do
+    @workout = Rails.cache.fetch(workout_cache_name) do
       current_user.workouts.includes(:location).find(params[:id])
     end
 
@@ -20,6 +20,10 @@ class User::WorkoutsController < User::BaseController
   end
 
   private
+
+  def workout_cache_name
+    "workout-and-location-#{params[:id]}-#{Workout.find(params[:id]).updated_at}"
+  end
 
   def load_time_series
     Rails.cache.fetch("workout-#{@workout.map_my_fitness_id}") do
