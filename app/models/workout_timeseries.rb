@@ -48,8 +48,8 @@ class WorkoutTimeseries
       distance = @distances.select { |time, distance| time == point.time }
       speed = @speeds.select { |time, speed| time == point.time }
 
-      point.add_distance(distance[0][1])
-      point.add_speed(speed[0][1])
+      point.add_distance(distance[0][1]) if distance[0]
+      point.add_speed(speed[0][1]) if speed[0]
     end
   end
 

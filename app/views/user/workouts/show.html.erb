@@ -15,8 +15,13 @@
         <li><h4><strong>Temperature:</strong> <%= @workout.display_temperature %></h4></li>
         <li><h4><strong>Calories Burned:</strong> <%= @workout.calories_burned_in_kcal %> kcal</h4></li>
         <li><h4><strong>Average Speed:</strong> <%= @workout.average_speed_in_mph %> mph</h4></li>
-        <li><h4><strong>Minimum Speed:</strong> <%= @time_series.min_speed_in_mph %> mph</h4></li>
-        <li><h4><strong>Maximum Speed:</strong> <%= @time_series.max_speed_in_mph %> mph</h4></li>
+        <% if @time_series.min_speed %>
+          <li><h4><strong>Minimum Speed:</strong> <%= @time_series.min_speed_in_mph %> mph</h4></li>
+          <li><h4><strong>Maximum Speed:</strong> <%= @time_series.max_speed_in_mph %> mph</h4></li>
+        <% else %>
+          <li><h4><strong>Minimum Speed:</strong> Not Available</h4></li>
+          <li><h4><strong>Maximum Speed:</strong> Not Available</h4></li>
+        <% end %>
         <li><h4><strong>Minimum Elevation:</strong> <%= @time_series.min_elevation_in_feet %> ft</h4></li>
         <li><h4><strong>Maximum Elevation:</strong> <%= @time_series.max_elevation_in_feet %> ft</h4></li>
       </ul>
