@@ -22,8 +22,13 @@
           <li><h4><strong>Minimum Speed:</strong> Not Available</h4></li>
           <li><h4><strong>Maximum Speed:</strong> Not Available</h4></li>
         <% end %>
-        <li><h4><strong>Minimum Elevation:</strong> <%= @time_series.min_elevation_in_feet %> ft</h4></li>
-        <li><h4><strong>Maximum Elevation:</strong> <%= @time_series.max_elevation_in_feet %> ft</h4></li>
+        <% if @time_series.has_elevations? %>
+          <li><h4><strong>Minimum Elevation:</strong> <%= @time_series.min_elevation_in_feet %> ft</h4></li>
+          <li><h4><strong>Maximum Elevation:</strong> <%= @time_series.max_elevation_in_feet %> ft</h4></li>
+        <% else %>
+          <li><h4><strong>Minimum Elevation:</strong> Not Available</h4></li>
+          <li><h4><strong>Maximum Elevation:</strong> Not Available</h4></li>
+        <% end %>
       </ul>
     </div>
     <div class="col-sm-12 col-md-7">

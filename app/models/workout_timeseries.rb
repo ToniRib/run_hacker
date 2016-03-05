@@ -32,6 +32,10 @@ class WorkoutTimeseries
     points.map { |point| point.coordinates }
   end
 
+  def has_elevations?
+    points.any? { |p| p.elevation }
+  end
+
   private
 
   def add_points
