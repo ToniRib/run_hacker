@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302164830) do
+ActiveRecord::Schema.define(version: 20160305154907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160302164830) do
     t.integer  "route_id"
     t.float    "temperature"
     t.datetime "starting_datetime"
+    t.string   "local_timezone"
   end
 
   add_index "workouts", ["route_id"], name: "index_workouts_on_route_id", using: :btree

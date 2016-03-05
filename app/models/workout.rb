@@ -11,14 +11,15 @@ class Workout < ActiveRecord::Base
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
 
-    Workout.create(starting_datetime: data[:created_datetime],
-                   map_my_fitness_id: data[:_links][:self][0][:id],
-                   has_time_series: data[:has_time_series],
-                   distance: data[:aggregates][:distance_total],
-                   average_speed: data[:aggregates][:speed_avg],
-                   active_time: data[:aggregates][:active_time_total],
-                   elapsed_time: data[:aggregates][:elapsed_time_total],
-                   metabolic_energy: data[:aggregates][:metabolic_energy_total],
+    Workout.create(starting_datetime:       data[:start_datetime],
+                   local_timezone:          data[:start_locale_timezone],
+                   map_my_fitness_id:       data[:_links][:self][0][:id],
+                   has_time_series:         data[:has_time_series],
+                   distance:                data[:aggregates][:distance_total],
+                   average_speed:           data[:aggregates][:speed_avg],
+                   active_time:             data[:aggregates][:active_time_total],
+                   elapsed_time:            data[:aggregates][:elapsed_time_total],
+                   metabolic_energy:        data[:aggregates][:metabolic_energy_total],
                    map_my_fitness_route_id: data[:_links][:route][0][:id]
     )
   end
@@ -28,11 +29,11 @@ class Workout < ActiveRecord::Base
   end
 
   def starting_date_in_iso_format
-    starting_datetime.localtime.strftime("%Y-%m-%-dT%H:%M")
+    starting_datetime.in_time_zone(local_timezone).strftime("%Y-%m-%-dT%H:%M")
   end
 
   def starting_date_no_time
-    starting_datetime.localtime.strftime("%Y-%m-%d")
+    starting_datetime.in_time_zone(local_timezone).strftime("%Y-%m-%d")
   end
 
   def display_temperature
@@ -40,7 +41,7 @@ class Workout < ActiveRecord::Base
   end
 
   def starting_time_only
-    starting_datetime.localtime.strftime("%l:%M %P")
+    starting_datetime.in_time_zone(local_timezone).strftime("%l:%M %P")
   end
 
   def distance_in_miles
