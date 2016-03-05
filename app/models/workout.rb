@@ -78,4 +78,16 @@ class Workout < ActiveRecord::Base
   def local_timezone
     location.local_timezone
   end
+
+  def self.total_distance_in_miles
+    (sum(:distance) / 1609.344).round(2)
+  end
+
+  def self.total_time_in_minutes
+    (sum(:elapsed_time) / 60).round(2)
+  end
+
+  def self.total_calories_in_kcal
+    (sum(:metabolic_energy) / 4184).round(2)
+  end
 end
