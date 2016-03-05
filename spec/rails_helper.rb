@@ -101,6 +101,7 @@ def user_params
     display_name: "Toni Rib",
     username:     "LeelaelTigre",
     email:        "toni.marie.a@gmail.com",
-    uid:          ENV["TONI_MMF_UID"]
+    uid:          ENV["TONI_MMF_UID"],
+    date_joined:  DateTime.parse("2011-09-20 19:16:52 UTC")
   }
 end

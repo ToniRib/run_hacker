@@ -9,7 +9,8 @@ module OmniauthMacros
         id: ENV['TONI_MMF_UID'],
         display_name: "Toni Rib",
         email: "toni.marie.a@gmail.com",
-        username: "LeelaElTigre"
+        username: "LeelaElTigre",
+        date_joined: "2011-09-20T19:16:52+00:00"
       }
     })
   end
