@@ -4,7 +4,9 @@ RSpec.describe User::DashboardController, type: :controller do
   describe "GET #show" do
     it "responds with successful 200 HTTP status code" do
       user = create(:user)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
 
       get :show
 
