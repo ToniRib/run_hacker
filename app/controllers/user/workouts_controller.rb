@@ -12,10 +12,7 @@ class User::WorkoutsController < User::BaseController
     end
 
     if @workout.has_time_series
-      @time_series = Rails.cache.fetch("workout-#{@workout.map_my_fitness_id}") do
-        service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id, current_user)
-        service.get_timeseries
-      end
+      @time_series = load_time_series
     else
       flash["error"] = "Workout does not have a time series to display"
       redirect_to workouts_path
@@ -23,6 +20,13 @@ class User::WorkoutsController < User::BaseController
   end
 
   private
+
+  def load_time_series
+    Rails.cache.fetch("workout-#{@workout.map_my_fitness_id}") do
+      service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id, current_user)
+      service.get_timeseries
+    end
+  end
 
   def check_owner_of_workout
     render file: "public/404" unless workout_belongs_to_current_user
