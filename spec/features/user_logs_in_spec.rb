@@ -2,8 +2,8 @@ require "rails_helper"
 require "sidekiq/testing"
 Sidekiq::Testing.fake!
 
-RSpec.describe "User logs in" do
-  it "logs in the user and brings them to their dashboard" do
+RSpec.feature "User logs in" do
+  scenario "clicks on create account or log in" do
     visit root_path
     mock_auth_hash
 

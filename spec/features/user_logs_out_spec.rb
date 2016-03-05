@@ -2,8 +2,8 @@ require "rails_helper"
 require "sidekiq/testing"
 Sidekiq::Testing.fake!
 
-RSpec.describe "User logs out" do
-  it "logs out the user and brings them to the landing page" do
+RSpec.feature "User logs out" do
+  scenario "clicks on log out" do
     visit root_path
     mock_auth_hash
 
