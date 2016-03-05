@@ -5,7 +5,7 @@ class MmfRouteService
     @user = User.find(id)
     @offset = 0
 
-    set_up_connection
+    set_up_connection(workout_aggregate_url)
     @response = get_api_response
     request_routes
   end
@@ -20,6 +20,10 @@ class MmfRouteService
     "https://oauth2-api.mapmyapi.com/v7.1/route/?user=#{@user.uid}"
   end
 
+  def workout_specific_url(route_id)
+    "https://oauth2-api.mapmyapi.com/v7.1/route/#{route_id}"
+  end
+
   def get_api_response(offset = 0, limit = 1)
     response = connection.get do |request|
       request.headers["Authorization"] = "Bearer #{@user.token}"
@@ -31,8 +35,8 @@ class MmfRouteService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def set_up_connection
-    @connection = Faraday.new(url: workout_aggregate_url) do |faraday|
+  def set_up_connection(url)
+    @connection = Faraday.new(url: url) do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
@@ -42,9 +46,15 @@ class MmfRouteService
   end
 
   def save_new_routes
-    @offset = user.number_of_routes
+    user.workouts.no_routes.each do |workout|
+      set_up_connection(workout_specific_url(workout.map_my_fitness_route_id))
+      @response = get_api_response
 
-    load_all_routes_from_offset unless no_new_routes
+      location = Location.create_from_api_response(response)
+      route = Route.create_from_api_response(response, location.id)
+
+      associate_workouts_with_new_route(response, route)
+    end
   end
 
   def no_new_routes
