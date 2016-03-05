@@ -23,12 +23,11 @@ RSpec.describe MmfWorkoutAggregateService do
       expect(Workout.count).to eq(188)
       expect(Workout.last.map_my_fitness_id).to eq(1322637635)
 
-      # Note: this VCR was recorded a week later
       VCR.use_cassette("load_new_workouts") do
         MmfWorkoutAggregateService.load_workouts(user.id)
       end
 
-      expect(Workout.count).to eq(192)
+      expect(Workout.count).to eq(190)
     end
   end
 end

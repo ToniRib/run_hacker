@@ -11,16 +11,20 @@ class Workout < ActiveRecord::Base
   def self.create_from_api_response(data)
     return if data[:aggregates][:distance_total] == 0
 
-    Workout.create(starting_datetime:       data[:start_datetime],
-                   map_my_fitness_id:       data[:_links][:self][0][:id],
-                   has_time_series:         data[:has_time_series],
-                   distance:                data[:aggregates][:distance_total],
-                   average_speed:           data[:aggregates][:speed_avg],
-                   active_time:             data[:aggregates][:active_time_total],
-                   elapsed_time:            data[:aggregates][:elapsed_time_total],
-                   metabolic_energy:        data[:aggregates][:metabolic_energy_total],
-                   map_my_fitness_route_id: data[:_links][:route][0][:id]
-    )
+    workout = Workout.find_or_create_by(map_my_fitness_id: data[:_links][:self][0][:id])
+
+    workout.starting_datetime =       data[:start_datetime]
+    workout.has_time_series =         data[:has_time_series]
+    workout.distance =                data[:aggregates][:distance_total]
+    workout.average_speed =           data[:aggregates][:speed_avg]
+    workout.active_time =             data[:aggregates][:active_time_total]
+    workout.elapsed_time =            data[:aggregates][:elapsed_time_total]
+    workout.metabolic_energy =        data[:aggregates][:metabolic_energy_total]
+    workout.map_my_fitness_route_id = data[:_links][:route][0][:id]
+
+    workout.save
+
+    workout
   end
 
   def update_temperature(temp)
