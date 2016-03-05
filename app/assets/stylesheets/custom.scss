@@ -209,6 +209,11 @@ tbody{
 
   li {
     padding: 3px 0;
+
+    strong {
+      color: $base-red
+    }
+    
   }
 
 }
