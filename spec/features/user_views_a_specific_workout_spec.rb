@@ -46,4 +46,29 @@ RSpec.feature "User views a specific workout" do
     expect(current_path).to eq(workouts_path)
     expect(page).to have_content("Workout does not have a time series to display")
   end
+
+  scenario "workout does not exist" do
+    user = User.create(user_params)
+
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
+
+    visit workout_path(1)
+
+    expect(page).to have_content("We're sorry, the page you were looking for doesn't exist.")
+  end
+
+  scenario "workout does not belong to logged in user" do
+    user = User.create(user_params)
+    workout = create(:workout)
+
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
+
+    visit workout_path(workout)
+
+    expect(page).to have_content("We're sorry, the page you were looking for doesn't exist.")
+  end
 end
