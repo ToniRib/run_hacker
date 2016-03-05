@@ -1,6 +1,6 @@
 class UserAggregatesSerializer < ActiveModel::Serializer
   attributes :total_workouts, :total_distance, :total_time,
-             :total_calories, :date_joined
+             :total_calories, :date_joined, :average_run_distance
 
   def total_workouts
     object.workouts.count
@@ -20,5 +20,9 @@ class UserAggregatesSerializer < ActiveModel::Serializer
 
   def date_joined
     object.date_joined_formatted
+  end
+
+  def average_run_distance
+    object.workouts.average_distance_in_miles
   end
 end

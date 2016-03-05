@@ -5,7 +5,8 @@ RSpec.describe Api::V1::User::AggregatesController, type: :controller do
     let(:json_response) { JSON.parse(response.body, symbolize_names: true) }
 
     it "responds with successful 200 HTTP status code" do
-      user = create(:user)
+      user = create(:user_with_workouts_and_routes)
+
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
         .and_return(user)
@@ -18,6 +19,7 @@ RSpec.describe Api::V1::User::AggregatesController, type: :controller do
 
     it "returns the user's aggregate workout data" do
       user = create(:user_with_workouts_and_routes)
+
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
         .and_return(user)
@@ -29,6 +31,7 @@ RSpec.describe Api::V1::User::AggregatesController, type: :controller do
       expect(json_response[:total_time]).to eq(101.53)
       expect(json_response[:total_calories]).to eq(1300.0)
       expect(json_response[:date_joined]).to eq("Sep 20, 2011")
+      expect(json_response[:average_run_distance]).to eq(5.06)
     end
   end
 end

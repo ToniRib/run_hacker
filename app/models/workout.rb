@@ -87,6 +87,10 @@ class Workout < ActiveRecord::Base
     (sum(:distance) / 1609.344).round(2)
   end
 
+  def self.average_distance_in_miles
+    (total_distance_in_miles / count).round(2)
+  end
+
   def self.total_time_in_minutes
     (sum(:elapsed_time) / 60).round(2)
   end
