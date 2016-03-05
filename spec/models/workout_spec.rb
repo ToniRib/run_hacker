@@ -86,6 +86,18 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe "#starting_time_only" do
+    it "returns the time the run was recorded in the given timezone" do
+      workout = create(:workout,
+                       starting_datetime: DateTime.new(2015, 05, 10, 12, 0, 0),
+                       local_timezone: "America/Denver")
+
+      date = workout.starting_time_only
+
+      expect(date).to eq(" 6:00 am")
+    end
+  end
+
   describe "#calories_burned_in_kcal" do
     it "returns the number of calories burned converted from joules to kcal" do
       workout = create(:workout)
@@ -213,6 +225,24 @@ RSpec.describe Workout, type: :model do
       expected = [[200, 20, 25]]
 
       expect(data).to eq(expected)
+    end
+  end
+
+  describe "#display_temperature" do
+    it "displays the temperature with °F if it exists" do
+      workout = create(:workout, temperature: 78)
+
+      temp_display = workout.display_temperature
+
+      expect(temp_display).to eq("78.0 °F")
+    end
+
+    it "displays Not Available if temperature does not exist" do
+      workout = create(:workout, temperature: nil)
+
+      temp_display = workout.display_temperature
+
+      expect(temp_display).to eq("Not Available")
     end
   end
 
