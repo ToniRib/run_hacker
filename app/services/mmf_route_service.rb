@@ -69,10 +69,6 @@ class MmfRouteService
     associate_workouts_with_new_route(data, route)
   end
 
-  def no_new_routes
-    response[:total_count] - user.number_of_routes == 0
-  end
-
   def load_all_routes_from_offset
     @response = get_api_response(offset, limit = 40)
     create_routes_from_current_response

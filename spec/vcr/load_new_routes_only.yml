@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://oauth2-api.mapmyapi.com/v7.1/route/?limit=1&offset=0&user=9676266
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer 2da174759b1da00f1639381b90d4ce71e9d9638e
+      Api-Key:
+      - kts2fpx89npnp2nk9kg58v3jeccj3394
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Mar 2016 18:09:07 GMT
+      Server:
+      - nginx
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1b-121.mashery.com
+      X-Plan-Qps-Allotted:
+      - '25'
+      X-Plan-Qps-Current:
+      - '1'
+      X-Plan-Quota-Allotted:
+      - '100000'
+      X-Plan-Quota-Current:
+      - '284'
+      X-Plan-Quota-Reset:
+      - Sunday, March 6, 2016 12:00:00 AM GMT
+      Content-Length:
+      - '1300'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"self":[{"href":"\/v7.1\/route\/?limit=1&user=9676266&offset=0"}],"documentation":[{"href":"https:\/\/developer.underarmour.com\/docs\/v71_Route"}],"next":[{"href":"\/v7.1\/route\/?limit=1&user=9676266&offset=1"}]},"_embedded":{"routes":[{"total_descent":null,"city":"Los
+        Angeles","data_source":null,"description":"","updated_datetime":"2012-06-06T23:37:30+00:00","created_datetime":"2012-06-06T23:37:30+00:00","country":"us","start_point_type":"","starting_location":{"type":"Point","coordinates":[-118.360562,34.068215]},"distance":3458.7913377336,"name":"2.15
+        mile Run\/Jog in Los Angeles on Jun 6, 2012 at 04:16 pm","climbs":null,"state":"CA","max_elevation":null,"postal_code":"","min_elevation":null,"images":[],"_links":{"self":[{"href":"\/v7.1\/route\/100266717\/","id":"100266717"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"alternate":[{"href":"\/v7.1\/route\/100266717\/?format=kml&field_set=detailed","id":"100266717","name":"kml"},{"href":"\/v7.1\/route\/100266717\/?format=gpx&field_set=detailed","id":"100266717","name":"gpx"}],"thumbnail":[{"href":"\/\/drzetlglcbfx.cloudfront.net\/routes\/thumbnail\/100266717\/1339025850?size=100x100"}],"privacy":[{"href":"\/v7.1\/privacy_option\/6\/","id":"6"}]},"points":null,"total_ascent":null}]},"total_count":191}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 18:09:07 GMT
+- request:
+    method: get
+    uri: https://oauth2-api.mapmyapi.com/v7.1/route/971979029?limit=1&offset=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer 2da174759b1da00f1639381b90d4ce71e9d9638e
+      Api-Key:
+      - kts2fpx89npnp2nk9kg58v3jeccj3394
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - post-check=0, pre-check=0, max-age=0, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Mar 2016 18:09:08 GMT
+      Etag:
+      - e8ffd9fbef406cdd6b78187b46b1ad4b
+      Server:
+      - nginx
+      X-Mashery-Responder:
+      - prod-j-worker-us-east-1b-106.mashery.com
+      - prod-j-worker-us-east-1b-109.mashery.com
+      X-Plan-Qps-Allotted:
+      - '25'
+      - '25'
+      X-Plan-Qps-Current:
+      - '1'
+      - '2'
+      X-Plan-Quota-Allotted:
+      - '100000'
+      - '100000'
+      X-Plan-Quota-Current:
+      - '285'
+      - '286'
+      X-Plan-Quota-Reset:
+      - Sunday, March 6, 2016 12:00:00 AM GMT
+      - Sunday, March 6, 2016 12:00:00 AM GMT
+      Content-Length:
+      - '1170'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_descent":null,"city":"Glendale","data_source":"MapMyRun Androi","description":"","updated_datetime":"2016-01-26T21:40:45+00:00","created_datetime":"2016-01-26T21:40:37+00:00","country":"us","start_point_type":"","starting_location":{"type":"Point","coordinates":[-104.90062083,39.67759636]},"distance":4829.16,"name":"Ran
+        3.00 mi on 01\/26\/2016","climbs":null,"state":"CO","max_elevation":null,"postal_code":"","min_elevation":null,"images":[],"_links":{"activity_types":[{"href":"\/v7.1\/activity_type\/16\/","id":"16"}],"privacy":[{"href":"\/v7.1\/privacy_option\/1\/","id":"1"}],"self":[{"href":"\/v7.1\/route\/971979029\/?limit=1&offset=0","id":"971979029"}],"alternate":[{"href":"\/v7.1\/route\/971979029\/?format=kml&field_set=detailed","id":"971979029","name":"kml"},{"href":"\/v7.1\/route\/971979029\/?format=gpx&field_set=detailed","id":"971979029","name":"gpx"}],"user":[{"href":"\/v7.1\/user\/9676266\/","id":"9676266"}],"thumbnail":[{"href":"\/\/drzetlglcbfx.cloudfront.net\/routes\/thumbnail\/971979029\/1453844445?size=100x100"}],"documentation":[{"href":"https:\/\/developer.underarmour.com\/docs\/v71_Route"}]},"points":null,"total_ascent":null}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 18:09:08 GMT
+recorded_with: VCR 3.0.1
