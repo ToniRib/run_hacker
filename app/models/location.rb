@@ -8,4 +8,12 @@ class Location < ActiveRecord::Base
   def city_and_state
     "#{city}, #{state}"
   end
+
+  def update_zipcode(zipcode)
+    update_attribute(:zipcode, zipcode)
+  end
+
+  def update_local_timezone(timezone)
+    update_attribute(:local_timezone, timezone)
+  end
 end

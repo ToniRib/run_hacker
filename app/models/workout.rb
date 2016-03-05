@@ -74,4 +74,8 @@ class Workout < ActiveRecord::Base
              "temperature",
              "elapsed_time - active_time AS time_spent_resting")
   end
+
+  def local_timezone
+    location.local_timezone
+  end
 end

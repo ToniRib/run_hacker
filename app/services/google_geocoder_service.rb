@@ -27,7 +27,7 @@ class GoogleGeocoderService
   end
 
   def update_with_zipcode(route)
-    route.location.update_attribute(:zipcode, zipcode)
+    route.update_zipcode_of_location(zipcode)
   end
 
   def address_components

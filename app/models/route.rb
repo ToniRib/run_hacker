@@ -17,4 +17,12 @@ class Route < ActiveRecord::Base
   def elevation_in_feet
     (elevation * 3.28084).round(2)
   end
+
+  def update_zipcode_of_location(zipcode)
+    location.update_zipcode(zipcode)
+  end
+
+  def update_local_timezone_of_location(timezone)
+    location.update_local_timezone(timezone)
+  end
 end
