@@ -1,5 +1,6 @@
 class Workout < ActiveRecord::Base
   include TemperatureDatasets
+  include TimeOfDayDatasets
   include DashboardAggregates
 
   belongs_to :user
@@ -12,6 +13,7 @@ class Workout < ActiveRecord::Base
   scope :has_temperature, -> { where("temperature IS NOT NULL") }
   scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
   scope :no_routes, -> { where("route_id IS NULL") }
+  scope :has_routes, -> { where("route_id IS NOT NULL") }
 
   def self.create_from_api_response(data)
     return if no_distance_or_no_route(data)
@@ -50,6 +52,10 @@ class Workout < ActiveRecord::Base
 
   def starting_time_only
     starting_datetime.in_time_zone(local_timezone).strftime("%l:%M %P")
+  end
+
+  def starting_datetime_in_local_time
+    starting_datetime.in_time_zone(local_timezone)
   end
 
   def update_temperature(temp)
