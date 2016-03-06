@@ -1,0 +1,124 @@
+<%= javascript_tag do %>
+  $(function () {
+    $('#time-of-day-chart').highcharts({
+      chart: {
+        type: 'scatter',
+        zoomType: 'xy',
+        height: 570,
+        animation: true
+      },
+      xAxis: {
+        title: {
+          enabled: true,
+          text: 'Time of Day'
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true
+      },
+      title: { text: null },
+      yAxis: {
+        title: {
+          text: null
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        scatter: {
+          marker: {
+            radius: 5,
+            states: {
+              hover: {
+                enabled: true,
+                lineColor: 'rgb(100,100,100)'
+              }
+            }
+          },
+          states: {
+            hover: {
+              marker: {
+                enabled: false
+              }
+            }
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x}°F, {point.y}'
+          }
+        }
+      },
+      series: [{
+        color: 'rgba(223, 83, 83, .5)',
+        data: null,
+        name: 'Workouts'
+      }]
+    });
+  });
+
+  <!-- DYNAMIC CHART -->
+  $('#create-time-of-day-chart').on('click', function() {
+    updateChart();
+  })
+
+  $('#y-axis').on('change', function() {
+    updateChart();
+  })
+
+  function updateChart(){
+    var $chart = $('#time-of-day-chart').highcharts()
+    var minDistance = parseInt($('#minimum_distance').val());
+    var maxDistance = parseInt($('#maximum_distance').val());
+
+    var minDistanceInMiles = minDistance * (1000 / 0.621371);
+    var maxDistanceInMiles = maxDistance * (1000 / 0.621371);
+
+    var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
+    var yAxisSelection = $('#y-axis').val();
+
+    $chart.setTitle({ text: 'Time of Day vs. ' + yAxisSelection + ' for ' + range + 'runs' })
+
+    var workouts;
+    if (yAxisSelection == "Total Time") {
+      workouts = <%= @workouts.distance_temperature_and_total_time %>;
+      $chart.yAxis[0].setTitle({
+          text: yAxisSelection + ' (min)'
+      });
+    } else if (yAxisSelection == "Average Speed") {
+      workouts = <%= @workouts.distance_temperature_and_average_speed %>;
+      $chart.yAxis[0].setTitle({
+          text: yAxisSelection + ' (mph)'
+      });
+    } else if (yAxisSelection == "Time Spent Resting") {
+      workouts = <%= @workouts.distance_temperature_and_time_spent_resting %>;
+      $chart.yAxis[0].setTitle({
+          text: yAxisSelection + ' (min)'
+      });
+    }
+
+    var filtered = [];
+    var x, y;
+
+    workouts.forEach(function(set){
+      if (set[0] >= minDistanceInMiles && set[0] <= maxDistanceInMiles) {
+        if (yAxisSelection == "Total Time") {
+          y = parseFloat((set[2] / 60).toFixed(2));
+        } else if (yAxisSelection == "Average Speed") {
+          y = parseFloat((set[2] * (3600 / 1609.344)).toFixed(2));
+        } else if (yAxisSelection == "Time Spent Resting") {
+          y = parseFloat((set[2] / 60).toFixed(2));
+        }
+        x = set[1];
+        filtered.push([x, y]);
+      }
+    })
+
+    $chart.series[0].setData(filtered);
+    $chart.series[0].update({
+      animation: {
+        duration: 250
+      }
+    });
+  }
+<% end %>
