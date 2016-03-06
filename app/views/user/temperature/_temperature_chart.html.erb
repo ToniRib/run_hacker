@@ -74,25 +74,23 @@
     var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
     var yAxisSelection = $('#y-axis').val();
 
-    $chart.setTitle({ text: 'Temperature vs. ' + yAxisSelection + ' for ' + range + 'runs' })
+    $chart.setTitle({ text: 'Temperature vs. ' + yAxisSelection + ' for ' + range + 'runs' });
 
-    var workouts;
-    if (yAxisSelection == "Total Time") {
-      workouts = <%= @workouts.distance_temperature_and_total_time %>;
-      $chart.yAxis[0].setTitle({
-          text: yAxisSelection + ' (min)'
-      });
-    } else if (yAxisSelection == "Average Speed") {
-      workouts = <%= @workouts.distance_temperature_and_average_speed %>;
-      $chart.yAxis[0].setTitle({
-          text: yAxisSelection + ' (mph)'
-      });
-    } else if (yAxisSelection == "Time Spent Resting") {
-      workouts = <%= @workouts.distance_temperature_and_time_spent_resting %>;
-      $chart.yAxis[0].setTitle({
-          text: yAxisSelection + ' (min)'
-      });
-    }
+    var yAxisUnits = {
+      "Total Time": " (min)",
+      "Average Speed": " (mph)",
+      "Time Spent Resting": " (min)"
+    };
+
+    $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
+
+    var data = {
+      "Total Time": <%= @workouts.distance_temperature_and_total_time %>,
+      "Average Speed": <%= @workouts.distance_temperature_and_average_speed %>,
+      "Time Spent Resting": <%= @workouts.distance_temperature_and_time_spent_resting %>
+    };
+
+    var workouts = data[yAxisSelection];
 
     var filtered = [];
     var x, y;
