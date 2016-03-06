@@ -14,9 +14,9 @@ class Workout < ActiveRecord::Base
   scope :no_routes, -> { where("route_id IS NULL") }
 
   def self.create_from_api_response(data)
-    return if data[:aggregates][:distance_total] == 0 || data[:_links][:route].nil?
+    return if no_distance_or_no_route(data)
 
-    workout = Workout.find_or_create_by(map_my_fitness_id: data[:_links][:self][0][:id])
+    workout = Workout.find_or_create_by(map_my_fitness_id: mmf_id(data))
 
     workout.starting_datetime       = data[:start_datetime]
     workout.has_time_series         = data[:has_time_series]
@@ -66,5 +66,15 @@ class Workout < ActiveRecord::Base
 
   def local_timezone
     location.local_timezone
+  end
+
+  private
+
+  def self.no_distance_or_no_route(data)
+    data[:aggregates][:distance_total] == 0 || data[:_links][:route].nil?
+  end
+
+  def self.mmf_id(data)
+    data[:_links][:self][0][:id]
   end
 end
