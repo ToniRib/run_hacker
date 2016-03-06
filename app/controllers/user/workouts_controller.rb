@@ -3,7 +3,10 @@ class User::WorkoutsController < User::BaseController
   before_action :check_owner_of_workout, only: [:show]
 
   def index
-    @workouts = current_user.workouts.includes(:route, :location)
+    workouts = current_user.workouts.includes(:route, :location)
+    @workouts = workouts
+                  .by_descending_start_date
+                  .map { |w| Presenters::WorkoutPresenter.new(w) }
   end
 
   def show
