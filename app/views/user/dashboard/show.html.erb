@@ -67,7 +67,7 @@
   </div>
 </div>
 
-<%= javascript_tag do %>
+<script type="text/javascript">
   $(document).ready(function(){
     setInterval( pollForAggregates, 1000 );
   })
@@ -89,4 +89,4 @@
     $("#average-distance").text(data.average_run_distance + " miles");
     $("#total-time").text(data.total_time + " hours");
   }
-<% end %>
+</script>

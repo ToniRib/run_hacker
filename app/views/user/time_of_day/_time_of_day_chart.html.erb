@@ -1,4 +1,4 @@
-<%= javascript_tag do %>
+<script type="text/javascript">
   $(function () {
     $('#time-of-day-chart').highcharts({
       chart: {
@@ -125,4 +125,4 @@
   function convertToDate(dateArray) {
     return Date.UTC(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4])
   }
-<% end %>
+</script>

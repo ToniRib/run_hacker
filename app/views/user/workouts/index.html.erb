@@ -30,8 +30,8 @@
   </div>
 </div>
 
-<%= javascript_tag do %>
+<script type="text/javascript">
   $("tr[data-link]").click(function() {
     window.location = this.dataset.link;
   })
-<% end %>
+</script>
