@@ -53,8 +53,8 @@
                     <td></td>
                   <% end %>
 
-                  <% if workout.route.elevation %>
-                    <td><%= workout.route.elevation_in_feet if workout.route %></td>
+                  <% if workout.route && workout.route.elevation %>
+                    <td><%= workout.route.elevation_in_feet %></td>
                   <% else %>
                     <td></td>
                   <% end %>
