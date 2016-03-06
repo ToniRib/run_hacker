@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :workouts, dependent: :destroy
   has_many :routes, through: :workouts
+  has_many :locations, through: :routes
 
   validates :uid,   uniqueness: { scope: :provider }
   validates :token, presence: true

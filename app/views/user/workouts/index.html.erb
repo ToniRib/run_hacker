@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <% cache("workout-listing-#{Workout.count}-#{Workout.maximum(:updated_at)}-#{current_user.id}") do %>
+            <% cache("workout-listing-#{current_user.workouts.count}-#{current_user.workouts.maximum(:updated_at)}-#{current_user.id}") do %>
               <% @workouts.each do |workout| %>
                 <%= render partial: "workout", locals: { workout: workout } %>
               <% end %>
