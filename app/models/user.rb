@@ -47,4 +47,9 @@ class User < ActiveRecord::Base
   def date_joined_formatted
     date_joined.strftime("%b %-d, %Y")
   end
+
+  def locations_as_city_and_state
+    all_locations = locations.uniq.group_by { |l| [l.city, l.state] }.keys
+    all_locations.map { |l| l.join(", ")}[0..4]
+  end
 end

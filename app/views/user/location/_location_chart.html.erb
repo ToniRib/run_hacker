@@ -1,0 +1,39 @@
+<script type="text/javascript">
+  $(function () {
+    $('#location-chart').highcharts({
+      chart: {
+        type: 'boxplot',
+        height: 570,
+        animation: true
+      },
+      title: { text: null },
+      legend: {
+        enabled: false
+      },
+      xAxis: {
+        categories: <%= current_user.locations_as_city_and_state.to_json.html_safe %>,
+        title: {
+          text: 'Location'
+        }
+      },
+      yAxis: {
+        title: {
+          text: null
+        }
+      },
+      series: [{
+        name: 'Workouts',
+        data: [
+          [760, 801, 848, 895, 965],
+          [733, 853, 939, 980, 1080],
+          [714, 762, 817, 870, 918],
+          [724, 802, 806, 871, 950],
+          [834, 836, 864, 882, 910]
+        ],
+        tooltip: {
+          headerFormat: '<em>Experiment No {point.key}</em><br/>'
+        }
+      }]
+    });
+  });
+</script>
