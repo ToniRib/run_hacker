@@ -14,8 +14,7 @@
         },
         type: 'datetime',
         dateTimeLabelFormats : {
-          hour: '%I %p',
-          minute: '%I:%M %p'
+          hour: '%l %p'
         }
       },
       title: { text: null },
@@ -46,8 +45,8 @@
             }
           },
           tooltip: {
-            pointFormat: '{point.x: %I:%M %p}, {point.y}'
-          },
+            pointFormat: '{point.x: %l:%M %p}, {point.y}'
+          }
         }
       },
       series: [{
@@ -68,7 +67,7 @@
   })
 
   function updateChart(){
-    var $chart = $('#time-of-day-chart').highcharts()
+    var $chart = $('#time-of-day-chart').highcharts();
     var minDistance = parseInt($('#minimum_distance').val());
     var maxDistance = parseInt($('#maximum_distance').val());
 
@@ -87,12 +86,18 @@
           text: yAxisSelection + ' (min)'
       });
     } else if (yAxisSelection == "Average Speed") {
-      workouts = <%= @workouts.distance_temperature_and_average_speed %>;
+      workouts = <%= @workouts.distance_time_of_day_and_average_speed %>;
+      workouts = workouts.map(function(w) {
+        return [w[0], convertToDate(w[1]), w[2]]
+      });
       $chart.yAxis[0].setTitle({
           text: yAxisSelection + ' (mph)'
       });
     } else if (yAxisSelection == "Time Spent Resting") {
-      workouts = <%= @workouts.distance_temperature_and_time_spent_resting %>;
+      workouts = <%= @workouts.distance_time_of_day_and_time_spent_resting %>;
+      workouts = workouts.map(function(w) {
+        return [w[0], convertToDate(w[1]), w[2]]
+      });
       $chart.yAxis[0].setTitle({
           text: yAxisSelection + ' (min)'
       });
