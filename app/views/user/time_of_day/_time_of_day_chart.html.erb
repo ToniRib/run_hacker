@@ -74,34 +74,23 @@
     var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
     var yAxisSelection = $('#y-axis').val();
 
-    $chart.setTitle({ text: 'Time of Day vs. ' + yAxisSelection + ' for ' + range + 'runs' })
+    $chart.setTitle({ text: 'Time of Day vs. ' + yAxisSelection + ' for ' + range + 'runs' });
 
-    var workouts;
-    if (yAxisSelection == "Total Time") {
-      workouts = <%= @workouts.distance_time_of_day_and_total_time %>;
-      workouts = workouts.map(function(w) {
-        return [w[0], convertToDate(w[1]), w[2]]
-      });
-      $chart.yAxis[0].setTitle({
-          text: yAxisSelection + ' (min)'
-      });
-    } else if (yAxisSelection == "Average Speed") {
-      workouts = <%= @workouts.distance_time_of_day_and_average_speed %>;
-      workouts = workouts.map(function(w) {
-        return [w[0], convertToDate(w[1]), w[2]]
-      });
-      $chart.yAxis[0].setTitle({
-          text: yAxisSelection + ' (mph)'
-      });
-    } else if (yAxisSelection == "Time Spent Resting") {
-      workouts = <%= @workouts.distance_time_of_day_and_time_spent_resting %>;
-      workouts = workouts.map(function(w) {
-        return [w[0], convertToDate(w[1]), w[2]]
-      });
-      $chart.yAxis[0].setTitle({
-          text: yAxisSelection + ' (min)'
-      });
-    }
+    var yAxisUnits = {
+      "Total Time": " (min)",
+      "Average Speed": " (mph)",
+      "Time Spent Resting": " (min)"
+    };
+
+    $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
+
+    var data = {
+      "Total Time": mapWorkoutsWithTimes(<%= @workouts.distance_time_of_day_and_total_time %>),
+      "Average Speed": mapWorkoutsWithTimes(<%= @workouts.distance_time_of_day_and_average_speed %>),
+      "Time Spent Resting": mapWorkoutsWithTimes(<%= @workouts.distance_time_of_day_and_time_spent_resting %>)
+    };
+
+    var workouts = data[yAxisSelection];
 
     var filtered = [];
     var x, y;
@@ -123,6 +112,12 @@
   }
 
   function convertToDate(dateArray) {
-    return Date.UTC(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4])
+    return Date.UTC(dateArray[0], dateArray[1], dateArray[2], dateArray[3], dateArray[4]);
+  }
+
+  function mapWorkoutsWithTimes(workouts) {
+    return workouts.map(function(w) {
+      return [w[0], convertToDate(w[1]), w[2]];
+    });
   }
 </script>

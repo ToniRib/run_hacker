@@ -12,13 +12,7 @@ module TimeOfDayDatasets
               .has_routes
               .select(:distance, :starting_datetime, :elapsed_time, :route_id)
 
-      data.map do |workout|
-        [workout.distance_in_miles,
-         [2016, 1, 1,
-          workout.starting_datetime_in_local_time.hour,
-          workout.starting_datetime_in_local_time.min],
-         workout.elapsed_time_in_minutes]
-      end
+      map_total_time(data)
     end
 
     def self.distance_time_of_day_and_average_speed
@@ -26,13 +20,7 @@ module TimeOfDayDatasets
               .has_routes
               .select(:distance, :starting_datetime, :average_speed, :route_id)
 
-      data.map do |workout|
-        [workout.distance_in_miles,
-         [2016, 1, 1,
-          workout.starting_datetime_in_local_time.hour,
-          workout.starting_datetime_in_local_time.min],
-         workout.average_speed_in_mph]
-      end
+      map_average_speed(data)
     end
 
     def self.distance_time_of_day_and_time_spent_resting
@@ -42,6 +30,32 @@ module TimeOfDayDatasets
               .has_routes
               .select(:distance, :starting_datetime, :elapsed_time, :active_time, :route_id)
 
+      map_time_spent_resting(data)
+    end
+
+    private
+
+    def self.map_total_time(data)
+      data.map do |workout|
+        [workout.distance_in_miles,
+         [2016, 1, 1,
+          workout.starting_datetime_in_local_time.hour,
+          workout.starting_datetime_in_local_time.min],
+         workout.elapsed_time_in_minutes]
+      end
+    end
+
+    def self.map_average_speed(data)
+      data.map do |workout|
+        [workout.distance_in_miles,
+         [2016, 1, 1,
+          workout.starting_datetime_in_local_time.hour,
+          workout.starting_datetime_in_local_time.min],
+         workout.average_speed_in_mph]
+      end
+    end
+
+    def self.map_time_spent_resting(data)
       data.map do |workout|
         [workout.distance_in_miles,
          [2016, 1, 1,
