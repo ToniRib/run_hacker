@@ -4,7 +4,6 @@ module TimeOfDayDatasets
   extend ActiveSupport::Concern
 
   included do
-    scope :has_routes, -> { where("route_id IS NOT NULL") }
     scope :has_average_speed, -> { where("average_speed IS NOT NULL") }
 
     def self.distance_time_of_day_and_total_time
