@@ -50,6 +50,6 @@ class User < ActiveRecord::Base
 
   def locations_as_city_and_state
     all_locations = locations.uniq.group_by { |l| [l.city, l.state] }.keys
-    all_locations.map { |l| l.join(", ")}[0..4]
+    all_locations.map { |l| l.join(", ")}
   end
 end

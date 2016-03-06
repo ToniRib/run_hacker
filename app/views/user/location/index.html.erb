@@ -6,19 +6,26 @@
       </div>
       <div class="row">
         <div class="filter">
-          <div class="col-sm-5">
-            <label>Distance Range</label>
-            <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
-            <span>to</span>
-            <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
-            <span>miles</span>
+          <div class="col-sm-3 text-center">
+            <label>Locations (select multiple)</label><br>
+            <%= select_tag "location", options_for_select(current_user.locations_as_city_and_state),
+                                       multiple: true,
+                                       class: "multi-select" %>
           </div>
-          <div class="col-sm-4 text-center select-column">
+          <div class="col-sm-4 large-top-margin">
+              <label>Distance Range</label>
+              <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
+              <span>to</span>
+              <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
+              <span>miles</span>
+            </div>
+          </div>
+          <div class="col-sm-3 large-top-margin">
             <label>Y-axis</label>
             <%= select_tag "y-axis", options_for_select(["Total Time", "Average Speed"], "Total Time") %>
           </div>
-          <div class="col-sm-3">
-            <button id="create-location-chart" class="btn btn-default pull-right create-graph">Create Graph</button>
+          <div class="col-sm-2 large-top-margin text-center">
+            <button id="create-location-chart" class="btn btn-default create-graph">Create Graph</button>
           </div>
         </div>
       </div>
