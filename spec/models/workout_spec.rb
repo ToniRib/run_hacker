@@ -202,6 +202,16 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe "#local_timezone" do
+    it "returns the local timezone from the associated location" do
+      workout = create(:workout)
+
+      timezone = workout.local_timezone
+
+      expect(timezone).to eq("America/Denver")
+    end
+  end
+
   describe ".distance_temperature_and_total_time" do
     it "returns nested arrays for records with temp that include total time" do
       workout1 = create(:workout, distance: 8000,
