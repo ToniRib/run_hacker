@@ -34,6 +34,58 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe ".has_temperature" do
+    it "returns only workouts where temperature is not nil" do
+      workout1, workout2 = create_list(:workout, 2)
+      workout2.update_temperature(nil)
+
+      expect(Workout.has_temperature.count).to eq(1)
+      expect(Workout.has_temperature.first.id).to eq(workout1.id)
+    end
+  end
+
+  describe ".has_elapsed_time" do
+    it "returns only workouts where elapsed time is not nil" do
+      workout1, workout2 = create_list(:workout, 2)
+      workout2.update_attribute(:elapsed_time, nil)
+
+      expect(Workout.has_elapsed_time.count).to eq(1)
+      expect(Workout.has_elapsed_time.first.id).to eq(workout1.id)
+    end
+  end
+
+  describe ".has_active_time" do
+    it "returns only workouts where active time is not nil" do
+      workout1, workout2 = create_list(:workout, 2)
+      workout2.update_attribute(:active_time, nil)
+
+      expect(Workout.has_active_time.count).to eq(1)
+      expect(Workout.has_active_time.first.id).to eq(workout1.id)
+    end
+  end
+
+  describe ".no_routes" do
+    it "returns only workouts where active time is nil" do
+      workout1, workout2 = create_list(:workout, 2)
+      workout2.update_attribute(:route_id, nil)
+
+      expect(Workout.no_routes.count).to eq(1)
+      expect(Workout.no_routes.first.id).to eq(workout2.id)
+    end
+  end
+
+  describe ".by_descending_start_date" do
+    it "returns workouts in order of descending start date" do
+      workout1 = create(:workout, starting_datetime: DateTime.new(2015, 01, 01))
+      workout2 = create(:workout, starting_datetime: DateTime.new(2016, 01, 01))
+
+      workouts_in_order = Workout.by_descending_start_date
+
+      expect(workouts_in_order.first).to eq(workout2)
+      expect(workouts_in_order.last).to eq(workout1)
+    end
+  end
+
   describe "#update_temperature" do
     it "updates the temperature" do
       workout = create(:workout)
