@@ -104,6 +104,6 @@ class Workout < ActiveRecord::Base
   end
 
   def self.total_calories_in_kcal
-    (sum(:metabolic_energy) / 4184).round(2)
+    (sum(:metabolic_energy) / 4184).round(0)
   end
 end
