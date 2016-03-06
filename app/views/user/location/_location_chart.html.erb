@@ -74,8 +74,7 @@
     $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
 
     var data = {
-      "Total Time": <%= @workouts.distance_temperature_and_total_time %>,
-      "Average Speed": <%= @workouts.distance_temperature_and_average_speed %>
+      "Total Time": <%= @workouts.distance_location_and_total_time.to_json.html_safe %>
     };
 
     var workouts = data[yAxisSelection];
