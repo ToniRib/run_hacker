@@ -180,6 +180,28 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe "#starting_datetime_in_local_time" do
+    it "returns the start datetime in the local timezone per the associated location" do
+      workout = create(:workout,
+                       starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+
+      datetime_in_local_time = workout.starting_datetime_in_local_time
+
+      expect(datetime_in_local_time)
+        .to eq(DateTime.parse("2011-09-20 13:16:52.000 -0600"))
+    end
+  end
+
+  describe "#time_spent_resting_in_minutes" do
+    it "returns the elapsed time minus the active time in minutes" do
+      workout = create(:workout, elapsed_time: 500, active_time: 300)
+
+      time_spent_resting = workout.time_spent_resting_in_minutes
+
+      expect(time_spent_resting).to eq(3.33)
+    end
+  end
+
   describe ".distance_temperature_and_total_time" do
     it "returns nested arrays for records with temp that include total time" do
       workout1 = create(:workout, distance: 8000,
@@ -252,7 +274,7 @@ RSpec.describe Workout, type: :model do
                                   active_time: 450)
 
       data = Workout.distance_temperature_and_time_spent_resting
-      expected = [[4.97, 20.0, 25.0], [2.49, 40.0, 50.0]]
+      expected = [[4.97, 20.0, 0.42], [2.49, 40.0, 0.83]]
 
       expect(data).to eq(expected)
     end
@@ -268,7 +290,7 @@ RSpec.describe Workout, type: :model do
                                   active_time: 450)
 
       data = Workout.distance_temperature_and_time_spent_resting
-      expected = [[4.97, 20.0, 25.0]]
+      expected = [[4.97, 20.0, 0.42]]
 
       expect(data).to eq(expected)
     end
@@ -284,11 +306,185 @@ RSpec.describe Workout, type: :model do
                                   active_time: 450)
 
       data = Workout.distance_temperature_and_time_spent_resting
-      expected = [[4.97, 20.0, 25.0]]
+      expected = [[4.97, 20.0, 0.42]]
 
       expect(data).to eq(expected)
     end
   end
+
+  describe ".distance_time_of_day_and_total_time" do
+    it "returns nested arrays for for records with elapsed times and routes" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
+
+      data = Workout.distance_time_of_day_and_total_time
+      expected = [[4.97, [2016, 1, 1, 13, 16], 5.0], [2.49, [2016, 1, 1, 6, 16], 8.33]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no elapsed time" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: nil,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
+
+      data = Workout.distance_time_of_day_and_total_time
+      expected = [[4.97, [2016, 1, 1, 13, 16], 5.0]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  route_id: nil)
+
+      data = Workout.distance_time_of_day_and_total_time
+      expected = [[4.97, [2016, 1, 1, 13, 16], 5.0]]
+
+      expect(data).to eq(expected)
+    end
+  end
+
+  describe ".distance_time_of_day_and_average_speed" do
+    it "returns nested arrays for records with an average speed" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: 5)
+
+      data = Workout.distance_time_of_day_and_average_speed
+      expected = [[4.97, [2016, 1, 1, 13, 16], 6.71], [2.49, [2016, 1, 1, 6, 16], 11.18]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no average speed" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: nil)
+
+      data = Workout.distance_time_of_day_and_average_speed
+      expected = [[4.97, [2016, 1, 1, 13, 16], 6.71]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: 5,
+                                  route_id: nil)
+
+      data = Workout.distance_time_of_day_and_average_speed
+      expected = [[4.97, [2016, 1, 1, 13, 16], 6.71]]
+
+      expect(data).to eq(expected)
+    end
+  end
+
+  describe ".distance_time_of_day_and_time_spent_resting" do
+    it "returns nested arrays for records with all required parameters" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  elapsed_time: 4000,
+                                  active_time: 3000)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  elapsed_time: 5000,
+                                  active_time: 3000)
+
+      data = Workout.distance_time_of_day_and_time_spent_resting
+      expected = [[4.97, [2016, 1, 1, 13, 16], 16.67], [2.49, [2016, 1, 1, 6, 16], 33.33]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no elapsed time" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  elapsed_time: 4000,
+                                  active_time: 3000)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  elapsed_time: nil,
+                                  active_time: 3000)
+
+      data = Workout.distance_time_of_day_and_time_spent_resting
+      expected = [[4.97, [2016, 1, 1, 13, 16], 16.67]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no active time" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  elapsed_time: 4000,
+                                  active_time: 3000)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  elapsed_time: 5000,
+                                  active_time: nil)
+
+      data = Workout.distance_time_of_day_and_time_spent_resting
+      expected = [[4.97, [2016, 1, 1, 13, 16], 16.67]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  elapsed_time: 4000,
+                                  active_time: 3000)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  elapsed_time: 5000,
+                                  active_time: 3000,
+                                  route_id: nil)
+
+      data = Workout.distance_time_of_day_and_time_spent_resting
+      expected = [[4.97, [2016, 1, 1, 13, 16], 16.67]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records where time spent resting is negative" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  elapsed_time: 4000,
+                                  active_time: 3000)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  elapsed_time: 2000,
+                                  active_time: 3000)
+
+      data = Workout.distance_time_of_day_and_time_spent_resting
+      expected = [[4.97, [2016, 1, 1, 13, 16], 16.67]]
+
+      expect(data).to eq(expected)
+    end
+  end
+
 
   def api_data_with_distance
     {

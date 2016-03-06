@@ -61,7 +61,7 @@ module TimeOfDayDatasets
          [2016, 1, 1,
           workout.starting_datetime_in_local_time.hour,
           workout.starting_datetime_in_local_time.min],
-         workout.time_spent_resting]
+         workout.time_spent_resting_in_minutes]
       end
     end
   end

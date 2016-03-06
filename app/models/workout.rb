@@ -70,8 +70,8 @@ class Workout < ActiveRecord::Base
     location.local_timezone
   end
 
-  def time_spent_resting
-    elapsed_time - active_time
+  def time_spent_resting_in_minutes
+    ((elapsed_time - active_time) / 60).round(2)
   end
 
   private

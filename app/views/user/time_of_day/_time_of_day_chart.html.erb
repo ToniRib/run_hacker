@@ -93,12 +93,11 @@
     var workouts = data[yAxisSelection];
 
     var filtered = [];
-    var x, y;
 
     workouts.forEach(function(set){
       if (set[0] >= minDistance && set[0] <= maxDistance) {
-        y = set[2];
-        x = set[1];
+        var x = set[1];
+        var y = set[2];
         filtered.push([x, y]);
       }
     })

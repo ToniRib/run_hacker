@@ -56,7 +56,7 @@ module TemperatureDatasets
       data.map do |workout|
         [workout.distance_in_miles,
          workout.temperature,
-         workout.time_spent_resting]
+         workout.time_spent_resting_in_minutes]
       end
     end
   end
