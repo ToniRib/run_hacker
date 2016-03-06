@@ -4,12 +4,14 @@ class Workout < ActiveRecord::Base
   has_one    :location, through: :route
 
   scope :no_temperature, -> { where(temperature: nil) }
+  scope :has_elapsed_time, -> { where("elapsed_time IS NOT NULL") }
+  scope :has_active_time, -> { where("active_time IS NOT NULL") }
   scope :has_temperature, -> { where("temperature IS NOT NULL") }
   scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
   scope :no_routes, -> { where("route_id IS NULL") }
 
   def self.create_from_api_response(data)
-    return if data[:aggregates][:distance_total] == 0
+    return if data[:aggregates][:distance_total] == 0 || data[:_links][:route].nil?
 
     workout = Workout.find_or_create_by(map_my_fitness_id: data[:_links][:self][0][:id])
 
@@ -64,15 +66,21 @@ class Workout < ActiveRecord::Base
   end
 
   def self.distance_temperature_and_total_time
-    has_temperature.pluck(:distance, :temperature, :elapsed_time)
+    has_temperature
+      .has_elapsed_time
+      .pluck(:distance, :temperature, :elapsed_time)
   end
 
   def self.distance_temperature_and_average_speed
-    has_temperature.pluck(:distance, :temperature, :average_speed)
+    has_temperature
+      .has_elapsed_time
+      .pluck(:distance, :temperature, :average_speed)
   end
 
   def self.distance_temperature_and_time_spent_resting
     has_temperature
+      .has_elapsed_time
+      .has_active_time
       .where("elapsed_time - active_time > 0")
       .pluck("distance",
              "temperature",

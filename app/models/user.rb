@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :workouts
+  has_many :workouts, dependent: :destroy
   has_many :routes, through: :workouts
 
   validates :uid,   uniqueness: { scope: :provider }
@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_by_auth(auth)
     user = User.find_or_create_by(provider: auth[:provider],
                                   uid:      auth[:info][:id])
+
     user.token        = auth[:credentials][:token]
     user.display_name = auth[:info][:display_name]
     user.email        = auth[:info][:email]

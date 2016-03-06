@@ -21,16 +21,38 @@
             <% cache("workout-listing-#{Workout.count}-#{Workout.maximum(:updated_at)}") do %>
               <% @workouts.by_descending_start_date.each do |workout| %>
                 <tr class="clickable-row" id="workout-<%= workout.map_my_fitness_id %>" data-link="/workouts/<%= workout.id %>">
-                  <td><%= workout.starting_date_no_time %></td>
+                  <% if workout.location %>
+                    <td><%= workout.starting_date_no_time %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+
                   <td><%= workout.distance_in_miles %></td>
-                  <td><%= workout.average_speed_in_mph %></td>
-                  <td><%= workout.elapsed_time_in_minutes %></td>
-                  <td><%= workout.calories_burned_in_kcal %></td>
+
+                  <% if workout.average_speed %>
+                    <td><%= workout.average_speed_in_mph %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+
+                  <% if workout.elapsed_time %>
+                    <td><%= workout.elapsed_time_in_minutes %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+
+                  <% if workout.metabolic_energy %>
+                    <td><%= workout.calories_burned_in_kcal %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+
                   <% if workout.location %>
                     <td><%= workout.location.city_and_state %></td>
                   <% else %>
                     <td></td>
                   <% end %>
+
                   <% if workout.route.elevation %>
                     <td><%= workout.route.elevation_in_feet if workout.route %></td>
                   <% else %>
