@@ -8,9 +8,6 @@ class Workout < ActiveRecord::Base
   has_one    :location, through: :route
 
   scope :no_temperature, -> { where(temperature: nil) }
-  scope :has_elapsed_time, -> { where("elapsed_time IS NOT NULL") }
-  scope :has_active_time, -> { where("active_time IS NOT NULL") }
-  scope :has_temperature, -> { where("temperature IS NOT NULL") }
   scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
   scope :no_routes, -> { where("route_id IS NULL") }
 

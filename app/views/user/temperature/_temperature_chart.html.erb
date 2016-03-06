@@ -71,9 +71,6 @@
     var minDistance = parseInt($('#minimum_distance').val());
     var maxDistance = parseInt($('#maximum_distance').val());
 
-    var minDistanceInMiles = minDistance * (1000 / 0.621371);
-    var maxDistanceInMiles = maxDistance * (1000 / 0.621371);
-
     var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
     var yAxisSelection = $('#y-axis').val();
 
@@ -101,14 +98,8 @@
     var x, y;
 
     workouts.forEach(function(set){
-      if (set[0] >= minDistanceInMiles && set[0] <= maxDistanceInMiles) {
-        if (yAxisSelection == "Total Time") {
-          y = parseFloat((set[2] / 60).toFixed(2));
-        } else if (yAxisSelection == "Average Speed") {
-          y = parseFloat((set[2] * (3600 / 1609.344)).toFixed(2));
-        } else if (yAxisSelection == "Time Spent Resting") {
-          y = parseFloat((set[2] / 60).toFixed(2));
-        }
+      if (set[0] >= minDistance && set[0] <= maxDistance) {
+        y = set[2];
         x = set[1];
         filtered.push([x, y]);
       }

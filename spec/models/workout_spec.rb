@@ -182,29 +182,29 @@ RSpec.describe Workout, type: :model do
 
   describe ".distance_temperature_and_total_time" do
     it "returns nested arrays for records with temp that include total time" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
                                   elapsed_time: 300)
-      workout2 = create(:workout, distance: 400,
+      workout2 = create(:workout, distance: 4000,
                                   temperature: 40,
                                   elapsed_time: 500)
 
       data = Workout.distance_temperature_and_total_time
-      expected = [[200, 20, 300], [400, 40, 500]]
+      expected = [[4.97, 20.0, 5.0], [2.49, 40.0, 8.33]]
 
       expect(data).to eq(expected)
     end
 
     it "does not return records with no temperature" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
                                   elapsed_time: 300)
-      workout2 = create(:workout, distance: 400,
+      workout2 = create(:workout, distance: 4000,
                                   temperature: nil,
                                   elapsed_time: 500)
 
       data = Workout.distance_temperature_and_total_time
-      expected = [[200, 20, 300]]
+      expected = [[4.97, 20.0, 5.0]]
 
       expect(data).to eq(expected)
     end
@@ -212,29 +212,29 @@ RSpec.describe Workout, type: :model do
 
   describe ".distance_temperature_and_average_speed" do
     it "returns nested arrays for records with temp that include avg speed" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
-                                  average_speed: 300)
-      workout2 = create(:workout, distance: 400,
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
                                   temperature: 40,
-                                  average_speed: 500)
+                                  average_speed: 5)
 
       data = Workout.distance_temperature_and_average_speed
-      expected = [[200, 20, 300], [400, 40, 500]]
+      expected = [[4.97, 20.0, 6.71], [2.49, 40.0, 11.18]]
 
       expect(data).to eq(expected)
     end
 
     it "does not return records with no temperature" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
-                                  average_speed: 300)
-      workout2 = create(:workout, distance: 400,
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
                                   temperature: nil,
-                                  average_speed: 500)
+                                  average_speed: 5)
 
       data = Workout.distance_temperature_and_average_speed
-      expected = [[200, 20, 300]]
+      expected = [[4.97, 20.0, 6.71]]
 
       expect(data).to eq(expected)
     end
@@ -242,49 +242,49 @@ RSpec.describe Workout, type: :model do
 
   describe ".distance_temperature_and_time_spent_resting" do
     it "returns nested arrays for records with temp that include rest time" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
                                   elapsed_time: 300,
                                   active_time: 275)
-      workout2 = create(:workout, distance: 400,
+      workout2 = create(:workout, distance: 4000,
                                   temperature: 40,
                                   elapsed_time: 500,
                                   active_time: 450)
 
       data = Workout.distance_temperature_and_time_spent_resting
-      expected = [[200, 20, 25], [400, 40, 50]]
+      expected = [[4.97, 20.0, 25.0], [2.49, 40.0, 50.0]]
 
       expect(data).to eq(expected)
     end
 
     it "does not return records with no temperature" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
                                   elapsed_time: 300,
                                   active_time: 275)
-      workout2 = create(:workout, distance: 400,
+      workout2 = create(:workout, distance: 4000,
                                   temperature: nil,
                                   elapsed_time: 500,
                                   active_time: 450)
 
       data = Workout.distance_temperature_and_time_spent_resting
-      expected = [[200, 20, 25]]
+      expected = [[4.97, 20.0, 25.0]]
 
       expect(data).to eq(expected)
     end
 
     it "does not return records where time spent resting is negative" do
-      workout1 = create(:workout, distance: 200,
+      workout1 = create(:workout, distance: 8000,
                                   temperature: 20,
                                   elapsed_time: 300,
                                   active_time: 275)
-      workout2 = create(:workout, distance: 400,
+      workout2 = create(:workout, distance: 4000,
                                   temperature: 40,
                                   elapsed_time: 400,
                                   active_time: 450)
 
       data = Workout.distance_temperature_and_time_spent_resting
-      expected = [[200, 20, 25]]
+      expected = [[4.97, 20.0, 25.0]]
 
       expect(data).to eq(expected)
     end
