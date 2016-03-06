@@ -1,6 +1,7 @@
 class Workout < ActiveRecord::Base
   include TemperatureDatasets
   include TimeOfDayDatasets
+  include LocationDatasets
   include DashboardAggregates
 
   belongs_to :user
