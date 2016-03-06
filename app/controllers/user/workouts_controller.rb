@@ -11,10 +11,10 @@ class User::WorkoutsController < User::BaseController
       current_user.workouts.includes(:location).find(params[:id])
     end
 
-    @workout = WorkoutPresenter.new(workout)
 
-    if @workout.has_time_series
-      @time_series = load_time_series
+    if workout.has_time_series
+      time_series = load_time_series(workout)
+      @workout = WorkoutWithTimeseries.new(workout, time_series)
     else
       flash["error"] = "Workout does not have a time series to display"
       redirect_to workouts_path
@@ -27,9 +27,9 @@ class User::WorkoutsController < User::BaseController
     "workout-and-location-#{params[:id]}-#{Workout.find(params[:id]).updated_at}"
   end
 
-  def load_time_series
-    Rails.cache.fetch("workout-#{@workout.map_my_fitness_id}") do
-      service = MmfWorkoutTimeseriesService.new(@workout.map_my_fitness_id,
+  def load_time_series(workout)
+    Rails.cache.fetch("workout-#{workout.map_my_fitness_id}") do
+      service = MmfWorkoutTimeseriesService.new(workout.map_my_fitness_id,
                                                 current_user)
       service.get_timeseries
     end

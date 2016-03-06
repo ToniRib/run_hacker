@@ -15,20 +15,10 @@
         <li><h4><strong>Temperature:</strong> <%= @workout.display_temperature %></h4></li>
         <li><h4><strong>Calories Burned:</strong> <%= @workout.display_calories_burned %></h4></li>
         <li><h4><strong>Average Speed:</strong> <%= @workout.display_average_speed %></h4></li>
-        <% if @time_series.min_speed %>
-          <li><h4><strong>Minimum Speed:</strong> <%= @time_series.min_speed_in_mph %> mph</h4></li>
-          <li><h4><strong>Maximum Speed:</strong> <%= @time_series.max_speed_in_mph %> mph</h4></li>
-        <% else %>
-          <li><h4><strong>Minimum Speed:</strong> Not Available</h4></li>
-          <li><h4><strong>Maximum Speed:</strong> Not Available</h4></li>
-        <% end %>
-        <% if @time_series.has_elevations? %>
-          <li><h4><strong>Minimum Elevation:</strong> <%= @time_series.min_elevation_in_feet %> ft</h4></li>
-          <li><h4><strong>Maximum Elevation:</strong> <%= @time_series.max_elevation_in_feet %> ft</h4></li>
-        <% else %>
-          <li><h4><strong>Minimum Elevation:</strong> Not Available</h4></li>
-          <li><h4><strong>Maximum Elevation:</strong> Not Available</h4></li>
-        <% end %>
+        <li><h4><strong>Minimum Speed:</strong> <%= @workout.display_min_speed %> </h4></li>
+        <li><h4><strong>Maximum Speed:</strong> <%= @workout.display_max_speed %></h4></li>
+        <li><h4><strong>Minimum Elevation:</strong> <%= @workout.display_min_elevation %></h4></li>
+        <li><h4><strong>Maximum Elevation:</strong> <%= @workout.display_max_elevation %></h4></li>
       </ul>
     </div>
     <div class="col-sm-12 col-md-7">
@@ -37,4 +27,4 @@
   </div>
 </div>
 
-<%= render partial: "google_map", locals: { time_series: @time_series } %>
+<%= render partial: "google_map", locals: { time_series: @workout.timeseries } %>

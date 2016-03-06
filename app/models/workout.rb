@@ -45,6 +45,10 @@ class Workout < ActiveRecord::Base
     (elapsed_time / 60).round(2)
   end
 
+  def starting_time_only
+    starting_datetime.in_time_zone(local_timezone).strftime("%l:%M %P")
+  end
+
   def update_temperature(temp)
     update_attribute(:temperature, temp)
   end

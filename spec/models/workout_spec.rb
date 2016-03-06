@@ -290,24 +290,6 @@ RSpec.describe Workout, type: :model do
     end
   end
 
-  describe "#display_temperature" do
-    it "displays the temperature with °F if it exists" do
-      workout = create(:workout, temperature: 78)
-
-      temp_display = workout.display_temperature
-
-      expect(temp_display).to eq("78.0 °F")
-    end
-
-    it "displays Not Available if temperature does not exist" do
-      workout = create(:workout, temperature: nil)
-
-      temp_display = workout.display_temperature
-
-      expect(temp_display).to eq("Not Available")
-    end
-  end
-
   def api_data_with_distance
     {
       start_datetime: "2015-03-11 22:15:31",
