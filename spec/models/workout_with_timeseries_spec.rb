@@ -145,6 +145,54 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
     end
   end
 
+  describe "#display_max_elevation" do
+    it "displays the max_elevation with ft if it exists" do
+      workout = create(:workout)
+      timeseries = create_timeseries
+
+      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+
+      max_elevation_display = workout_with_timeseries.display_max_elevation
+
+      expect(max_elevation_display).to eq("72.6 ft")
+    end
+
+    it "displays Not Available if max_elevation does not exist" do
+      workout = create(:workout)
+      timeseries = WorkoutTimeseries.new(api_data_without_elevations)
+
+      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+
+      max_elevation_display = workout_with_timeseries.display_max_elevation
+
+      expect(max_elevation_display).to eq("Not Available")
+    end
+  end
+
+  describe "#display_min_elevation" do
+    it "displays the min_elevation with ft if it exists" do
+      workout = create(:workout)
+      timeseries = create_timeseries
+
+      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+
+      min_elevation_display = workout_with_timeseries.display_min_elevation
+
+      expect(min_elevation_display).to eq("65.26 ft")
+    end
+
+    it "displays Not Available if min_elevation does not exist" do
+      workout = create(:workout)
+      timeseries = WorkoutTimeseries.new(api_data_without_elevations)
+
+      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+
+      min_elevation_display = workout_with_timeseries.display_min_elevation
+
+      expect(min_elevation_display).to eq("Not Available")
+    end
+  end
+
   def create_timeseries(min_speed = 4.567, max_speed = 8.345)
     WorkoutTimeseries.new(api_data(min_speed, max_speed))
   end
@@ -171,6 +219,41 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
               "lat": 38.7822198315,
               "lng": -77.0153191478,
               "elevation": 19.89
+          }]
+        ],
+        speed: [
+          [0.131, 0.0],
+          [12.131, 0.5],
+          [14.131, 1.0]
+        ],
+        distance: [
+          [0.131, 0.0],
+          [12.131, 14.8046369553],
+          [14.131, 29.529838562]
+        ]
+      }
+    }
+  end
+
+  def api_data_without_elevations
+    {
+      aggregates: {
+        speed_min: 4.567,
+        speed_max: 8.345
+      },
+      time_series: {
+        position: [
+          [0.131, {
+              "lat": 38.78214621,
+              "lng": -77.01499606
+          }],
+          [12.131, {
+              "lat": 38.7822010006,
+              "lng": -77.0151513974
+          }],
+          [14.131, {
+              "lat": 38.7822198315,
+              "lng": -77.0153191478
           }]
         ],
         speed: [
