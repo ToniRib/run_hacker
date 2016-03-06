@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <% cache("workout-listing-#{Workout.count}-#{Workout.maximum(:updated_at)}") do %>
+            <% cache("workout-listing-#{Workout.count}-#{Workout.maximum(:updated_at)}-#{current_user.id}") do %>
               <% @workouts.by_descending_start_date.each do |workout| %>
                 <tr class="clickable-row" id="workout-<%= workout.map_my_fitness_id %>" data-link="/workouts/<%= workout.id %>">
                   <% if workout.location %>
