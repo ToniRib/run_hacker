@@ -46,11 +46,7 @@
             }
           },
           tooltip: {
-            formatter: function() {
-                return ''+
-                        "" +
-                        'Time: '+ Highcharts.dateFormat('%I:%M %p', this.x);
-            }
+            pointFormat: '{point.x: %I:%M %p}, {point.y} min'
           },
         }
       },
@@ -87,7 +83,6 @@
       workouts = workouts.map(function(w) {
         return [w[0], Date.UTC(w[1][0], w[1][1], w[1][2], w[1][3], w[1][4]), w[2]]
       })
-      console.log(workouts);
       $chart.yAxis[0].setTitle({
           text: yAxisSelection + ' (min)'
       });
