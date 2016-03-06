@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe WorkoutTimeseries, type: :model do
-  describe "initialize" do
+  describe "#initialize" do
     it "can be created with valid parameters" do
       timeseries = WorkoutTimeseries.new(api_data)
 

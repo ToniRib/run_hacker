@@ -20,7 +20,15 @@
           <tbody>
             <% cache("workout-listing-#{Workout.count}-#{Workout.maximum(:updated_at)}-#{current_user.id}") do %>
               <% @workouts.each do |workout| %>
-                <%= render partial: "workout", locals: { workout: workout } %>
+                <tr class="clickable-row" id="workout-<%= workout.map_my_fitness_id %>" data-link="/workouts/<%= workout.id %>">
+                  <td><%= workout.display_starting_date_no_time %></td>
+                  <td><%= workout.display_distance_in_miles %></td>
+                  <td><%= workout.display_average_speed_in_mph %></td>
+                  <td><%= workout.display_elapsed_time_in_minutes %></td>
+                  <td><%= workout.display_calories_burned_in_kcal %></td>
+                  <td><%= workout.display_city_and_state %></td>
+                  <td><%= workout.display_elevation_in_feet %></td>
+                </tr>
               <% end %>
             </tbody>
           <% end %>

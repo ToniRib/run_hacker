@@ -47,7 +47,7 @@ FactoryGirl.define do
     user
     route
     temperature 43.2
-    starting_datetime Date.today - 7
+    starting_datetime DateTime.parse("2016-02-13 14:10:45 UTC")
   end
 
   sequence :uid do |i|
