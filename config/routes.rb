@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/dashboard",               to: "user/dashboard#show"
   get "/temperature",             to: "user/temperature#index"
   get "/time_of_day",             to: "user/time_of_day#index"
+  get "/location",                to: "user/location#index"
 
   get "/workouts",                to: "user/workouts#index"
   get "/workouts/:id",            to: "user/workouts#show",       as: "workout"

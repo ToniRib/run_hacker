@@ -15,6 +15,20 @@ RSpec.feature "Guest tries to visit unauthorized pages" do
     expect(page).to have_content("Must be logged in to view that page")
   end
 
+  scenario "tries to visit temperature" do
+    visit time_of_day_path
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Must be logged in to view that page")
+  end
+
+  scenario "tries to visit temperature" do
+    visit location_path
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Must be logged in to view that page")
+  end
+
   scenario "tries to visit workouts" do
     visit workouts_path
 
