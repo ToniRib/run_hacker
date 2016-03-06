@@ -7,9 +7,11 @@ class User::WorkoutsController < User::BaseController
   end
 
   def show
-    @workout = Rails.cache.fetch(workout_cache_name) do
+    workout = Rails.cache.fetch(workout_cache_name) do
       current_user.workouts.includes(:location).find(params[:id])
     end
+
+    @workout = WorkoutPresenter.new(workout)
 
     if @workout.has_time_series
       @time_series = load_time_series

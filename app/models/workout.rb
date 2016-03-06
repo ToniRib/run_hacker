@@ -29,26 +29,6 @@ class Workout < ActiveRecord::Base
     workout
   end
 
-  def update_temperature(temp)
-    update_attribute(:temperature, temp)
-  end
-
-  def starting_date_in_iso_format
-    starting_datetime.in_time_zone(local_timezone).strftime("%Y-%m-%-dT%H:%M")
-  end
-
-  def starting_date_no_time
-    starting_datetime.in_time_zone(local_timezone).strftime("%Y-%m-%d")
-  end
-
-  def display_temperature
-    temperature ? "#{temperature} °F" : "Not Available"
-  end
-
-  def starting_time_only
-    starting_datetime.in_time_zone(local_timezone).strftime("%l:%M %P")
-  end
-
   def distance_in_miles
     (distance / 1609.344).round(2)
   end
@@ -62,7 +42,19 @@ class Workout < ActiveRecord::Base
   end
 
   def elapsed_time_in_minutes
-    min = (elapsed_time / 60).round(2)
+    (elapsed_time / 60).round(2)
+  end
+
+  def update_temperature(temp)
+    update_attribute(:temperature, temp)
+  end
+
+  def starting_date_no_time
+    starting_datetime.in_time_zone(local_timezone).strftime("%Y-%m-%d")
+  end
+
+  def starting_date_in_iso_format
+    starting_datetime.in_time_zone(local_timezone).strftime("%Y-%m-%-dT%H:%M")
   end
 
   def self.distance_temperature_and_total_time
