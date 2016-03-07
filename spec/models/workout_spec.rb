@@ -629,6 +629,195 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe ".distance_elevation_and_total_time" do
+    it "returns nested arrays for for records with elapsed times and routes" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_total_time
+      expected = [[4.97, 2624.67, 5.0], [2.49, 1968.5, 8.33]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no elapsed time" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: nil,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_total_time
+      expected = [[4.97, 2624.67, 5.0]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      route1 = create(:route, elevation: 800)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  route: nil)
+
+      data = Workout.distance_elevation_and_total_time
+      expected = [[4.97, 2624.67, 5.0]]
+
+      expect(data).to eq(expected)
+    end
+  end
+
+  describe ".distance_elevation_and_average_speed" do
+    it "returns records with an average speed and associated route" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  average_speed: 300,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  average_speed: 500,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_average_speed
+      expected = [[4.97, 2624.67, 671.08], [2.49, 1968.5, 1118.47]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no average speed" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  average_speed: 300,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  average_speed: nil,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_average_speed
+      expected = [[4.97, 2624.67, 671.08]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      route1 = create(:route, elevation: 800)
+      workout1 = create(:workout, distance: 8000,
+                                  average_speed: 300,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  average_speed: 500,
+                                  route: nil)
+
+      data = Workout.distance_elevation_and_average_speed
+      expected = [[4.97, 2624.67, 671.08]]
+
+      expect(data).to eq(expected)
+    end
+  end
+
+  describe ".distance_elevation_and_time_spent_resting" do
+    it "returns nested arrays for records with all required parameters" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  active_time: 200,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 400,
+                                  active_time: 200,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_time_spent_resting
+      expected = [[4.97, 2624.67, 1.67], [2.49, 1968.5, 3.33]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no elapsed time" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  active_time: 200,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: nil,
+                                  active_time: 200,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_time_spent_resting
+      expected = [[4.97, 2624.67, 1.67]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no active time" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  active_time: 200,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  active_time: nil,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_time_spent_resting
+      expected = [[4.97, 2624.67, 1.67]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      route1 = create(:route, elevation: 800)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  active_time: 200,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 400,
+                                  active_time: 200,
+                                  route: nil)
+
+      data = Workout.distance_elevation_and_time_spent_resting
+      expected = [[4.97, 2624.67, 1.67]]
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records where time spent resting is negative" do
+      route1 = create(:route, elevation: 800)
+      route2 = create(:route, elevation: 600)
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  active_time: 200,
+                                  route: route1)
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 100,
+                                  active_time: 200,
+                                  route: route2)
+
+      data = Workout.distance_elevation_and_time_spent_resting
+      expected = [[4.97, 2624.67, 1.67]]
+
+      expect(data).to eq(expected)
+    end
+  end
+
   def api_data_with_distance
     {
       start_datetime: "2015-03-11 22:15:31",
