@@ -40,10 +40,16 @@ class Presenters::TimeOfDayPresenter < SimpleDelegator
   def create_highcharts_data(data, type)
     data.map do |workout|
       [workout.distance_in_miles,
-       [2016, 1, 1,
-        workout.starting_datetime_in_local_time.hour,
-        workout.starting_datetime_in_local_time.min],
+       dummy_date_with_time(workout),
        workout.send(type)]
     end
+  end
+
+  def dummy_date_with_time(workout)
+    [
+      2016, 1, 1,
+      workout.starting_datetime_in_local_time.hour,
+      workout.starting_datetime_in_local_time.min
+   ]
   end
 end
