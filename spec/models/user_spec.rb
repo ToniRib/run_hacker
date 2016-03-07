@@ -104,6 +104,25 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#locations_as_city_and_state" do
+    it "returns an array of unique cities and states" do
+      location1 = create(:location, city: "Denver", state: "CO")
+      location2 = create(:location, city: "Los Angeles", state: "CA")
+      route1 = create(:route, location: location1)
+      route2 = create(:route, location: location2)
+      workout1 = create(:workout, route: route1)
+      workout2 = create(:workout, route: route2)
+      user = create(:user)
+      user.workouts << [workout1, workout2]
+
+      location1, location2 = user.locations_as_city_and_state
+      actual_locations = ["Denver, CO", "Los Angeles, CA"]
+
+      expect(actual_locations.include?(location1)).to be true
+      expect(actual_locations.include?(location2)).to be true
+    end
+  end
+
   def auth_hash
     {
       provider: "mapmyfitness",
