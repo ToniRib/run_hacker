@@ -8,17 +8,17 @@
         <div class="filter">
           <div class="col-sm-3 text-center">
             <label>Locations (select multiple)</label><br>
+            <button id="select-all">Select All</button>
             <%= select_tag "location", options_for_select(current_user.locations_as_city_and_state),
                                        multiple: true,
                                        class: "multi-select" %>
           </div>
           <div class="col-sm-4 large-top-margin">
-              <label>Distance Range</label>
-              <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
-              <span>to</span>
-              <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
-              <span>miles</span>
-            </div>
+            <label>Distance Range</label>
+            <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
+            <span>to</span>
+            <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
+            <span>miles</span>
           </div>
           <div class="col-sm-3 large-top-margin">
             <label>Y-axis</label>
@@ -29,13 +29,20 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="chart" id="location-chart"></div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="chart" id="location-chart"></div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $('#select-all').click(function() {
+    $('#location option').prop('selected', true);
+  });
+</script>
 
 <%= render partial: "location_chart" %>
