@@ -12,20 +12,16 @@
       },
       xAxis: {
         type: 'category',
-        title: {
-          text: 'Location'
-        }
+        title: { text: null }
       },
       yAxis: {
-        title: {
-          text: null
-        }
+        title: { text: null }
       },
       series: [{
-            name: 'Workouts',
-            colorByPoint: true,
-            data: null
-        }],
+        name: 'Average',
+        colorByPoint: true,
+        data: null
+      }],
     });
   });
 
@@ -109,7 +105,7 @@
       }
       var avg = total / filtered.length;
 
-      return avg;
+      return parseFloat(avg.toFixed(2));
     }
   }
 
