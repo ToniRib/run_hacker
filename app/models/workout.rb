@@ -2,6 +2,7 @@ class Workout < ActiveRecord::Base
   include TemperatureDatasets
   include TimeOfDayDatasets
   include LocationDatasets
+  include SeasonDatasets
   include ElevationDatasets
   include DashboardAggregates
 
@@ -79,6 +80,10 @@ class Workout < ActiveRecord::Base
     ((elapsed_time - active_time) / 60).round(2)
   end
 
+  def season
+    determine_season(day_of_the_year(starting_datetime))
+  end
+
   private
 
   def self.no_distance_or_no_route(data)
@@ -87,5 +92,37 @@ class Workout < ActiveRecord::Base
 
   def self.mmf_id(data)
     data[:_links][:self][0][:id]
+  end
+
+  def day_of_the_year(date)
+    date.yday
+  end
+
+  def winter?(day)
+    [*331..336].include?(day) || [*1..60].include?(day)
+  end
+
+  def spring?(day)
+    [*61..152].include?(day)
+  end
+
+  def summer?(day)
+    [*153..244].include?(day)
+  end
+
+  def fall?(day)
+    [*245..330].include?(day)
+  end
+
+  def determine_season(day)
+    if winter?(day)
+      "Winter"
+    elsif spring?(day)
+      "Spring"
+    elsif summer?(day)
+      "Summer"
+    elsif fall?(day)
+      "Fall"
+    end
   end
 end

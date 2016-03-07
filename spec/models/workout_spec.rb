@@ -224,6 +224,40 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe "#season" do
+    it "returns winter if the workout was between Dec 1 & Feb 29" do
+      workout = create(:workout, starting_datetime: DateTime.new(2015, 1, 10))
+
+      season = workout.season
+
+      expect(season).to eq("Winter")
+    end
+
+    it "returns spring if the workout was between Mar 1 & May 31" do
+      workout = create(:workout, starting_datetime: DateTime.new(2015, 4, 10))
+
+      season = workout.season
+
+      expect(season).to eq("Spring")
+    end
+
+    it "returns summer if the workout was between Jun 1 & Aug 31" do
+      workout = create(:workout, starting_datetime: DateTime.new(2015, 7, 10))
+
+      season = workout.season
+
+      expect(season).to eq("Summer")
+    end
+
+    it "returns fall if the workout was between Aug 31 & Nov 30" do
+      workout = create(:workout, starting_datetime: DateTime.new(2015, 9, 10))
+
+      season = workout.season
+
+      expect(season).to eq("Fall")
+    end
+  end
+
   describe ".distance_temperature_and_total_time" do
     it "returns nested arrays for records with temp that include total time" do
       workout1 = create(:workout, distance: 8000,
