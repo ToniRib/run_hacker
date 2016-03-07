@@ -6,7 +6,6 @@ module LocationDatasets
   included do
     scope :has_routes, -> { where("route_id IS NOT NULL") }
     scope :has_locations, -> { has_routes.joins(route: :location).where("location_id IS NOT NULL")}
-    scope :has_average_speed, -> { where("average_speed IS NOT NULL") }
 
     def self.distance_location_and_total_time
       data = has_locations

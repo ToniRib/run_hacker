@@ -4,8 +4,6 @@ module TemperatureDatasets
   extend ActiveSupport::Concern
 
   included do
-    scope :has_elapsed_time, -> { where("elapsed_time IS NOT NULL") }
-    scope :has_active_time, -> { where("active_time IS NOT NULL") }
     scope :has_temperature, -> { where("temperature IS NOT NULL") }
 
     def self.distance_temperature_and_total_time
@@ -18,10 +16,10 @@ module TemperatureDatasets
 
     def self.distance_temperature_and_average_speed
       data = has_temperature
-               .has_elapsed_time
+               .has_average_speed
                .select(:distance, :temperature, :average_speed)
 
-      map_temperaure_average_speed(data)
+      map_temperature_average_speed(data)
     end
 
     def self.distance_temperature_and_time_spent_resting
@@ -44,7 +42,7 @@ module TemperatureDatasets
       end
     end
 
-    def self.map_temperaure_average_speed(data)
+    def self.map_temperature_average_speed(data)
       data.map do |workout|
         [workout.distance_in_miles,
          workout.temperature,
