@@ -65,22 +65,22 @@
     var plotData = [];
 
     for (var location in workouts_by_location) {
-      plotData.push({
-        name: location,
-        y: averageTotalTime(workouts_by_location[location], minDistance, maxDistance)
-      })
+      if ($.inArray(location, locations) > -1) {
+        plotData.push({
+          name: location,
+          y: averageTotalTime(workouts_by_location[location], minDistance, maxDistance)
+        })
+      }
     }
 
     plotData.sort(compare);
 
-
     for(var i = 0; i < plotData.length; i++) {
-        if(plotData[i].y == 0) {
-            plotData.splice(i, plotData.length);
-            break
-        }
+      if(plotData[i].y == 0) {
+        plotData.splice(i, plotData.length);
+        break
+      }
     }
-
 
     $chart.series[0].setData(plotData);
     $chart.series[0].update({
