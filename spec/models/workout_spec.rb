@@ -876,7 +876,7 @@ RSpec.describe Workout, type: :model do
                                   starting_datetime: DateTime.parse("2011-01-20 12:16:52 UTC"))
 
       data = Workout.distance_season_and_total_time
-      expected = { "Fall" => [[4.97, 5.0]],
+      expected = { "Fall"   => [[4.97, 5.0]],
                    "Winter" => [[2.49, 8.33]]
       }
 
@@ -922,7 +922,7 @@ RSpec.describe Workout, type: :model do
                                   average_speed: 5)
 
       data = Workout.distance_season_and_average_speed
-      expected = { "Fall" => [[4.97, 6.71]],
+      expected = { "Fall"   => [[4.97, 6.71]],
                    "Summer" => [[2.49, 11.18]]
       }
 
