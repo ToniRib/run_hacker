@@ -124,3 +124,15 @@ function getMinDistance() {
 function getMaxDistance() {
   return parseInt($('#maximum_distance').val());
 }
+
+function createRange(minDistance, maxDistance) {
+  return minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
+}
+
+function getYAxisSelection() {
+  return $('#y-axis').val();
+}
+
+function setChartTitle(chart, prefix, yAxisSelection, range) {
+  chart.setTitle({ text: prefix + ' vs. ' + yAxisSelection + ' for ' + range + 'runs' });
+}

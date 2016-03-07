@@ -40,11 +40,10 @@
     var maxDistance = getMaxDistance();
     var selectedLocations = $("#location").val();
 
-    var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
-    var yAxisSelection = $('#y-axis').val();
+    var range = createRange(minDistance, maxDistance);
+    var yAxisSelection = getYAxisSelection();
 
-    $chart.setTitle({ text: 'Location vs. ' + yAxisSelection + ' for ' + range + 'runs' });
-
+    setChartTitle($chart, 'Location', yAxisSelection, range);
     setYAxisTitle($chart, yAxisSelection);
 
     var data = {

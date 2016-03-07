@@ -71,11 +71,10 @@
     var minDistance = getMinDistance();
     var maxDistance = getMaxDistance();
 
-    var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
-    var yAxisSelection = $('#y-axis').val();
+    var range = createRange(minDistance, maxDistance);
+    var yAxisSelection = getYAxisSelection();
 
-    $chart.setTitle({ text: 'Temperature vs. ' + yAxisSelection + ' for ' + range + 'runs' });
-
+    setChartTitle($chart, 'Temperature', yAxisSelection, range);
     setYAxisTitle($chart, yAxisSelection);
 
     var data = {
