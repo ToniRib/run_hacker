@@ -1,4 +1,4 @@
-class WorkoutWithTimeseries < SimpleDelegator
+class Presenters::WorkoutWithTimeseries < SimpleDelegator
   attr_reader :timeseries
 
   def initialize(workout, timeseries)

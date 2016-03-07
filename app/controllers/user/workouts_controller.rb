@@ -17,7 +17,7 @@ class User::WorkoutsController < User::BaseController
 
     if workout.has_time_series
       time_series = load_time_series(workout)
-      @workout = WorkoutWithTimeseries.new(workout, time_series)
+      @workout = Presenters::WorkoutWithTimeseries.new(workout, time_series)
     else
       flash["error"] = "Workout does not have a time series to display"
       redirect_to workouts_path

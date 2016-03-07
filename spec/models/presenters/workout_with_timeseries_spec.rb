@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe WorkoutWithTimeseries, type: :model do
+RSpec.describe Presenters::WorkoutWithTimeseries, type: :model do
   describe "#display_temperature" do
     it "displays the temperature with °F if it exists" do
       workout = create(:workout, temperature: 78)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       temp_display = workout_with_timeseries.display_temperature
 
@@ -17,7 +17,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, temperature: nil)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       temp_display = workout_with_timeseries.display_temperature
 
@@ -30,7 +30,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, elapsed_time: 7800)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       elapsed_time_display = workout_with_timeseries.display_elapsed_time
 
@@ -41,7 +41,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, elapsed_time: nil)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       elapsed_time_display = workout_with_timeseries.display_elapsed_time
 
@@ -54,7 +54,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, metabolic_energy: 780000)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       calories_burned_display = workout_with_timeseries.display_calories_burned
 
@@ -65,7 +65,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, metabolic_energy: nil)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       calories_burned_display = workout_with_timeseries.display_calories_burned
 
@@ -78,7 +78,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, average_speed: 3.56)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       average_speed_display = workout_with_timeseries.display_average_speed
 
@@ -89,7 +89,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout, average_speed: nil)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       average_speed_display = workout_with_timeseries.display_average_speed
 
@@ -102,7 +102,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       min_speed_display = workout_with_timeseries.display_min_speed
 
@@ -113,7 +113,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = create_timeseries(nil)
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       min_speed_display = workout_with_timeseries.display_min_speed
 
@@ -126,7 +126,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       max_speed_display = workout_with_timeseries.display_max_speed
 
@@ -137,7 +137,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = create_timeseries(4.567, nil)
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       max_speed_display = workout_with_timeseries.display_max_speed
 
@@ -150,7 +150,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       max_elevation_display = workout_with_timeseries.display_max_elevation
 
@@ -161,7 +161,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = WorkoutTimeseries.new(api_data_without_elevations)
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       max_elevation_display = workout_with_timeseries.display_max_elevation
 
@@ -174,7 +174,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = create_timeseries
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       min_elevation_display = workout_with_timeseries.display_min_elevation
 
@@ -185,7 +185,7 @@ RSpec.describe WorkoutWithTimeseries, type: :model do
       workout = create(:workout)
       timeseries = WorkoutTimeseries.new(api_data_without_elevations)
 
-      workout_with_timeseries = WorkoutWithTimeseries.new(workout, timeseries)
+      workout_with_timeseries = Presenters::WorkoutWithTimeseries.new(workout, timeseries)
 
       min_elevation_display = workout_with_timeseries.display_min_elevation
 
