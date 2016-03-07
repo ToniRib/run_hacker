@@ -14,13 +14,14 @@ class User::WorkoutsController < User::BaseController
       current_user.workouts.includes(:location).find(params[:id])
     end
 
-
     if workout.has_time_series
       time_series = load_time_series(workout)
+
+      redirect_to_workouts_and_render_error_flash unless confirmed(time_series)
+
       @workout = Presenters::WorkoutWithTimeseries.new(workout, time_series)
     else
-      flash["error"] = "Workout does not have a time series to display"
-      redirect_to workouts_path
+      redirect_to_workouts_and_render_error_flash
     end
   end
 
@@ -36,6 +37,15 @@ class User::WorkoutsController < User::BaseController
                                                 current_user)
       service.get_timeseries
     end
+  end
+
+  def confirmed(time_series)
+    time_series != "Timeseries Not Available"
+  end
+
+  def redirect_to_workouts_and_render_error_flash
+    flash["error"] = "Workout does not have a time series to display"
+    redirect_to workouts_path
   end
 
   def check_owner_of_workout

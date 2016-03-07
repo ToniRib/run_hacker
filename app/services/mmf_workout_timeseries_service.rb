@@ -9,7 +9,13 @@ class MmfWorkoutTimeseriesService
   end
 
   def get_timeseries
-    WorkoutTimeseries.new(get_api_response)
+    response = get_api_response
+
+    if time_series_confirmed(response)
+      WorkoutTimeseries.new(response)
+    else
+      "Timeseries Not Available"
+    end
   end
 
   private
@@ -26,6 +32,10 @@ class MmfWorkoutTimeseriesService
     end
 
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def time_series_confirmed(response)
+    response[:has_time_series]
   end
 
   def set_up_connection
