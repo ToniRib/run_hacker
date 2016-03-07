@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Presenters::ElevationPresenter, type: :model do
-  describe ".distance_elevation_and_total_time" do
+  describe "#distance_elevation_and_total_time" do
     it "returns nested arrays for for records with elapsed times and routes" do
       user = create(:user)
       route1 = create(:route, elevation: 800)
@@ -59,7 +59,7 @@ RSpec.describe Presenters::ElevationPresenter, type: :model do
     end
   end
 
-  describe ".distance_elevation_and_average_speed" do
+  describe "#distance_elevation_and_average_speed" do
     it "returns records with an average speed and associated route" do
       user = create(:user)
       route1 = create(:route, elevation: 800)
@@ -117,7 +117,7 @@ RSpec.describe Presenters::ElevationPresenter, type: :model do
     end
   end
 
-  describe ".distance_elevation_and_time_spent_resting" do
+  describe "#distance_elevation_and_time_spent_resting" do
     it "returns nested arrays for records with all required parameters" do
       user = create(:user)
       route1 = create(:route, elevation: 800)
