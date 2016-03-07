@@ -8,18 +8,16 @@ class Presenters::SeasonPresenter < SimpleDelegator
 
   def distance_season_and_total_time
     data = cached_workouts
-             .has_elapsed_time.select(:distance,
-                                      :elapsed_time,
-                                      :starting_datetime)
+             .has_elapsed_time
+             .select(:distance, :elapsed_time, :starting_datetime)
 
     create_highcharts_data(data, :elapsed_time_in_minutes)
   end
 
   def distance_season_and_average_speed
     data = cached_workouts
-             .has_average_speed.select(:distance,
-                                       :average_speed,
-                                       :starting_datetime)
+             .has_average_speed
+             .select(:distance, :average_speed, :starting_datetime)
 
     create_highcharts_data(data, :average_speed_in_mph)
   end
