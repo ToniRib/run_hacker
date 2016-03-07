@@ -28,3 +28,19 @@ function removeZeroes(data) {
 
   return data;
 }
+
+function averageTotalTimeOrSpeed(dataset, minDistance, maxDistance) {
+  var filtered = [];
+
+  dataset.forEach(function(set){
+    if (set[0] >= minDistance && set[0] <= maxDistance) {
+      filtered.push(set[1]);
+    }
+  })
+
+  if (filtered[0] == undefined) {
+    return 0;
+  } else {
+    return calculateAverage(filtered);
+  }
+}
