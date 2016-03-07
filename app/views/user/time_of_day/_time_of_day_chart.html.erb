@@ -90,17 +90,7 @@
       "Time Spent Resting": mapWorkoutsWithTimes(<%= @user.distance_time_of_day_and_time_spent_resting %>)
     };
 
-    var workouts = data[yAxisSelection];
-
-    var filtered = [];
-
-    workouts.forEach(function(set){
-      if (set[0] >= minDistance && set[0] <= maxDistance) {
-        var x = set[1];
-        var y = set[2];
-        filtered.push([x, y]);
-      }
-    })
+    var filtered = createFilteredSetForScatter(data[yAxisSelection], minDistance, maxDistance);
 
     updateChartDataWithAnimation($chart, filtered);
   }

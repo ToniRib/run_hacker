@@ -53,3 +53,17 @@ function updateChartDataWithAnimation(chart, data) {
     }
   });
 }
+
+function createFilteredSetForScatter(workouts, minDistance, maxDistance) {
+  filtered = [];
+
+  workouts.forEach(function(set){
+    if (set[0] >= minDistance && set[0] <= maxDistance) {
+      var x = set[1];
+      var y = set[2];
+      filtered.push([x, y]);
+    }
+  });
+
+  return filtered;
+}
