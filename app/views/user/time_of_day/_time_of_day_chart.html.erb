@@ -102,12 +102,7 @@
       }
     })
 
-    $chart.series[0].setData(filtered);
-    $chart.series[0].update({
-      animation: {
-        duration: 250
-      }
-    });
+    updateChartDataWithAnimation($chart, filtered);
   }
 
   function convertToDate(dateArray) {

@@ -60,12 +60,7 @@
 
     plotData = getPlotData(workoutsBySeason, minDistance, maxDistance);
 
-    $chart.series[0].setData(plotData);
-    $chart.series[0].update({
-      animation: {
-        duration: 250
-      }
-    });
+    updateChartDataWithAnimation($chart, plotData);
   }
 
   function getPlotData(workoutsBySeason, minDistance, maxDistance) {

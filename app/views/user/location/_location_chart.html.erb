@@ -61,12 +61,7 @@
 
     plotData = getPlotData(workoutsByLocation, selectedLocations, minDistance, maxDistance);
 
-    $chart.series[0].setData(plotData);
-    $chart.series[0].update({
-      animation: {
-        duration: 250
-      }
-    });
+    updateChartDataWithAnimation($chart, plotData);
   }
 
   function getPlotData(workoutsByLocation, locations, minDistance, maxDistance) {

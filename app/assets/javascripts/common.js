@@ -20,9 +20,9 @@ function calculateAverage(array) {
 
 function removeZeroes(data) {
   for(var i = 0; i < data.length; i++) {
-    if(data[i].y == 0) {
+    if (data[i].y === 0) {
       data.splice(i, data.length);
-      break
+      break;
     }
   }
 
@@ -36,11 +36,20 @@ function averageTotalTimeOrSpeed(dataset, minDistance, maxDistance) {
     if (set[0] >= minDistance && set[0] <= maxDistance) {
       filtered.push(set[1]);
     }
-  })
+  });
 
-  if (filtered[0] == undefined) {
+  if (filtered[0] === undefined) {
     return 0;
   } else {
     return calculateAverage(filtered);
   }
+}
+
+function updateChartDataWithAnimation(chart, data) {
+  chart.series[0].setData(data);
+  chart.series[0].update({
+    animation: {
+      duration: 250
+    }
+  });
 }
