@@ -47,7 +47,7 @@ module SeasonDatasets
     end
 
     def self.group_by_season(data)
-      data.group_by { |w| w.city_and_state }
+      data.group_by { |w| w.season }
     end
   end
 end

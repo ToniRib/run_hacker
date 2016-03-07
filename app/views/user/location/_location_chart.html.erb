@@ -76,7 +76,7 @@
       if ($.inArray(location, locations) > -1) {
         plotData.push({
           name: location,
-          y: averageTotalTime(workoutsByLocation[location], minDistance, maxDistance)
+          y: averageTotalTimeOrSpeed(workoutsByLocation[location], minDistance, maxDistance)
         })
       }
     }
@@ -97,7 +97,7 @@
     return data;
   }
 
-  function averageTotalTime(dataset, minDistance, maxDistance) {
+  function averageTotalTimeOrSpeed(dataset, minDistance, maxDistance) {
     var filtered = [];
 
     dataset.forEach(function(set){
