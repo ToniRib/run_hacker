@@ -1,7 +1,6 @@
 class Workout < ActiveRecord::Base
   include TemperatureDatasets
   include TimeOfDayDatasets
-  include LocationDatasets
   include SeasonDatasets
 
   belongs_to :user
@@ -11,6 +10,8 @@ class Workout < ActiveRecord::Base
   scope :no_temperature, -> { where(temperature: nil) }
   scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
   scope :no_routes, -> { where("route_id IS NULL") }
+  scope :has_routes, -> { where("route_id IS NOT NULL") }
+  scope :has_locations, -> { has_routes.joins(route: :location).where("location_id IS NOT NULL")}
   scope :has_average_speed, -> { where("average_speed IS NOT NULL") }
   scope :has_elapsed_time, -> { where("elapsed_time IS NOT NULL") }
   scope :has_active_time, -> { where("active_time IS NOT NULL") }

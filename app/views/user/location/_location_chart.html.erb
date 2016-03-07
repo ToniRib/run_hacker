@@ -53,8 +53,8 @@
     $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
 
     var data = {
-      "Average Total Time": <%= @workouts.distance_location_and_total_time.to_json.html_safe %>,
-      "Average Speed": <%= @workouts.distance_location_and_average_speed.to_json.html_safe %>
+      "Average Total Time": <%= @user.distance_location_and_total_time.to_json.html_safe %>,
+      "Average Speed": <%= @user.distance_location_and_average_speed.to_json.html_safe %>
     };
 
     var workoutsByLocation = data[yAxisSelection];
