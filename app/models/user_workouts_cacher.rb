@@ -8,11 +8,13 @@ class UserWorkoutsCacher < SimpleDelegator
   end
 
   def cached_workouts_with_route
-    Rails.cache.fetch(workout_route_cache_name) { workouts }
+    Rails.cache.fetch(workout_route_cache_name) { workouts.includes(:route) }
   end
 
   def cached_workouts_with_route_and_location
-    Rails.cache.fetch(workout_route_location_cache_name) { workouts }
+    Rails.cache.fetch(workout_route_location_cache_name) do
+      workouts.includes(:route, :location) 
+    end
   end
 
   private
