@@ -1,5 +1,5 @@
 class User::TimeOfDayController < User::BaseController
   def index
-    @workouts = UserWorkoutsCacher.new(current_user).cached_workouts_with_route_and_location
+    @user = Presenters::TimeOfDayPresenter.new(current_user)
   end
 end

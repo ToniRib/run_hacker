@@ -1,6 +1,4 @@
 class Workout < ActiveRecord::Base
-  include TimeOfDayDatasets
-
   belongs_to :user
   belongs_to :route
   has_one    :location, through: :route

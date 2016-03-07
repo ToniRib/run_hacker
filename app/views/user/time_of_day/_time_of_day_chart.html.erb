@@ -85,9 +85,9 @@
     $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
 
     var data = {
-      "Total Time": mapWorkoutsWithTimes(<%= @workouts.distance_time_of_day_and_total_time %>),
-      "Average Speed": mapWorkoutsWithTimes(<%= @workouts.distance_time_of_day_and_average_speed %>),
-      "Time Spent Resting": mapWorkoutsWithTimes(<%= @workouts.distance_time_of_day_and_time_spent_resting %>)
+      "Total Time": mapWorkoutsWithTimes(<%= @user.distance_time_of_day_and_total_time %>),
+      "Average Speed": mapWorkoutsWithTimes(<%= @user.distance_time_of_day_and_average_speed %>),
+      "Time Spent Resting": mapWorkoutsWithTimes(<%= @user.distance_time_of_day_and_time_spent_resting %>)
     };
 
     var workouts = data[yAxisSelection];
