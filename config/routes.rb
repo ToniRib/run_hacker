@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/time_of_day",             to: "user/time_of_day#index"
   get "/location",                to: "user/location#index"
   get "/elevation",               to: "user/elevation#index"
+  get "/season",                  to: "user/season#index"
 
   get "/workouts",                to: "user/workouts#index"
   get "/workouts/:id",            to: "user/workouts#show",       as: "workout"

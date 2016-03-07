@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  $(function () {
+    $('#season-chart').highcharts({
+      chart: {
+        type: 'column',
+        height: 480,
+        animation: true
+      },
+      title: { text: null },
+      legend: {
+        enabled: false
+      },
+      xAxis: {
+        type: 'category',
+        title: { text: null }
+      },
+      yAxis: {
+        title: { text: null }
+      },
+      series: [{
+        name: 'Average',
+        colorByPoint: true,
+        data: null
+      }],
+    });
+  });
+</script>

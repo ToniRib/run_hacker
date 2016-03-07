@@ -1,0 +1,35 @@
+hi
+<div class="container">
+  <div class="row main-chart-area orange-border">
+    <div class="col-sm-12">
+      <div class="row text-center">
+        <h2>Season Analysis</h2>
+      </div>
+      <div class="row">
+        <div class="filter">
+          <div class="col-sm-5">
+            <label>Distance Range</label>
+            <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
+            <span>to</span>
+            <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
+            <span>miles</span>
+          </div>
+          <div class="col-sm-4 text-center select-column">
+            <label>Y-axis</label>
+            <%= select_tag "y-axis", options_for_select(["Average Total Time", "Average Speed"], "Total Time") %>
+          </div>
+          <div class="col-sm-3">
+            <button id="create-season-chart" class="btn btn-default pull-right create-graph">Create Graph</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="chart" id="season-chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "season_chart" %>
