@@ -495,6 +495,127 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe ".distance_location_and_total_time" do
+    it "returns nested arrays for for records with elapsed times and routes" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
+
+      data = Workout.distance_location_and_total_time
+      expected = {"Denver, CO"=>[[4.97, 5.0], [2.49, 8.33]]}
+
+      expect(data).to eq(expected)
+    end
+
+    it "returns times grouped by location" do
+      location1 = create(:location, city: "Denver", state: "CO")
+      location2 = create(:location, city: "Los Angeles", state: "CA")
+      route1 = create(:route, location: location1)
+      route2 = create(:route, location: location2)
+      workout1 = create(:workout, route: route1)
+      workout2 = create(:workout, route: route2)
+
+      data = Workout.distance_location_and_total_time
+      expected = { "Denver, CO" => [[5.05, 50.77]],
+                   "Los Angeles, CA" => [[5.05, 50.77]]
+      }
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no elapsed time" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: nil,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
+
+      data = Workout.distance_location_and_total_time
+      expected = {"Denver, CO"=>[[4.97, 5.0]]}
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  route_id: nil)
+
+      data = Workout.distance_location_and_total_time
+      expected = {"Denver, CO"=>[[4.97, 5.0]]}
+
+      expect(data).to eq(expected)
+    end
+  end
+
+  describe ".distance_location_and_average_speed" do
+    it "returns nested arrays for records with an average speed" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: 5)
+
+      data = Workout.distance_location_and_average_speed
+      expected = {"Denver, CO"=>[[4.97, 6.71], [2.49, 11.18]]}
+
+      expect(data).to eq(expected)
+    end
+
+    it "returns times grouped by location" do
+      location1 = create(:location, city: "Denver", state: "CO")
+      location2 = create(:location, city: "Los Angeles", state: "CA")
+      route1 = create(:route, location: location1)
+      route2 = create(:route, location: location2)
+      workout1 = create(:workout, route: route1)
+      workout2 = create(:workout, route: route2)
+
+      data = Workout.distance_location_and_average_speed
+      expected = { "Denver, CO" => [[5.05, 5.97]],
+                   "Los Angeles, CA" => [[5.05, 5.97]]
+      }
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no average speed" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: nil)
+
+      data = Workout.distance_location_and_average_speed
+      expected = {"Denver, CO"=>[[4.97, 6.71]]}
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no associated route/location" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: 5,
+                                  route_id: nil)
+
+      data = Workout.distance_location_and_average_speed
+      expected = {"Denver, CO"=>[[4.97, 6.71]]}
+
+      expect(data).to eq(expected)
+    end
+  end
 
   def api_data_with_distance
     {
