@@ -551,7 +551,7 @@ RSpec.describe Workout, type: :model do
                                   starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
 
       data = Workout.distance_location_and_total_time
-      expected = {"Denver, CO"=>[[4.97, 5.0], [2.49, 8.33]]}
+      expected = { "Denver, CO" => [[4.97, 5.0], [2.49, 8.33]] }
 
       expect(data).to eq(expected)
     end
@@ -581,7 +581,7 @@ RSpec.describe Workout, type: :model do
                                   starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
 
       data = Workout.distance_location_and_total_time
-      expected = {"Denver, CO"=>[[4.97, 5.0]]}
+      expected = { "Denver, CO" => [[4.97, 5.0]] }
 
       expect(data).to eq(expected)
     end
@@ -596,7 +596,7 @@ RSpec.describe Workout, type: :model do
                                   route_id: nil)
 
       data = Workout.distance_location_and_total_time
-      expected = {"Denver, CO"=>[[4.97, 5.0]]}
+      expected = { "Denver, CO" => [[4.97, 5.0]] }
 
       expect(data).to eq(expected)
     end
@@ -612,7 +612,7 @@ RSpec.describe Workout, type: :model do
                                   average_speed: 5)
 
       data = Workout.distance_location_and_average_speed
-      expected = {"Denver, CO"=>[[4.97, 6.71], [2.49, 11.18]]}
+      expected = { "Denver, CO" => [[4.97, 6.71], [2.49, 11.18]] }
 
       expect(data).to eq(expected)
     end
@@ -642,7 +642,7 @@ RSpec.describe Workout, type: :model do
                                   average_speed: nil)
 
       data = Workout.distance_location_and_average_speed
-      expected = {"Denver, CO"=>[[4.97, 6.71]]}
+      expected = { "Denver, CO" => [[4.97, 6.71]] }
 
       expect(data).to eq(expected)
     end
@@ -657,7 +657,7 @@ RSpec.describe Workout, type: :model do
                                   route_id: nil)
 
       data = Workout.distance_location_and_average_speed
-      expected = {"Denver, CO"=>[[4.97, 6.71]]}
+      expected = { "Denver, CO" => [[4.97, 6.71]] }
 
       expect(data).to eq(expected)
     end
@@ -851,6 +851,99 @@ RSpec.describe Workout, type: :model do
       expect(data).to eq(expected)
     end
   end
+
+  describe ".distance_season_and_total_time" do
+    it "returns nested arrays for for records with elapsed times" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
+
+      data = Workout.distance_season_and_total_time
+      expected = { "Fall" => [[4.97, 5.0], [2.49, 8.33]] }
+
+      expect(data).to eq(expected)
+    end
+
+    it "returns times grouped by location" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: 500,
+                                  starting_datetime: DateTime.parse("2011-01-20 12:16:52 UTC"))
+
+      data = Workout.distance_season_and_total_time
+      expected = { "Fall" => [[4.97, 5.0]],
+                   "Winter" => [[2.49, 8.33]]
+      }
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no elapsed time" do
+      workout1 = create(:workout, distance: 8000,
+                                  elapsed_time: 300,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"))
+      workout2 = create(:workout, distance: 4000,
+                                  elapsed_time: nil,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"))
+
+      data = Workout.distance_season_and_total_time
+      expected = { "Fall" => [[4.97, 5.0]] }
+
+      expect(data).to eq(expected)
+    end
+  end
+
+  describe ".distance_season_and_average_speed" do
+    it "returns nested arrays for records with an average speed" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-25 12:16:52 UTC"),
+                                  average_speed: 5)
+
+      data = Workout.distance_season_and_average_speed
+      expected = { "Fall" => [[4.97, 6.71], [2.49, 11.18]] }
+
+      expect(data).to eq(expected)
+    end
+
+    it "returns times grouped by location" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-07-25 12:16:52 UTC"),
+                                  average_speed: 5)
+
+      data = Workout.distance_season_and_average_speed
+      expected = { "Fall" => [[4.97, 6.71]],
+                   "Summer" => [[2.49, 11.18]]
+      }
+
+      expect(data).to eq(expected)
+    end
+
+    it "does not return records with no average speed" do
+      workout1 = create(:workout, distance: 8000,
+                                  starting_datetime: DateTime.parse("2011-09-20 19:16:52 UTC"),
+                                  average_speed: 3)
+      workout2 = create(:workout, distance: 4000,
+                                  starting_datetime: DateTime.parse("2011-09-20 12:16:52 UTC"),
+                                  average_speed: nil)
+
+      data = Workout.distance_season_and_average_speed
+      expected = { "Fall" => [[4.97, 6.71]] }
+
+      expect(data).to eq(expected)
+    end
+  end
+
 
   def api_data_with_distance
     {
