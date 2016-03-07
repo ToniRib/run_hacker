@@ -68,8 +68,8 @@
 
   function updateChart(){
     var $chart = $('#time-of-day-chart').highcharts();
-    var minDistance = parseInt($('#minimum_distance').val());
-    var maxDistance = parseInt($('#maximum_distance').val());
+    var minDistance = getMinDistance();
+    var maxDistance = getMaxDistance();
 
     var range = minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
     var yAxisSelection = $('#y-axis').val();

@@ -116,3 +116,11 @@ function getYAxisUnits(selection) {
 
   return yAxisUnits[selection];
 }
+
+function getMinDistance() {
+  return parseInt($('#minimum_distance').val());
+}
+
+function getMaxDistance() {
+  return parseInt($('#maximum_distance').val());
+}
