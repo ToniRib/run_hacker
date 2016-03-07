@@ -67,3 +67,39 @@ function createFilteredSetForScatter(workouts, minDistance, maxDistance) {
 
   return filtered;
 }
+
+function setYAxisTitle(chart, selection, units) {
+  chart.yAxis[0].setTitle({ text: selection + units });
+}
+
+function getPlotDataByLocation(workoutsByLocation, locations, minDistance, maxDistance) {
+  var plotData = [];
+
+  for (var location in workoutsByLocation) {
+    if ($.inArray(location, locations) > -1) {
+      plotData.push({
+        name: location,
+        y: averageTotalTimeOrSpeed(workoutsByLocation[location], minDistance, maxDistance)
+      });
+    }
+  }
+
+  plotData.sort(compare);
+
+  return removeZeroes(plotData);
+}
+
+function getPlotDataBySeason(workoutsBySeason, minDistance, maxDistance) {
+  var plotData = [];
+
+  for (var season in workoutsBySeason) {
+    plotData.push({
+      name: season,
+      y: averageTotalTimeOrSpeed(workoutsBySeason[season], minDistance, maxDistance)
+    });
+  }
+
+  plotData.sort(compare);
+
+  return removeZeroes(plotData);
+}

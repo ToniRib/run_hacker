@@ -49,7 +49,7 @@
       "Average Speed": " (mph)"
     };
 
-    $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
+    setYAxisTitle($chart, yAxisSelection, yAxisUnits[yAxisSelection]);
 
     var data = {
       "Average Total Time": <%= @user.distance_season_and_total_time.to_json.html_safe %>,
@@ -58,23 +58,8 @@
 
     var workoutsBySeason = data[yAxisSelection];
 
-    plotData = getPlotData(workoutsBySeason, minDistance, maxDistance);
+    plotData = getPlotDataBySeason(workoutsBySeason, minDistance, maxDistance);
 
     updateChartDataWithAnimation($chart, plotData);
-  }
-
-  function getPlotData(workoutsBySeason, minDistance, maxDistance) {
-    var plotData = [];
-
-    for (var season in workoutsBySeason) {
-      plotData.push({
-        name: season,
-        y: averageTotalTimeOrSpeed(workoutsBySeason[season], minDistance, maxDistance)
-      })
-    }
-
-    plotData.sort(compare);
-
-    return removeZeroes(plotData);
   }
 </script>

@@ -82,7 +82,7 @@
       "Time Spent Resting": " (min)"
     };
 
-    $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
+    setYAxisTitle($chart, yAxisSelection, yAxisUnits[yAxisSelection]);
 
     var data = {
       "Total Time": <%= @user.distance_temperature_and_total_time %>,
