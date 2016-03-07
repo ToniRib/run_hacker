@@ -1,0 +1,25 @@
+@media screen and (max-width: 1200px) {
+  .img-welcome {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .img-welcome {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .img-welcome {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .img-welcome {
+    float: none;
+    margin: 0 auto;
+    max-width: 280px;
+  }
+}
