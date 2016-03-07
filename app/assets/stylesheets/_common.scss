@@ -38,6 +38,30 @@
 
 }
 
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: $base-orange;
+}
+
+
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent;
+  }
+
+  .icon-bar {
+    background-color: $base-yellow-lighten;
+  }
+
+}
+
 .navbar-right {
   font-size: 20px;
   margin-right: 30px;

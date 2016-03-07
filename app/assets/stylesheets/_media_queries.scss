@@ -2,11 +2,66 @@
   .img-welcome {
     max-width: 600px;
   }
+
+  .info-row h4 {
+    font-size: 20px;
+    padding: 15px 0;
+  }
+
+  .welcome-description {
+    font-size: 16px;
+  }
+
+  .bottom-sign-in {
+    font-size: 15px;
+  }
+
 }
 
 @media screen and (max-width: 991px) {
   .img-welcome {
+    float: none;
+    margin: 0 auto;
     max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: $base-yellow-lighten;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $base-yellow;
+    }
+
+  }
+
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
+    color: $base-yellow-lighten;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $base-yellow;
+    }
+
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main-title {
+    font-size: 60px;
+  }
+
+  .tagline {
+    font-size: 30px;
+  }
+
+  .main-login-link {
+    font-size: 16px;
   }
 }
 
@@ -14,12 +69,22 @@
   .img-welcome {
     max-width: 350px;
   }
+
+  .main-title {
+    font-size: 40px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
+
+  .main-login-link {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 400px) {
   .img-welcome {
-    float: none;
-    margin: 0 auto;
     max-width: 280px;
   }
 }
