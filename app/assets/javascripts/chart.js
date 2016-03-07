@@ -68,7 +68,9 @@ function createFilteredSetForScatter(workouts, minDistance, maxDistance) {
   return filtered;
 }
 
-function setYAxisTitle(chart, selection, units) {
+function setYAxisTitle(chart, selection) {
+  var units = getYAxisUnits(selection);
+
   chart.yAxis[0].setTitle({ text: selection + units });
 }
 
@@ -102,4 +104,15 @@ function getPlotDataBySeason(workoutsBySeason, minDistance, maxDistance) {
   plotData.sort(compare);
 
   return removeZeroes(plotData);
+}
+
+function getYAxisUnits(selection) {
+  var yAxisUnits = {
+    "Total Time": " (min)",
+    "Average Speed": " (mph)",
+    "Time Spent Resting": " (min)",
+    "Average Total Time": " (min)"
+  };
+
+  return yAxisUnits[selection];
 }

@@ -44,12 +44,7 @@
 
     $chart.setTitle({ text: 'Season vs. ' + yAxisSelection + ' for ' + range + 'runs' });
 
-    var yAxisUnits = {
-      "Average Total Time": " (min)",
-      "Average Speed": " (mph)"
-    };
-
-    setYAxisTitle($chart, yAxisSelection, yAxisUnits[yAxisSelection]);
+    setYAxisTitle($chart, yAxisSelection);
 
     var data = {
       "Average Total Time": <%= @user.distance_season_and_total_time.to_json.html_safe %>,

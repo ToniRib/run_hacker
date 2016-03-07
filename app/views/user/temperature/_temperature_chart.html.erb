@@ -76,13 +76,7 @@
 
     $chart.setTitle({ text: 'Temperature vs. ' + yAxisSelection + ' for ' + range + 'runs' });
 
-    var yAxisUnits = {
-      "Total Time": " (min)",
-      "Average Speed": " (mph)",
-      "Time Spent Resting": " (min)"
-    };
-
-    setYAxisTitle($chart, yAxisSelection, yAxisUnits[yAxisSelection]);
+    setYAxisTitle($chart, yAxisSelection);
 
     var data = {
       "Total Time": <%= @user.distance_temperature_and_total_time %>,
