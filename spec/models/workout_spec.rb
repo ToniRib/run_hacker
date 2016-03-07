@@ -64,6 +64,18 @@ RSpec.describe Workout, type: :model do
     end
   end
 
+  describe ".has_elevations" do
+    it "returns only workouts where route elevation is not nil" do
+      route1 = create(:route, elevation: 10000)
+      route2 = create(:route, elevation: nil)
+      workout1 = create(:workout, route: route1)
+      workout2 = create(:workout, route: route2)
+
+      expect(Workout.has_elevations.count).to eq(1)
+      expect(Workout.has_elevations.first.id).to eq(workout1.id)
+    end
+  end
+
   describe ".no_routes" do
     it "returns only workouts where active time is nil" do
       workout1, workout2 = create_list(:workout, 2)
