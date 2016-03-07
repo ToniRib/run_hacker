@@ -16,7 +16,9 @@
     color: $base-yellow;
     font-size: 26px;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       color: $base-yellow-lighten;
     }
 
@@ -27,7 +29,9 @@
 .navbar-default .navbar-nav > li > a {
   color: $base-yellow-lighten;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: $base-yellow;
   }
 

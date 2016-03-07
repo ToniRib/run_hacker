@@ -54,7 +54,9 @@ body {
   font-size: 22px;
   margin-top: 20px;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     border: 3px solid $link-hover;
     color: $link-hover;
     text-decoration: none;
@@ -80,7 +82,9 @@ body {
   font-size: 18px;
   color: $base-green;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: $base-green-lighten;
     text-decoration: none;
   }
@@ -108,7 +112,9 @@ body {
 .link-to-chart-page {
   color: $base-green;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: $base-green-lighten;
     text-decoration: none;
   }
@@ -161,7 +167,9 @@ body {
 .create-graph {
   background: $base-green-lighten;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background: $base-yellow-lighten;
   }
 
@@ -236,7 +244,9 @@ tbody{
   font-size: 20px;
   margin-top: 15px;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: $base-green-lighten;
     text-decoration: none;
   }
