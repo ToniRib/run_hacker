@@ -85,9 +85,9 @@
     $chart.yAxis[0].setTitle({ text: yAxisSelection + yAxisUnits[yAxisSelection] });
 
     var data = {
-      "Total Time": <%= @workouts.distance_temperature_and_total_time %>,
-      "Average Speed": <%= @workouts.distance_temperature_and_average_speed %>,
-      "Time Spent Resting": <%= @workouts.distance_temperature_and_time_spent_resting %>
+      "Total Time": <%= @user.distance_temperature_and_total_time %>,
+      "Average Speed": <%= @user.distance_temperature_and_average_speed %>,
+      "Time Spent Resting": <%= @user.distance_temperature_and_time_spent_resting %>
     };
 
     var workouts = data[yAxisSelection];

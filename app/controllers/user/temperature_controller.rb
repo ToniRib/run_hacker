@@ -1,5 +1,5 @@
 class User::TemperatureController < User::BaseController
   def index
-    @workouts = UserWorkoutsCacher.new(current_user).cached_workouts
+    @user = Presenters::TemperaturePresenter.new(current_user)
   end
 end

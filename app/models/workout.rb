@@ -1,5 +1,4 @@
 class Workout < ActiveRecord::Base
-  include TemperatureDatasets
   include TimeOfDayDatasets
 
   belongs_to :user
@@ -7,6 +6,7 @@ class Workout < ActiveRecord::Base
   has_one    :location, through: :route
 
   scope :no_temperature, -> { where(temperature: nil) }
+  scope :has_temperature, -> { where("temperature IS NOT NULL") }
   scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
   scope :no_routes, -> { where("route_id IS NULL") }
   scope :has_routes, -> { where("route_id IS NOT NULL") }
