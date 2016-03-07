@@ -4,7 +4,6 @@ class Workout < ActiveRecord::Base
   include LocationDatasets
   include SeasonDatasets
   include ElevationDatasets
-  include DashboardAggregates
 
   belongs_to :user
   belongs_to :route

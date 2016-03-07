@@ -3,7 +3,7 @@ class UserAggregatesSerializer < ActiveModel::Serializer
              :total_calories, :average_run_distance
 
   def total_workouts
-    object.count
+    object.number_of_workouts
   end
 
   def total_distance

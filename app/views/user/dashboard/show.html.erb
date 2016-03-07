@@ -34,25 +34,25 @@
             <div class="col-sm-12 col-md-6">
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Workouts</h3>
-                <h2 class="stat-data" id="total-workouts"><%= @user.workouts.count %></h2>
+                <h2 class="stat-data" id="total-workouts"><%= @user.number_of_workouts %></h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Calories</h3>
-                <h2 class="stat-data" id="total-calories"><%= @user.workouts.total_calories_in_kcal %> kcal</h2>
+                <h2 class="stat-data" id="total-calories"><%= @user.total_calories_in_kcal %> kcal</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Average Distance</h3>
-                <h2 class="stat-data" id="average-distance"><%= @user.workouts.average_distance_in_miles %> miles</h2>
+                <h2 class="stat-data" id="average-distance"><%= @user.average_distance_in_miles %> miles</h2>
               </div>
             </div>
             <div class="col-sm-12 col-md-6">
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Distance</h3>
-                <h2 class="stat-data" id="total-distance"><%= @user.workouts.total_distance_in_miles %> miles</h2>
+                <h2 class="stat-data" id="total-distance"><%= @user.total_distance_in_miles %> miles</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Total Time</h3>
-                <h2 class="stat-data" id="total-time"><%= @user.workouts.total_time_in_hours %> hours</h2>
+                <h2 class="stat-data" id="total-time"><%= @user.total_time_in_hours %> hours</h2>
               </div>
               <div class="row dashboard-stat-listing">
                 <h3 class="stat-title">Active Since</h3>

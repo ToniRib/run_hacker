@@ -19,6 +19,7 @@ RSpec.feature "User logs in" do
     end
 
     user = User.last
+    presenter = Presenters::DashboardPresenter.new(user)
 
     expect(page).to have_content user.display_name
     expect(page).to have_content user.email
@@ -26,10 +27,10 @@ RSpec.feature "User logs in" do
     expect(page.find('.user-profile-photo')['src']).to have_content toni_profile_photo
 
     expect(page).to have_content user.number_of_workouts
-    expect(page).to have_content user.workouts.total_distance_in_miles
-    expect(page).to have_content user.workouts.average_distance_in_miles
-    expect(page).to have_content user.workouts.total_time_in_hours
-    expect(page).to have_content user.workouts.total_calories_in_kcal
+    expect(page).to have_content presenter.total_distance_in_miles
+    expect(page).to have_content presenter.average_distance_in_miles
+    expect(page).to have_content presenter.total_time_in_hours
+    expect(page).to have_content presenter.total_calories_in_kcal
     expect(page).to have_content user.date_joined_formatted
   end
 

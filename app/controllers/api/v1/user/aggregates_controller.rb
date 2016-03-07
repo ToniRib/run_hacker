@@ -1,6 +1,7 @@
 class Api::V1::User::AggregatesController < ApplicationController
   def index
-    render json: current_user.workouts,
+    user = Presenters::DashboardPresenter.new(current_user)
+    render json: user,
            serializer: ::UserAggregatesSerializer
   end
 end
