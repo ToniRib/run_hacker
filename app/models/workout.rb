@@ -11,8 +11,6 @@ class Workout < ActiveRecord::Base
   scope :no_temperature, -> { where(temperature: nil) }
   scope :by_descending_start_date, -> { order(starting_datetime: :desc) }
   scope :no_routes, -> { where("route_id IS NULL") }
-  scope :has_routes, -> { where("route_id IS NOT NULL") }
-  scope :has_locations, -> { has_routes.joins(route: :location).where("location_id IS NOT NULL")}
 
   def self.create_from_api_response(data)
     return if no_distance_or_no_route(data)
