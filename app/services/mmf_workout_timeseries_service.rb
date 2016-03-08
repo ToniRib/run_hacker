@@ -1,5 +1,5 @@
 class MmfWorkoutTimeseriesService
-  attr_reader :map_my_fitness_id, :connection, :user
+  attr_reader :map_my_fitness_id, :connection, :user, :response
 
   def initialize(map_my_fitness_id, user)
     @map_my_fitness_id = map_my_fitness_id
@@ -9,9 +9,11 @@ class MmfWorkoutTimeseriesService
   end
 
   def get_timeseries
-    response = get_api_response
+    @response = Rails.cache.fetch("workout-#{map_my_fitness_id}") do
+      get_api_response
+    end
 
-    if time_series_confirmed(response)
+    if time_series_confirmed
       WorkoutTimeseries.new(response)
     else
       "Timeseries Not Available"
@@ -34,7 +36,7 @@ class MmfWorkoutTimeseriesService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def time_series_confirmed(response)
+  def time_series_confirmed
     response[:has_time_series]
   end
 

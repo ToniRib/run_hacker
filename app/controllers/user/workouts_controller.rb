@@ -3,20 +3,18 @@ class User::WorkoutsController < User::BaseController
   before_action :check_owner_of_workout, only: [:show]
 
   def index
-    workouts = UserWorkoutsCacher.new(current_user).cached_workouts_with_route_and_location
+    workouts = UserWorkoutsCacher.new(current_user)
+                                 .cached_workouts_with_route_and_location
     @workouts = workouts
                   .by_descending_start_date
                   .map { |w| Presenters::WorkoutPresenter.new(w) }
   end
 
   def show
-    workout = Rails.cache.fetch(workout_cache_name) do
-      current_user.workouts.includes(:location).find(params[:id])
-    end
+    workout = current_user.workouts.includes(:location).find(params[:id])
 
     if workout.has_time_series
       time_series = load_time_series(workout)
-
       redirect_to_workouts_and_render_error_flash unless confirmed(time_series)
 
       @workout = Presenters::WorkoutWithTimeseries.new(workout, time_series)
@@ -27,16 +25,10 @@ class User::WorkoutsController < User::BaseController
 
   private
 
-  def workout_cache_name
-    "workout-and-location-#{params[:id]}-#{Workout.find(params[:id]).updated_at}"
-  end
-
   def load_time_series(workout)
-    Rails.cache.fetch("workout-#{workout.map_my_fitness_id}") do
-      service = MmfWorkoutTimeseriesService.new(workout.map_my_fitness_id,
-                                                current_user)
-      service.get_timeseries
-    end
+    service = MmfWorkoutTimeseriesService.new(workout.map_my_fitness_id,
+                                              current_user)
+    service.get_timeseries
   end
 
   def confirmed(time_series)
