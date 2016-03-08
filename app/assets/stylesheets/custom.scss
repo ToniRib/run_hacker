@@ -258,8 +258,24 @@ tbody{
 
 .multi-select {
   font-size: 14px;
+  margin-top: 10px;
+}
+
+select[multiple], select[size] {
+    height: 183px;
 }
 
 .large-top-margin {
   margin-top: 45px;
+}
+
+.select-all-btn {
+  background: $base-yellow;
+  margin-top: 10px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $base-yellow-lighten;
+  }
 }

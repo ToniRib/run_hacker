@@ -5,18 +5,20 @@
         <h2>Location Analysis</h2>
       </div>
       <div class="row">
-        <div class="col-sm-12 col-md-4 text-center">
+        <div class="col-sm-12 col-md-3 text-center">
           <div class="filter">
             <div class="row">
               <div class="col-sm-12">
                 <div class="row">
                   <label>Locations (select multiple)</label><br>
-                  <button id="select-all" class="btn btn-default">Select All</button>
                 </div>
                 <div class="row">
                   <%= select_tag "location", options_for_select(current_user.locations_as_city_and_state),
                                              multiple: true,
                                              class: "multi-select" %>
+                </div>
+                <div class="row">
+                  <button id="select-all" class="btn btn-default select-all-btn">Select All</button>
                 </div>
               </div>
             </div>
@@ -48,7 +50,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-8">
+        <div class="col-sm-12 col-md-9">
           <div class="chart" id="location-chart"></div>
         </div>
       </div>
