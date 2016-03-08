@@ -150,7 +150,11 @@ body {
 }
 
 .summary-stat-column {
-  height: 705px;
+  min-height: 705px;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0;
 }
 
 .summary-title {
