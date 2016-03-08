@@ -30,6 +30,12 @@ To run this application locally, you would need to obtain API keys from the foll
 
 Gem dependencies can be found in the Gemfile.
 
+### Test Suite
+
+This test suite is written in [RSpec](https://github.com/rspec/rspec-rails) and utilizes [Capybara](https://github.com/jnicklas/capybara) for feature tests, [Selenium](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings) for JavaScript testing, and [VCR](https://github.com/vcr/vcr) for easy recording and playback of API calls. It also uses [factory_girl](https://github.com/thoughtbot/factory_girl) for creation of objects.
+
+The test suite can be run from the main directory of the project by running the command `rspec`. The project has test coverage at the following levels: models, workouts, services, controllers, and features.
+
 ### Additional Information
 
 Because this was a project for the [Turing School of Software and Design](http://turing.io) and I did not want to pay for historical weather data, the application can only make 10 requests per minute to the weather API. Thus, if you are importing a large number of workouts all at the same time, it will take multiple minutes for the temperatures to get updated. However, the application will simply show "Not Available" for the temperature of any workouts until that point and those data points will not be available for plotting on the temperature chart.
