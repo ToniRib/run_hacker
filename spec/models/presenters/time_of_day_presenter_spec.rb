@@ -16,9 +16,11 @@ RSpec.describe Presenters::TimeOfDayPresenter, type: :model do
                                   user: user)
 
       data = Presenters::TimeOfDayPresenter.new(user).distance_time_of_day_and_total_time
-      expected = [[2.49, [2016, 1, 1, 6, 16], 8.33], [4.97, [2016, 1, 1, 13, 16], 5.0]]
+      expected1 = [2.49, [2016, 1, 1, 6, 16], 8.33]
+      expected2 = [4.97, [2016, 1, 1, 13, 16], 5.0]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no elapsed time" do
@@ -76,9 +78,11 @@ RSpec.describe Presenters::TimeOfDayPresenter, type: :model do
                                   user: user)
 
       data = Presenters::TimeOfDayPresenter.new(user).distance_time_of_day_and_average_speed
-      expected = [[2.49, [2016, 1, 1, 6, 16], 11.18], [4.97, [2016, 1, 1, 13, 16], 6.71]]
+      expected1 = [2.49, [2016, 1, 1, 6, 16], 11.18]
+      expected2 = [4.97, [2016, 1, 1, 13, 16], 6.71]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no average speed" do
@@ -138,9 +142,11 @@ RSpec.describe Presenters::TimeOfDayPresenter, type: :model do
                                   user: user)
 
       data = Presenters::TimeOfDayPresenter.new(user).distance_time_of_day_and_time_spent_resting
-      expected = [[2.49, [2016, 1, 1, 6, 16], 33.33], [4.97, [2016, 1, 1, 13, 16], 16.67]]
+      expected1 = [2.49, [2016, 1, 1, 6, 16], 33.33]
+      expected2 = [4.97, [2016, 1, 1, 13, 16], 16.67]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no elapsed time" do

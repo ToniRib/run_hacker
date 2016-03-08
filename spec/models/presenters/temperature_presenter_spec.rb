@@ -14,9 +14,11 @@ RSpec.describe Presenters::TemperaturePresenter, type: :model do
                                   user: user)
 
       data = Presenters::TemperaturePresenter.new(user).distance_temperature_and_total_time
-      expected = [[2.49, 40.0, 8.33], [4.97, 20.0, 5.0]]
+      expected1 = [2.49, 40.0, 8.33]
+      expected2 = [4.97, 20.0, 5.0]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no temperature" do
@@ -50,9 +52,11 @@ RSpec.describe Presenters::TemperaturePresenter, type: :model do
                                   user: user)
 
       data = Presenters::TemperaturePresenter.new(user).distance_temperature_and_average_speed
-      expected = [[2.49, 40.0, 11.18], [4.97, 20.0, 6.71]]
+      expected1 = [2.49, 40.0, 11.18]
+      expected2 = [4.97, 20.0, 6.71]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no temperature" do
@@ -88,9 +92,11 @@ RSpec.describe Presenters::TemperaturePresenter, type: :model do
                                   user: user)
 
       data = Presenters::TemperaturePresenter.new(user).distance_temperature_and_time_spent_resting
-      expected = [[2.49, 40.0, 0.83], [4.97, 20.0, 0.42]]
+      expected1 = [2.49, 40.0, 0.83]
+      expected2 = [4.97, 20.0, 0.42]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no temperature" do

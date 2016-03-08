@@ -16,9 +16,12 @@ RSpec.describe Presenters::LocationPresenter, type: :model do
                                   user: user)
 
       data = Presenters::LocationPresenter.new(user).distance_location_and_total_time
-      expected = { "Denver, CO" => [[2.49, 8.33], [4.97, 5.0]] }
+      expected1 = [2.49, 8.33]
+      expected2 = [4.97, 5.0]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Denver, CO")
+      expect(data["Denver, CO"]).to include(expected1)
+      expect(data["Denver, CO"]).to include(expected2)
     end
 
     it "returns times grouped by location" do
@@ -31,11 +34,13 @@ RSpec.describe Presenters::LocationPresenter, type: :model do
       workout2 = create(:workout, route: route2, user: user)
 
       data = Presenters::LocationPresenter.new(user).distance_location_and_total_time
-      expected = { "Denver, CO" => [[5.05, 50.77]],
-                   "Los Angeles, CA" => [[5.05, 50.77]]
-      }
+      expected_denver = [5.05, 50.77]
+      expected_los_angeles = [5.05, 50.77]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Denver, CO")
+      expect(data).to include("Los Angeles, CA")
+      expect(data["Denver, CO"]).to include(expected_denver)
+      expect(data["Los Angeles, CA"]).to include(expected_los_angeles)
     end
 
     it "does not return records with no elapsed time" do
@@ -93,9 +98,12 @@ RSpec.describe Presenters::LocationPresenter, type: :model do
                                   user: user)
 
       data = Presenters::LocationPresenter.new(user).distance_location_and_average_speed
-      expected = { "Denver, CO" => [[2.49, 1118.47], [4.97, 671.08]] }
+      expected1 = [2.49, 1118.47]
+      expected2 = [4.97, 671.08]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Denver, CO")
+      expect(data["Denver, CO"]).to include(expected1)
+      expect(data["Denver, CO"]).to include(expected2)
     end
 
     it "returns speeds grouped by location" do
@@ -108,11 +116,13 @@ RSpec.describe Presenters::LocationPresenter, type: :model do
       workout2 = create(:workout, route: route2, user: user)
 
       data = Presenters::LocationPresenter.new(user).distance_location_and_average_speed
-      expected = { "Denver, CO" => [[5.05, 5.97]],
-                   "Los Angeles, CA" => [[5.05, 5.97]]
-      }
+      expected_denver = [5.05, 5.97]
+      expected_los_angeles = [5.05, 5.97]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Denver, CO")
+      expect(data).to include("Los Angeles, CA")
+      expect(data["Denver, CO"]).to include(expected_denver)
+      expect(data["Los Angeles, CA"]).to include(expected_los_angeles)
     end
 
     it "does not return records with no average speed" do

@@ -16,9 +16,12 @@ RSpec.describe Presenters::SeasonPresenter, type: :model do
                                   user: user)
 
       data = Presenters::SeasonPresenter.new(user).distance_season_and_total_time
-      expected = { "Fall" => [[2.49, 8.33], [4.97, 5.0]] }
+      expected1 = [2.49, 8.33]
+      expected2 = [4.97, 5.0]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Fall")
+      expect(data["Fall"]).to include(expected1)
+      expect(data["Fall"]).to include(expected2)
     end
 
     it "returns times grouped by location" do
@@ -35,11 +38,13 @@ RSpec.describe Presenters::SeasonPresenter, type: :model do
                                   user: user)
 
       data = Presenters::SeasonPresenter.new(user).distance_season_and_total_time
-      expected = { "Fall"   => [[4.97, 5.0]],
-                   "Winter" => [[2.49, 8.33]]
-      }
+      expected1 = [2.49, 8.33]
+      expected2 = [4.97, 5.0]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Fall")
+      expect(data).to include("Winter")
+      expect(data["Winter"]).to include(expected1)
+      expect(data["Fall"]).to include(expected2)
     end
 
     it "does not return records with no elapsed time" do
@@ -77,9 +82,12 @@ RSpec.describe Presenters::SeasonPresenter, type: :model do
                                   user: user)
 
       data = Presenters::SeasonPresenter.new(user).distance_season_and_average_speed
-      expected = { "Fall" => [[2.49, 11.18], [4.97, 6.71]] }
+      expected1 = [2.49, 11.18]
+      expected2 = [4.97, 6.71]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Fall")
+      expect(data["Fall"]).to include(expected1)
+      expect(data["Fall"]).to include(expected2)
     end
 
     it "returns times grouped by location" do
@@ -96,11 +104,13 @@ RSpec.describe Presenters::SeasonPresenter, type: :model do
                                   user: user)
 
       data = Presenters::SeasonPresenter.new(user).distance_season_and_average_speed
-      expected = { "Fall"   => [[4.97, 6.71]],
-                   "Summer" => [[2.49, 11.18]]
-      }
+      expected1 = [2.49, 11.18]
+      expected2 = [4.97, 6.71]
 
-      expect(data).to eq(expected)
+      expect(data).to include("Fall")
+      expect(data).to include("Summer")
+      expect(data["Fall"]).to include(expected2)
+      expect(data["Summer"]).to include(expected1)
     end
 
     it "does not return records with no average speed" do

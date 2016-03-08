@@ -16,9 +16,11 @@ RSpec.describe Presenters::ElevationPresenter, type: :model do
                                   user: user)
 
       data = Presenters::ElevationPresenter.new(user).distance_elevation_and_total_time
-      expected = [[2.49, 1968.5, 8.33], [4.97, 2624.67, 5.0]]
+      expected1 = [2.49, 1968.5, 8.33]
+      expected2 = [4.97, 2624.67, 5.0]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no elapsed time" do
@@ -74,9 +76,11 @@ RSpec.describe Presenters::ElevationPresenter, type: :model do
                                   user: user)
 
       data = Presenters::ElevationPresenter.new(user).distance_elevation_and_average_speed
-      expected = [[2.49, 1968.5, 1118.47], [4.97, 2624.67, 671.08]]
+      expected1 = [2.49, 1968.5, 1118.47]
+      expected2 = [4.97, 2624.67, 671.08]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no average speed" do
@@ -134,9 +138,11 @@ RSpec.describe Presenters::ElevationPresenter, type: :model do
                                   user: user)
 
       data = Presenters::ElevationPresenter.new(user).distance_elevation_and_time_spent_resting
-      expected = [[2.49, 1968.5, 3.33], [4.97, 2624.67, 1.67]]
+      expected1 = [2.49, 1968.5, 3.33]
+      expected2 = [4.97, 2624.67, 1.67]
 
-      expect(data).to eq(expected)
+      expect(data).to include(expected1)
+      expect(data).to include(expected2)
     end
 
     it "does not return records with no elapsed time" do
