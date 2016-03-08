@@ -5,16 +5,16 @@
         <h2>Workout Listing</h2>
       </div>
       <div class="row table-section">
-        <table class="table table-hover workouts-table">
+        <table class="table table-hover workouts-table" id="workouts-table">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Distance (mi)</th>
-              <th>Average Speed (mph)</th>
-              <th>Elapsed Time (min)</th>
-              <th>Calories Burned (kcal)</th>
-              <th>Location</th>
-              <th>Elevation (feet)</th>
+              <th>Date <i class="fa fa-fw fa-sort" id="date-sort"></i></th>
+              <th>Distance (mi) <i class="fa fa-fw fa-sort" id="distance-sort"></i></th>
+              <th>Average Speed (mph) <i class="fa fa-fw fa-sort" id="speed-sort"></i></th>
+              <th>Elapsed Time (min) <i class="fa fa-fw fa-sort" id="time-sort"></i></th>
+              <th>Calories Burned (kcal) <i class="fa fa-fw fa-sort" id="calories-sort"></i></th>
+              <th>Location <i class="fa fa-fw fa-sort" id="location-sort"></i></th>
+              <th>Elevation (feet) <i class="fa fa-fw fa-sort" id="elevation-sort"></i></th>
             </tr>
           </thead>
           <tbody>
@@ -37,5 +37,20 @@
 </script>
 
 <script type="text/javascript">
+  var tableContents = $('#workouts-table tr').map(function(index, value) {
+    var $td =  $('td', this);
+      return {
+               date: $td.eq(0).text(),
+               distance: $td.eq(1).text(),
+               speed: $td.eq(2).text(),
+               time: $td.eq(3).text(),
+               calories: $td.eq(4).text(),
+               location: $td.eq(5).text(),
+               elevation: $td.eq(6).text(),
+               dataLink: this.dataset.link,
+               id: this.id
+             }
+  });
 
+  console.log(tableContents);
 </script>
