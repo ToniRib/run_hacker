@@ -11,10 +11,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pg'
 gem 'omniauth-mapmyfitness-oauth2', '~> 0.3.0'
-gem 'will_paginate'
 gem 'thin'
 gem 'sidekiq'
-gem 'lazy_high_charts'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
 group :development, :test do
