@@ -30,6 +30,16 @@ To run this application locally, you would need to obtain API keys from the foll
 
 Gem dependencies can be found in the Gemfile.
 
+### Setup
+
+If you wish to download the project and set it up locally, run the following commands:
+
+1. `git clone https://github.com/ToniRib/run_hacker.git`
+2. `bundle`
+3. `bundle exec figaro install` - This sets up figaro on your local machine. You will need to obtain the keys mentioned in the above section and save them in your `application.yml` file.
+4. Start Redis/Sidekiq: In one terminal, run `redis-server`. In a second terminal, run `bundle exec sidekiq`.
+5. While those are running, run `rails s` in another terminal pane to start the actual Rails server
+
 ### Test Suite
 
 This test suite is written in [RSpec](https://github.com/rspec/rspec-rails) and utilizes [Capybara](https://github.com/jnicklas/capybara) for feature tests, [Selenium](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings) for JavaScript testing, and [VCR](https://github.com/vcr/vcr) for easy recording and playback of API calls. It also uses [factory_girl](https://github.com/thoughtbot/factory_girl) for creation of objects.
