@@ -13,6 +13,14 @@ body {
 
 // ----- WELCOME PAGE -----
 
+.relative {
+  position: relative;
+}
+
+.top-portion {
+  height: 100vh;
+}
+
 .main-image {
   height: 100vh;
   background-image: url("http://mccoyedcon.com/sites/default/files/field/image/a-winding-road-curves-through-autumn-trees-in-new-england-1600x1071.jpg");
@@ -25,11 +33,6 @@ body {
 
 .title-section {
   position: relative;
-}
-
-.container {
-  position: relative;
-  top: 375px;
 }
 
 .main-title {
