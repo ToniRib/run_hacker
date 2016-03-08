@@ -42,7 +42,7 @@ If you wish to download the project and set it up locally, run the following com
 
 ### Test Suite
 
-This test suite is written in [RSpec](https://github.com/rspec/rspec-rails) and utilizes [Capybara](https://github.com/jnicklas/capybara) for feature tests, [Selenium](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings) for JavaScript testing, and [VCR](https://github.com/vcr/vcr) for easy recording and playback of API calls. It also uses [factory_girl](https://github.com/thoughtbot/factory_girl) for creation of objects.
+This test suite is written in [RSpec](https://github.com/rspec/rspec-rails) and utilizes [Capybara](https://github.com/jnicklas/capybara) for feature tests, [Selenium](https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings) for JavaScript testing, and [VCR](https://github.com/vcr/vcr) for easy recording and playback of API calls. It also uses [factory_girl](https://github.com/thoughtbot/factory_girl) for creation of objects. [SimpleCov](https://github.com/colszowka/simplecov) has been installed to provide basic test coverage reports.
 
 The test suite can be run from the main directory of the project by running the command `rspec`. The project has test coverage at the following levels: models, workouts, services, controllers, and features.
 
