@@ -11,7 +11,8 @@ class User::WorkoutsController < User::BaseController
   end
 
   def show
-    workout = current_user.workouts.includes(:location).find(params[:id])
+    workout = UserWorkoutsCacher.new(current_user)
+                                .cached_specific_workout(params[:id])
 
     if workout.has_time_series
       time_series = load_time_series(workout)

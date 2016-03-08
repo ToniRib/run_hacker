@@ -17,6 +17,12 @@ class UserWorkoutsCacher < SimpleDelegator
     end
   end
 
+  def cached_specific_workout(workout_id)
+    Rails.cache.fetch(specific_workout_cache_name(workout_id)) do
+      workouts.includes(:route, :location).find(workout_id)
+    end
+  end
+
   private
 
   def workout_only_cache_name
@@ -31,5 +37,11 @@ class UserWorkoutsCacher < SimpleDelegator
   def workout_route_location_cache_name
     "workout-listing-#{workouts.count}-#{workouts.maximum(:updated_at)}" \
     "-#{routes.maximum(:updated_at)}-#{locations.maximum(:updated_at)}-#{id}"
+  end
+
+  def specific_workout_cache_name(workout_id)
+    workout = Workout.find(workout_id)
+    "workout-specific-#{workout.updated_at}-#{workout.route.updated_at}" \
+    "-#{workout.location.updated_at}"
   end
 end
