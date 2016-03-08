@@ -13,9 +13,9 @@ class User::WorkoutsController < User::BaseController
   def show
     workout = UserWorkoutsCacher.new(current_user)
                                 .cached_specific_workout(params[:id])
-
     if workout.has_time_series
       time_series = load_time_series(workout)
+
       redirect_to_workouts_and_render_error_flash unless confirmed(time_series)
 
       @workout = Presenters::WorkoutWithTimeseries.new(workout, time_series)

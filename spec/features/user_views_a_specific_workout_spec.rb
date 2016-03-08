@@ -41,6 +41,7 @@ RSpec.feature "User views a specific workout" do
 
     visit workout_path(workout)
 
+    expect(current_path).to eq(workouts_path)
     expect(page).to have_content("Workout does not have a time series to display")
   end
 
