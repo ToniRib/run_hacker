@@ -14,6 +14,7 @@ gem 'omniauth-mapmyfitness-oauth2', '~> 0.3.0'
 gem 'thin'
 gem 'sidekiq'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'skylight'
 
 group :development, :test do
   gem 'pry'
