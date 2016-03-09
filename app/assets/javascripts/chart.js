@@ -118,15 +118,15 @@ function getYAxisUnits(selection) {
 }
 
 function getMinDistance() {
-  return parseInt($('#minimum_distance').val());
+  return parseFloat($('#minimum_distance').val());
 }
 
 function getMaxDistance() {
-  return parseInt($('#maximum_distance').val());
+  return parseFloat($('#maximum_distance').val());
 }
 
 function createRange(minDistance, maxDistance) {
-  return minDistance.toString() + ' - ' + maxDistance.toString() + ' mile ';
+  return minDistance + ' - ' + maxDistance + ' mile ';
 }
 
 function getYAxisSelection() {
