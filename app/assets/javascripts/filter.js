@@ -46,20 +46,31 @@ $(document).ready(function(){
   function filterRows(options) {
     var tableContents = getTableContents();
     var selectedObjects = [];
+    var objects = [];
 
     if (options.location !== "") {
-      var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
       selectedObjects = filter(objects, options.location, 'location');
     }
 
     if (isNaN(options.minDistance) === false) {
-      var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
       selectedObjects = filter(objects, options.minDistance, 'minDistance');
     }
 
     if (isNaN(options.maxDistance) === false) {
-      var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
       selectedObjects = filter(objects, options.maxDistance, 'maxDistance');
+    }
+
+    if (isNaN(options.minElevation) === false) {
+      objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      selectedObjects = filter(objects, options.minElevation, 'minElevation');
+    }
+
+    if (isNaN(options.maxElevation) === false) {
+      objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      selectedObjects = filter(objects, options.maxElevation, 'maxElevation');
     }
 
     var rejectedObjects = $.grep(tableContents, function(element){
@@ -89,6 +100,14 @@ $(document).ready(function(){
         }
       } else if (filterBy === 'maxDistance') {
         if (object.distance <= selection) {
+          acceptedObjects.push(object);
+        }
+      } else if (filterBy === 'minElevation') {
+        if (object.elevation >= selection) {
+          acceptedObjects.push(object);
+        }
+      } else if (filterBy === 'maxElevation') {
+        if (object.elevation <= selection) {
           acceptedObjects.push(object);
         }
       }

@@ -77,7 +77,8 @@ $(document).ready(function() {
                                   tableContents[i].calories + "</td><td class='workout-location'>" +
                                   tableContents[i].location + "</td><td class='workout-elevation'>" +
                                   tableContents[i].elevation + "</td></tr>");
-      setVisibility(tableContents[i].id, tableContents[i].visible)
+
+      setVisibility(tableContents[i].id, tableContents[i].visible);
     }
   });
 });
