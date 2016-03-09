@@ -13,9 +13,11 @@ Users can then create charts plotting distance, average speed, and/or time spent
 
 The application is [hosted live on Heroku](http://run-hacker.herokuapp.com/) and uses background workers (redis/sidekiq) to make the API calls that import the user's data.
 
-### Application In Action
+### Application In Action (click on image to watch)
 
-Eventually put recording here
+[![Screenshot](/app/assets/images/runHacker_screenshot.png)](http://g.recordit.co/tG0JAJyj2w.gif)
+
+[Click Here to See Video GIF of app](http://g.recordit.co/tG0JAJyj2w.gif)
 
 ### Dependencies
 
