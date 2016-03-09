@@ -60,7 +60,7 @@ $(document).ready(function() {
     for (var i = 0; i < tableContents.length; i++) {
       $("#workouts-table").append("<tr class='clickable-row' id='" +
                                   tableContents[i].id + "' data-link='" +
-                                  tableContents[i].dataLink + "'><td>" +
+                                  tableContents[i].dataLink + "'><td class='workout-date'>" +
                                   tableContents[i].date + "</td><td class='workout-distance'>" +
                                   tableContents[i].distance + "</td><td>" +
                                   tableContents[i].speed + "</td><td>" +

@@ -1,80 +1,60 @@
 $(document).ready(function(){
   $('#location-single-select').on('change', function() {
-    filterByLocation();
+    options = getFilterOptions();
+    console.log(options)
+    // filterRows(options);
   });
 
   $('#minimum_distance').on("keypress",function(e) {
     if (e.keyCode === 13) {
-      if ($('#maximum_distance').val() !== "") {
-        filterByBothDistances();
-      } else {
-        filterByMinimumDistance();
-      }
+
     }
   });
 
   $('#minimum_distance').on("change",function(e) {
-    if ($('#maximum_distance').val() !== "") {
-      filterByBothDistances();
-    } else {
-      filterByMinimumDistance();
-    }
+
   });
 
   $('#maximum_distance').on("keypress",function(e) {
-    if (e.keyCode === 13) {
-      if ($('#minimum_distance').val() !== "") {
-        filterByBothDistances();
-      } else {
-        filterByMaximumDistance();
-      }
-    }
+
   });
 
   $('#maximum_distance').on("change",function(e) {
-    if ($('#minimum_distance').val() !== "") {
-      filterByBothDistances();
-    } else {
-      filterByMaximumDistance();
-    }
+
   });
 
   $('#minimum_elevation').on("keypress",function(e) {
     if (e.keyCode === 13) {
-      if ($('#maximum_elevation').val() !== "") {
-        filterByBothElevations();
-      } else {
-        filterByMinimumElevation();
-      }
+
     }
   });
 
   $('#minimum_elevation').on("change",function(e) {
-    if ($('#maximum_elevation').val() !== "") {
-      filterByBothElevations();
-    } else {
-      filterByMinimumElevation();
-    }
+
   });
 
   $('#maximum_elevation').on("keypress",function(e) {
     if (e.keyCode === 13) {
-      if ($('#minimum_elevation').val() !== "") {
-        filterByBothElevations();
-      } else {
-        filterByMaximumElevation();
-      }
+
     }
   });
 
   $('#maximum_elevation').on("change",function(e) {
-    if ($('#minimum_elevation').val() !== "") {
-      filterByBothElevations();
-    } else {
-      filterByMaximumElevation();
-    }
+
   });
 });
+
+function getFilterOptions() {
+  return {
+    location: $('#location-single-select :selected').text(),
+    minDistance: parseFloat($('#minimum_distance').val()),
+    maxDistance: parseFloat($('#maximum_distance').val()),
+    minDate: $('#minimum_date').val(),
+    maxDate: $('#maximum_date').val(),
+    minElevation: parseFloat($('#minimum_elevation').val()),
+    maxElevation: parseFloat($('#maximum_elevation').val())
+  };
+}
 
 function filterByMinimumDistance() {
   var $rows = $('.clickable-row');
