@@ -12,7 +12,7 @@
             <label class="filter-label">Location</label>
           </div>
           <div class="row">
-            <%= select_tag "location", options_for_select(current_user.locations_as_city_and_state), {include_blank: true} %>
+            <%= select_tag "location-single-select", options_for_select(current_user.locations_as_city_and_state), {include_blank: true} %>
           </div>
         </div>
         <div class="col-sm-12 col-md-2">
@@ -20,9 +20,9 @@
             <label class="filter-label">Distance (mi)</label>
           </div>
           <div class="row">
-            <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
+            <%= number_field :minimum, :distance, step: 0.5, min: 0, class: "distance-textbox" %>
             <span>to</span>
-            <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
+            <%= number_field :maximum, :distance, step: 0.5, min: 0, class: "distance-textbox" %>
           </div>
         </div>
         <div class="col-sm-12 col-md-4">
@@ -35,7 +35,7 @@
             <%= date_field :maximum, :date, class: "date-field" %>
           </div>
         </div>
-        <div class="col-sm-12 col-md-3">
+        <div class="col-sm-12 col-md-2">
           <div class="row">
             <label class="filter-label">Elevation (ft)</label>
           </div>

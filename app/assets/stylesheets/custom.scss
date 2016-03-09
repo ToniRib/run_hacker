@@ -235,6 +235,10 @@ tbody{
   width: 70px;
 }
 
+.distance-textbox {
+  width: 60px;
+}
+
 .filter-label {
   color: $base-orange;
   font-weight: 100;
@@ -243,8 +247,7 @@ tbody{
 }
 
 .table-filters {
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 0 20px 20px;
 }
 
 // ----- INDIVIDUAL WORKOUT -----
