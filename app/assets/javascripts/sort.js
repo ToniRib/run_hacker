@@ -59,13 +59,13 @@ $(document).ready(function() {
 
     for (var i = 0; i < tableContents.length; i++) {
       $("#workouts-table").append("<tr class='clickable-row' id='" +
-                                  tableContents[i].id + "' data-link='" + 
+                                  tableContents[i].id + "' data-link='" +
                                   tableContents[i].dataLink + "'><td>" +
                                   tableContents[i].date + "</td><td>" +
                                   tableContents[i].distance + "</td><td>" +
                                   tableContents[i].speed + "</td><td>" +
                                   tableContents[i].time + "</td><td>" +
-                                  tableContents[i].calories + "</td><td>" +
+                                  tableContents[i].calories + "</td><td class='workout-location'>" +
                                   tableContents[i].location + "</td><td>" +
                                   tableContents[i].elevation + "</td></tr>");
     }
