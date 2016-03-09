@@ -217,7 +217,7 @@ tr {
 }
 
 tbody{
-  height: 550px;
+  height: 470px;
   overflow-y: scroll;
   position: absolute;
   width: 98%;
@@ -225,6 +225,26 @@ tbody{
 
 .table-hover tbody tr:hover td {
   background: $base-yellow-lighten;
+}
+
+.date-field {
+  width: 130px;
+}
+
+.elevation-textbox {
+  width: 70px;
+}
+
+.filter-label {
+  color: $base-orange;
+  font-weight: 100;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.table-filters {
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 // ----- INDIVIDUAL WORKOUT -----

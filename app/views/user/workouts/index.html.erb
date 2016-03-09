@@ -2,7 +2,49 @@
   <div class="row main-chart-area orange-border">
     <div class="col-sm-12">
       <div class="row text-center">
-        <h2>Workout Listing</h2>
+        <div class="col-sm-12">
+          <h2>Workout Listing</h2>
+        </div>
+      </div>
+      <div class="row table-filters text-center">
+        <div class="col-sm-12 col-md-3">
+          <div class="row">
+            <label class="filter-label">Location</label>
+          </div>
+          <div class="row">
+            <%= select_tag "location", options_for_select(current_user.locations_as_city_and_state), {include_blank: true} %>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <div class="row">
+            <label class="filter-label">Distance (mi)</label>
+          </div>
+          <div class="row">
+            <%= number_field :minimum, :distance, step: 0.1, min: 0 %>
+            <span>to</span>
+            <%= number_field :maximum, :distance, step: 0.1, min: 0 %>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="row">
+            <label class="filter-label">Dates</label>
+          </div>
+          <div class="row">
+            <%= date_field :minimum, :date, class: "date-field" %>
+            <span>to</span>
+            <%= date_field :maximum, :date, class: "date-field" %>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <div class="row">
+            <label class="filter-label">Elevation (ft)</label>
+          </div>
+          <div class="row">
+            <%= number_field :minimum, :elevation, step: 500, min: 0, class: "elevation-textbox" %>
+            <span>to</span>
+            <%= number_field :maximum, :elevation, step: 500, min: 0, class: "elevation-textbox" %>
+          </div>
+        </div>
       </div>
       <div class="row table-section">
         <table class="table table-hover workouts-table" id="workouts-table">
