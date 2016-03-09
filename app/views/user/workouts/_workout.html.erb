@@ -1,9 +1,9 @@
 <tr class="clickable-row" id="workout-<%= workout.map_my_fitness_id %>" data-link="/workouts/<%= workout.id %>">
   <td class="workout-date"><%= workout.display_starting_date_no_time %></td>
   <td class="workout-distance"><%= workout.display_distance_in_miles %></td>
-  <td><%= workout.display_average_speed_in_mph %></td>
-  <td><%= workout.display_elapsed_time_in_minutes %></td>
-  <td><%= workout.display_calories_burned_in_kcal %></td>
+  <td class="hide-on-mobile"><%= workout.display_average_speed_in_mph %></td>
+  <td class="hide-on-mobile"><%= workout.display_elapsed_time_in_minutes %></td>
+  <td class="hide-on-mobile"><%= workout.display_calories_burned_in_kcal %></td>
   <td class="workout-location"><%= workout.display_city_and_state %></td>
-  <td class="workout-elevation"><%= workout.display_elevation_in_feet %></td>
+  <td class="workout-elevation hide-on-mobile"><%= workout.display_elevation_in_feet %></td>
 </tr>
