@@ -1,53 +1,50 @@
 $(document).ready(function(){
   $('#location-single-select').on('change', function() {
-    options = getFilterOptions();
-    filterRows(options);
+    filterRows(getFilterOptions());
   });
 
   $('#minimum_distance').on("keypress",function(e) {
     if (e.keyCode === 13) {
-      options = getFilterOptions();
-      filterRows(options);
+      filterRows(getFilterOptions());
     }
   });
 
   $('#minimum_distance').on("change",function(e) {
-    options = getFilterOptions();
-    filterRows(options);
+    filterRows(getFilterOptions());
   });
 
   $('#maximum_distance').on("keypress",function(e) {
-
+    if (e.keyCode === 13) {
+      filterRows(getFilterOptions());
+    }
   });
 
   $('#maximum_distance').on("change",function(e) {
-
+    filterRows(getFilterOptions());
   });
 
   $('#minimum_elevation').on("keypress",function(e) {
     if (e.keyCode === 13) {
-
+      filterRows(getFilterOptions());
     }
   });
 
   $('#minimum_elevation').on("change",function(e) {
-
+    filterRows(getFilterOptions());
   });
 
   $('#maximum_elevation').on("keypress",function(e) {
     if (e.keyCode === 13) {
-
+      filterRows(getFilterOptions());
     }
   });
 
   $('#maximum_elevation').on("change",function(e) {
-
+    filterRows(getFilterOptions());
   });
 
   function filterRows(options) {
     var tableContents = getTableContents();
-    // console.log(tableContents);
-    // var $allRows = $('.clickable-row');
     var selectedObjects = [];
 
     if (options.location !== "") {
@@ -55,15 +52,15 @@ $(document).ready(function(){
       selectedObjects = filter(objects, options.location, 'location');
     }
 
-    // console.log(selectedObjects);
-
     if (isNaN(options.minDistance) === false) {
       var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
-      // console.log(objects);
       selectedObjects = filter(objects, options.minDistance, 'minDistance');
     }
 
-    // console.log(selectedObjects);
+    if (isNaN(options.maxDistance) === false) {
+      var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      selectedObjects = filter(objects, options.maxDistance, 'maxDistance');
+    }
 
     var rejectedObjects = $.grep(tableContents, function(element){
       return $.inArray(element, selectedObjects) == -1;
@@ -90,12 +87,12 @@ $(document).ready(function(){
         if (object.distance >= selection) {
           acceptedObjects.push(object);
         }
+      } else if (filterBy === 'maxDistance') {
+        if (object.distance <= selection) {
+          acceptedObjects.push(object);
+        }
       }
     });
-
-    // console.log(objects);
-
-    // console.log(acceptedObjects);
 
     return acceptedObjects;
   }
@@ -111,5 +108,4 @@ $(document).ready(function(){
       maxElevation: parseFloat($('#maximum_elevation').val())
     };
   }
-
 });

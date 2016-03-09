@@ -25,19 +25,28 @@ function propertyCompareDescending(key) {
 function getTableContents() {
   var tableContents = $('#workouts-table tr:has(td)').map(function(index, value) {
     var $td =  $('td', this);
-      return {
-               date: $td.eq(0).text(),
-               distance: parseFloat($td.eq(1).text()),
-               speed: parseFloat($td.eq(2).text()),
-               time: parseFloat($td.eq(3).text()),
-               calories: parseFloat($td.eq(4).text()),
-               location: $td.eq(5).text(),
-               elevation: parseFloat($td.eq(6).text()),
-               dataLink: this.dataset.link,
-               id: this.id
-             };
+    return {
+      date: $td.eq(0).text(),
+      distance: parseFloat($td.eq(1).text()),
+      speed: parseFloat($td.eq(2).text()),
+      time: parseFloat($td.eq(3).text()),
+      calories: parseFloat($td.eq(4).text()),
+      location: $td.eq(5).text(),
+      elevation: parseFloat($td.eq(6).text()),
+      dataLink: this.dataset.link,
+      id: this.id,
+      visible: $(this).is(":visible")
+    };
   });
   return tableContents;
+}
+
+function setVisibility(id, visible) {
+  if (visible === true) {
+    $("#" + id).show();
+  } else {
+    $("#" + id).hide();
+  }
 }
 
 $(document).ready(function() {
@@ -68,6 +77,7 @@ $(document).ready(function() {
                                   tableContents[i].calories + "</td><td class='workout-location'>" +
                                   tableContents[i].location + "</td><td class='workout-elevation'>" +
                                   tableContents[i].elevation + "</td></tr>");
+      setVisibility(tableContents[i].id, tableContents[i].visible)
     }
   });
 });
