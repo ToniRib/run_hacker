@@ -13,7 +13,9 @@ RSpec.feature "User views workouts listing" do
     workout2.location.update_attribute(:city, "Los Angeles")
     workout2.location.update_attribute(:state, "CA")
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
 
     visit workouts_path
 
@@ -50,7 +52,9 @@ RSpec.feature "User views workouts listing" do
 
   scenario "user has no workouts loaded" do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
 
     visit workouts_path
 
@@ -66,6 +70,41 @@ RSpec.feature "User views workouts listing" do
 
     within "tbody" do
       expect(page).to_not have_content("tr")
+    end
+  end
+
+  scenario "user sorts by distance", js: true do
+    user = create(:user)
+    workout1 = create(:workout, distance: 500, user: user)
+    workout2 = create(:workout, distance: 1000, user: user)
+
+    short_distance = workout1.distance_in_miles
+    long_distance = workout2.distance_in_miles
+
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
+
+    visit workouts_path
+
+    find("#distance-sort").click
+
+    within "tbody tr:nth-child(1)" do
+      expect(page).to have_content(short_distance)
+    end
+
+    within "tbody tr:nth-child(2)" do
+      expect(page).to have_content(long_distance)
+    end
+
+    find("#distance-sort").click
+
+    within "tbody tr:nth-child(1)" do
+      expect(page).to have_content(long_distance)
+    end
+
+    within "tbody tr:nth-child(2)" do
+      expect(page).to have_content(short_distance)
     end
   end
 end
