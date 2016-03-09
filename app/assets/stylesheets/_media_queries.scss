@@ -85,6 +85,36 @@
     font-size: 14px;
   }
 
+  .dashboard-stat-listing {
+    margin: 0;
+  }
+
+  .summary-title {
+    font-size: 24px;
+  }
+
+  .stat-title {
+    font-size: 20px;
+  }
+
+  .stat-data {
+    font-size: 22px;
+  }
+
+  .dashboard-options-list {
+
+    li {
+      padding: 0.5px 0;
+      margin: 0;
+
+      h4 {
+        font-size: 16px;
+      }
+
+    }
+
+  }
+
 }
 
 @media screen and (max-width: 400px) {
