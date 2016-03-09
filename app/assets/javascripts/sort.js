@@ -66,7 +66,7 @@ $(document).ready(function() {
                                   tableContents[i].speed + "</td><td>" +
                                   tableContents[i].time + "</td><td>" +
                                   tableContents[i].calories + "</td><td class='workout-location'>" +
-                                  tableContents[i].location + "</td><td>" +
+                                  tableContents[i].location + "</td><td class='workout-elevation'>" +
                                   tableContents[i].elevation + "</td></tr>");
     }
   });

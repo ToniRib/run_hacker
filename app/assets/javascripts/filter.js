@@ -4,7 +4,7 @@ $(document).ready(function(){
   });
 
   $('#minimum_distance').on("keypress",function(e) {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       if ($('#maximum_distance').val() !== "") {
         filterByBothDistances();
       } else {
@@ -22,7 +22,7 @@ $(document).ready(function(){
   });
 
   $('#maximum_distance').on("keypress",function(e) {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       if ($('#minimum_distance').val() !== "") {
         filterByBothDistances();
       } else {
@@ -36,6 +36,42 @@ $(document).ready(function(){
       filterByBothDistances();
     } else {
       filterByMaximumDistance();
+    }
+  });
+
+  $('#minimum_elevation').on("keypress",function(e) {
+    if (e.keyCode === 13) {
+      if ($('#maximum_elevation').val() !== "") {
+        filterByBothElevations();
+      } else {
+        filterByMinimumElevation();
+      }
+    }
+  });
+
+  $('#minimum_elevation').on("change",function(e) {
+    if ($('#maximum_elevation').val() !== "") {
+      filterByBothElevations();
+    } else {
+      filterByMinimumElevation();
+    }
+  });
+
+  $('#maximum_elevation').on("keypress",function(e) {
+    if (e.keyCode === 13) {
+      if ($('#minimum_elevation').val() !== "") {
+        filterByBothElevations();
+      } else {
+        filterByMaximumElevation();
+      }
+    }
+  });
+
+  $('#maximum_elevation').on("change",function(e) {
+    if ($('#minimum_elevation').val() !== "") {
+      filterByBothElevations();
+    } else {
+      filterByMaximumElevation();
     }
   });
 });
@@ -98,6 +134,55 @@ function filterByLocation() {
     var $rowLocation = $row.find(".workout-location").text();
 
     if ($rowLocation === selectedLocation || selectedLocation === "") {
+      $row.show();
+    } else {
+      $row.hide();
+    }
+  });
+}
+
+function filterByMinimumElevation() {
+  var $rows = $('.clickable-row');
+  var minimumElevation = parseFloat($('#minimum_elevation').val());
+
+  $rows.each(function(index, row) {
+    var $row = $(row);
+    var $rowElevation = parseFloat($row.find(".workout-elevation").text());
+
+    if ($rowElevation >= minimumElevation) {
+      $row.show();
+    } else {
+      $row.hide();
+    }
+  });
+}
+
+function filterByMaximumElevation() {
+  var $rows = $('.clickable-row');
+  var maximumElevation = parseFloat($('#maximum_elevation').val());
+
+  $rows.each(function(index, row) {
+    var $row = $(row);
+    var $rowElevation = parseFloat($row.find(".workout-elevation").text());
+
+    if ($rowElevation <= maximumElevation) {
+      $row.show();
+    } else {
+      $row.hide();
+    }
+  });
+}
+
+function filterByBothElevations() {
+  var $rows = $('.clickable-row');
+  var maximumElevation = parseFloat($('#maximum_elevation').val());
+  var minimumElevation = parseFloat($('#minimum_elevation').val());
+
+  $rows.each(function(index, row) {
+    var $row = $(row);
+    var $rowElevation = parseFloat($row.find(".workout-elevation").text());
+
+    if ($rowElevation <= maximumElevation && $rowElevation >= minimumElevation) {
       $row.show();
     } else {
       $row.hide();
