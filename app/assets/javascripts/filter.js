@@ -1,8 +1,8 @@
 $(document).ready(function(){
   $('#location-single-select').on('change', function() {
     options = getFilterOptions();
-    console.log(options)
-    // filterRows(options);
+    console.log(options);
+    filterRows(options);
   });
 
   $('#minimum_distance').on("keypress",function(e) {
@@ -12,7 +12,9 @@ $(document).ready(function(){
   });
 
   $('#minimum_distance').on("change",function(e) {
-
+    options = getFilterOptions();
+    console.log(options);
+    filterRows(options);
   });
 
   $('#maximum_distance').on("keypress",function(e) {
@@ -43,6 +45,53 @@ $(document).ready(function(){
 
   });
 });
+
+function filterRows(options) {
+  var $allRows = $('.clickable-row');
+  var selectedRows = [];
+  var rejectedRows = [];
+
+  if (options.location !== "") {
+    var rows = selectedRows.length === 0 ? $allRows : selectedRows;
+    var filtered = filterByLocation(rows, options.location);
+    // console.log(filtered.accepted);
+    selectedRows = selectedRows.concat(filtered.accepted);
+    // console.log(selectedRows);
+    rejectedRows = rejectedRows.concat(filtered.rejected);
+    // console.log(filtered.rejected);
+  }
+
+  // console.log(selectedRows);
+
+  for (var i = 0; i < selectedRows.length; i++) {
+    $("#" + selectedRows[i]).show();
+  }
+
+  for (var j = 0; j < rejectedRows.length; j++) {
+    $("#" + rejectedRows[j]).hide();
+  }
+}
+
+function filterByLocation(rows, selectedLocation) {
+  acceptedRows = [];
+  rejectedRows = [];
+
+  rows.each(function(index, row) {
+    var $row = $(row);
+    var $rowLocation = $row.find(".workout-location").text();
+
+    if ($rowLocation === selectedLocation) {
+      acceptedRows.push(row.id);
+    } else {
+      rejectedRows.push(row.id);
+    }
+  });
+
+  return {
+    accepted: acceptedRows,
+    rejected: rejectedRows
+  };
+}
 
 function getFilterOptions() {
   return {
@@ -98,22 +147,6 @@ function filterByBothDistances() {
     var $rowDistance = parseFloat($row.find(".workout-distance").text());
 
     if ($rowDistance <= maximumDistance && $rowDistance >= minimumDistance) {
-      $row.show();
-    } else {
-      $row.hide();
-    }
-  });
-}
-
-function filterByLocation() {
-  var $rows = $('.clickable-row');
-  var selectedLocation = $('#location-single-select :selected').text();
-
-  $rows.each(function(index, row) {
-    var $row = $(row);
-    var $rowLocation = $row.find(".workout-location").text();
-
-    if ($rowLocation === selectedLocation || selectedLocation === "") {
       $row.show();
     } else {
       $row.hide();
