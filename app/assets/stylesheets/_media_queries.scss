@@ -37,6 +37,10 @@
     height: 775px;
   }
 
+  .location-area {
+    height: 1000px;
+  }
+
 }
 
 @media screen and (max-width: 850px) {
@@ -131,6 +135,10 @@
 
     }
 
+  }
+
+  select[multiple], select[size] {
+      height: 50px;
   }
 
 }
