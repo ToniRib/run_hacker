@@ -1,18 +1,6 @@
 $(document).ready(function(){
   $('#location-single-select').on('change', function() {
-    var $rows = $('.clickable-row');
-    var selectedLocation = $('#location-single-select :selected').text();
-
-    $rows.each(function(index, row) {
-      var $row = $(row);
-      var $rowLocation = $row.find(".workout-location").text();
-
-      if ($rowLocation === selectedLocation || selectedLocation === "") {
-        $row.show();
-      } else {
-        $row.hide();
-      }
-    });
+    filterByLocation();
   });
 
   $('#minimum_distance').on("keypress",function(e) {
@@ -94,6 +82,22 @@ function filterByBothDistances() {
     var $rowDistance = parseFloat($row.find(".workout-distance").text());
 
     if ($rowDistance <= maximumDistance && $rowDistance >= minimumDistance) {
+      $row.show();
+    } else {
+      $row.hide();
+    }
+  });
+}
+
+function filterByLocation() {
+  var $rows = $('.clickable-row');
+  var selectedLocation = $('#location-single-select :selected').text();
+
+  $rows.each(function(index, row) {
+    var $row = $(row);
+    var $rowLocation = $row.find(".workout-location").text();
+
+    if ($rowLocation === selectedLocation || selectedLocation === "") {
       $row.show();
     } else {
       $row.hide();
