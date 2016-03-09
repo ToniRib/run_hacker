@@ -19,12 +19,12 @@ RSpec.feature "User views workouts listing" do
 
     within "thead" do
       expect(page).to have_content("Date")
-      expect(page).to have_content("Distance (mi)")
-      expect(page).to have_content("Average Speed (mph)")
-      expect(page).to have_content("Elapsed Time (min)")
-      expect(page).to have_content("Calories Burned (kcal)")
+      expect(page).to have_content("Distance(mi)")
+      expect(page).to have_content("Average Speed(mph)")
+      expect(page).to have_content("Elapsed Time(min)")
+      expect(page).to have_content("Calories Burned(kcal)")
       expect(page).to have_content("Location")
-      expect(page).to have_content("Elevation (feet)")
+      expect(page).to have_content("Elevation(feet)")
     end
 
     within "tbody" do
@@ -56,12 +56,12 @@ RSpec.feature "User views workouts listing" do
 
     within "thead" do
       expect(page).to have_content("Date")
-      expect(page).to have_content("Distance (mi)")
-      expect(page).to have_content("Average Speed (mph)")
-      expect(page).to have_content("Elapsed Time (min)")
-      expect(page).to have_content("Calories Burned (kcal)")
+      expect(page).to have_content("Distance(mi)")
+      expect(page).to have_content("Average Speed(mph)")
+      expect(page).to have_content("Elapsed Time(min)")
+      expect(page).to have_content("Calories Burned(kcal)")
       expect(page).to have_content("Location")
-      expect(page).to have_content("Elevation (feet)")
+      expect(page).to have_content("Elevation(feet)")
     end
 
     within "tbody" do
