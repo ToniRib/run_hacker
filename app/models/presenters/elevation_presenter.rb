@@ -8,7 +8,7 @@ class Presenters::ElevationPresenter < SimpleDelegator
 
   def distance_elevation_and_total_time
     data = cached_workouts
-             .has_elevations
+             .where("elevation IS NOT NULL")
              .has_elapsed_time
              .select(:distance, "routes.elevation", :elapsed_time, :route_id)
 
@@ -17,7 +17,7 @@ class Presenters::ElevationPresenter < SimpleDelegator
 
   def distance_elevation_and_average_speed
     data = cached_workouts
-             .has_elevations
+             .where("elevation IS NOT NULL")
              .has_average_speed
              .select(:distance, "routes.elevation", :average_speed, :route_id)
 
@@ -26,7 +26,7 @@ class Presenters::ElevationPresenter < SimpleDelegator
 
   def distance_elevation_and_time_spent_resting
     data = cached_workouts
-             .has_elevations
+             .where("elevation IS NOT NULL")
              .has_elapsed_time
              .has_active_time
              .where("elapsed_time - active_time > 0")
