@@ -17,22 +17,38 @@ $(document).ready(function(){
 
   $('#minimum_distance').on("keypress",function(e) {
     if(e.keyCode === 13) {
-      filterByMinimumDistance();
+      if ($('#maximum_distance').val() !== "") {
+        filterByBothDistances();
+      } else {
+        filterByMinimumDistance();
+      }
     }
   });
 
   $('#minimum_distance').on("change",function(e) {
-    filterByMinimumDistance();
+    if ($('#maximum_distance').val() !== "") {
+      filterByBothDistances();
+    } else {
+      filterByMinimumDistance();
+    }
   });
 
   $('#maximum_distance').on("keypress",function(e) {
     if(e.keyCode === 13) {
-      filterByMaximumDistance();
+      if ($('#minimum_distance').val() !== "") {
+        filterByBothDistances();
+      } else {
+        filterByMaximumDistance();
+      }
     }
   });
 
   $('#maximum_distance').on("change",function(e) {
-    filterByMaximumDistance();
+    if ($('#minimum_distance').val() !== "") {
+      filterByBothDistances();
+    } else {
+      filterByMaximumDistance();
+    }
   });
 });
 
@@ -61,6 +77,23 @@ function filterByMaximumDistance() {
     var $rowDistance = parseFloat($row.find(".workout-distance").text());
 
     if ($rowDistance <= maximumDistance) {
+      $row.show();
+    } else {
+      $row.hide();
+    }
+  });
+}
+
+function filterByBothDistances() {
+  var $rows = $('.clickable-row');
+  var maximumDistance = parseFloat($('#maximum_distance').val());
+  var minimumDistance = parseFloat($('#minimum_distance').val());
+
+  $rows.each(function(index, row) {
+    var $row = $(row);
+    var $rowDistance = parseFloat($row.find(".workout-distance").text());
+
+    if ($rowDistance <= maximumDistance && $rowDistance >= minimumDistance) {
       $row.show();
     } else {
       $row.hide();
