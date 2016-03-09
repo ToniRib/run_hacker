@@ -43,54 +43,73 @@ $(document).ready(function(){
   $('#maximum_elevation').on("change",function(e) {
 
   });
-});
 
-function filterRows(options) {
-  var $allRows = $('.clickable-row');
-  var selectedRows = [];
+  function filterRows(options) {
+    var tableContents = getTableContents();
+    // console.log(tableContents);
+    // var $allRows = $('.clickable-row');
+    var selectedObjects = [];
 
-  if (options.location !== "") {
-    var rows = selectedRows.length === 0 ? $allRows : selectedRows;
-    selectedRows = filter(rows, options.location, 'location');
-  }
-
-  var rejectedRows = $.grep($allRows, function(element){
-    return $.inArray(element, selectedRows) == -1
-  });
-
-  for (var i = 0; i < selectedRows.length; i++) {
-    $(selectedRows[i]).show();
-  }
-
-  for (var j = 0; j < rejectedRows.length; j++) {
-    $(rejectedRows[j]).hide();
-  }
-}
-
-function filter(rows, selection, filterBy) {
-  selectedRows = [];
-
-  rows.each(function(index, row) {
-    if (filterBy === 'location') {
-      if ($(row).find('.workout-location').text() === selection) {
-        selectedRows.push(row);
-      }
+    if (options.location !== "") {
+      var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      selectedObjects = filter(objects, options.location, 'location');
     }
-  });
 
-  console.log(selectedRows);
+    // console.log(selectedObjects);
 
-  return selectedRows;
-}
+    if (isNaN(options.minDistance) === false) {
+      var objects = selectedObjects.length === 0 ? tableContents : selectedObjects;
+      // console.log(objects);
+      selectedObjects = filter(objects, options.minDistance, 'minDistance');
+    }
 
-function getFilterOptions() {
-  return {
-    location: $('#location-single-select :selected').text(),
-    minDistance: parseFloat($('#minimum_distance').val()),
-    maxDistance: parseFloat($('#maximum_distance').val()),
-    minDate: $('#minimum_date').val(),
-    maxDate: $('#maximum_date').val(),
-    minElevation: parseFloat($('#minimum_elevation').val()),
-    maxElevation: parseFloat($('#maximum_elevation').val())
-  };
-}
+    // console.log(selectedObjects);
+
+    var rejectedObjects = $.grep(tableContents, function(element){
+      return $.inArray(element, selectedObjects) == -1;
+    });
+
+    for (var i = 0; i < selectedObjects.length; i++) {
+      $("#" + selectedObjects[i].id).show();
+    }
+
+    for (var j = 0; j < rejectedObjects.length; j++) {
+      $("#" + rejectedObjects[j].id).hide();
+    }
+  }
+
+  function filter(objects, selection, filterBy) {
+    acceptedObjects = [];
+
+    $.each(objects, function(index, object) {
+      if (filterBy === 'location') {
+        if (object.location === selection) {
+          acceptedObjects.push(object);
+        }
+      } else if (filterBy === 'minDistance') {
+        if (object.distance >= selection) {
+          acceptedObjects.push(object);
+        }
+      }
+    });
+
+    // console.log(objects);
+
+    // console.log(acceptedObjects);
+
+    return acceptedObjects;
+  }
+
+  function getFilterOptions() {
+    return {
+      location: $('#location-single-select :selected').text(),
+      minDistance: parseFloat($('#minimum_distance').val()),
+      maxDistance: parseFloat($('#maximum_distance').val()),
+      minDate: $('#minimum_date').val(),
+      maxDate: $('#maximum_date').val(),
+      minElevation: parseFloat($('#minimum_elevation').val()),
+      maxElevation: parseFloat($('#maximum_elevation').val())
+    };
+  }
+
+});
