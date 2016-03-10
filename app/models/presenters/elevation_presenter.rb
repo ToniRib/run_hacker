@@ -10,7 +10,7 @@ class Presenters::ElevationPresenter < SimpleDelegator
     data = cached_workouts
              .has_elevations
              .has_elapsed_time
-             .select(:distance, :elevation, :elapsed_time, :route_id)
+             .select(:distance, "routes.elevation", :elapsed_time, :route_id)
 
     create_highcharts_data(data, :elapsed_time_in_minutes)
   end
@@ -19,7 +19,7 @@ class Presenters::ElevationPresenter < SimpleDelegator
     data = cached_workouts
              .has_elevations
              .has_average_speed
-             .select(:distance, :elevation, :average_speed, :route_id)
+             .select(:distance, "routes.elevation", :average_speed, :route_id)
 
     create_highcharts_data(data, :average_speed_in_mph)
   end
@@ -30,7 +30,7 @@ class Presenters::ElevationPresenter < SimpleDelegator
              .has_elapsed_time
              .has_active_time
              .where("elapsed_time - active_time > 0")
-             .select(:distance, :elevation, :elapsed_time, :active_time, :route_id)
+             .select(:distance, "routes.elevation", :elapsed_time, :active_time, :route_id)
 
     create_highcharts_data(data, :time_spent_resting_in_minutes)
   end
