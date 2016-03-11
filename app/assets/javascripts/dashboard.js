@@ -5,7 +5,7 @@ function pollForAggregates() {
     success: function(data) {
       updateAggregates(data);
     }
-  })
+  });
 }
 
 function updateAggregates(data) {
