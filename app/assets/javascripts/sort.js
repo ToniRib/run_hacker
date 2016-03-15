@@ -71,11 +71,11 @@ $(document).ready(function() {
                                   tableContents[i].id + "' data-link='" +
                                   tableContents[i].dataLink + "'><td class='workout-date'>" +
                                   tableContents[i].date + "</td><td class='workout-distance'>" +
-                                  tableContents[i].distance + "</td><td>" +
-                                  tableContents[i].speed + "</td><td>" +
-                                  tableContents[i].time + "</td><td>" +
+                                  tableContents[i].distance + "</td><td class='hide-on-mobile'>" +
+                                  tableContents[i].speed + "</td><td class='hide-on-mobile'>" +
+                                  tableContents[i].time + "</td><td class='hide-on-mobile'>" +
                                   tableContents[i].calories + "</td><td class='workout-location'>" +
-                                  tableContents[i].location + "</td><td class='workout-elevation'>" +
+                                  tableContents[i].location + "</td><td class='workout-elevation hide-on-mobile'>" +
                                   tableContents[i].elevation + "</td></tr>");
 
       setVisibility(tableContents[i].id, tableContents[i].visible);
