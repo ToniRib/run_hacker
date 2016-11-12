@@ -12,7 +12,7 @@ class Workout < ActiveRecord::Base
   scope :has_average_speed, -> { where("average_speed IS NOT NULL") }
   scope :has_elapsed_time, -> { where("elapsed_time IS NOT NULL") }
   scope :has_active_time, -> { where("active_time IS NOT NULL") }
-  scope :has_elevations, -> { joins(:route).where("elevation IS NOT NULL") }
+  scope :has_elevations, -> { joins(:route).where("routes.elevation IS NOT NULL") }
 
   def self.create_from_api_response(data)
     return if no_distance_or_no_route(data)
