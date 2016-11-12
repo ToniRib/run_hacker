@@ -6,8 +6,6 @@ RSpec.describe WorkoutTimeseries, type: :model do
       timeseries = WorkoutTimeseries.new(api_data)
 
       point1, point2, point3 = timeseries.points
-      min_speed = timeseries.min_speed
-      max_speed = timeseries.max_speed
 
       expect(timeseries.points.count).to eq(3)
 
@@ -79,9 +77,10 @@ RSpec.describe WorkoutTimeseries, type: :model do
       timeseries = WorkoutTimeseries.new(api_data)
 
       route_coordinates = timeseries.route_coordinates
-      real_coordinates = [{:lat=>38.78214621, :lng=>-77.01499606},
-                         {:lat=>38.7822010006, :lng=>-77.0151513974},
-                         {:lat=>38.7822198315, :lng=>-77.0153191478}
+      real_coordinates = [
+        {:lat => 38.78214621, :lng => -77.01499606},
+        {:lat => 38.7822010006, :lng => -77.0151513974},
+        {:lat => 38.7822198315, :lng => -77.0153191478}
       ]
 
       expect(route_coordinates).to eq(real_coordinates)
