@@ -21,36 +21,38 @@ class WorkoutTimeseries
   end
 
   def max_elevation_in_feet
-    convert_to_feet(points.max_by { |p| p.elevation }.elevation)
+    convert_to_feet(points.max_by(&:elevation).elevation)
   end
 
   def min_elevation_in_feet
-    convert_to_feet(points.min_by { |p| p.elevation }.elevation)
+    convert_to_feet(points.min_by(&:elevation).elevation)
   end
 
   def route_coordinates
-    points.map { |point| point.coordinates }
+    points.map(&:coordinates)
   end
 
   def has_elevations?
-    points.any? { |p| p.elevation }
+    points.any?(&:elevation)
   end
 
   private
 
   def add_points
     @positions.map do |position|
-      Point.new(time:      position[0],
-                lat:       position[1][:lat],
-                lng:       position[1][:lng],
-                elevation: position[1][:elevation])
+      Point.new(
+        time:      position[0],
+        lat:       position[1][:lat],
+        lng:       position[1][:lng],
+        elevation: position[1][:elevation]
+      )
     end
   end
 
   def update_points_with_speed_and_distance
     @points.each do |point|
-      distance = @distances.select { |time, distance| time == point.time }
-      speed = @speeds.select { |time, speed| time == point.time }
+      distance = @distances.select { |time, _| time == point.time }
+      speed = @speeds.select { |time, _| time == point.time }
 
       point.add_distance(distance[0][1]) if distance[0]
       point.add_speed(speed[0][1]) if speed[0]
